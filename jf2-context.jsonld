@@ -36,7 +36,6 @@
       "org": "vcard:organization-name",
       "organization-unit": "vcard:organizational-unit",
       "postal-code": "vcard:hasPostalCode",
-      "sex": "vcard:hasGender",
       "street-address": "vcard:street-address",
       "locality": "vcard:locality",
       "region": "vcard:region",
@@ -82,6 +81,8 @@
       "syndication": "mf:rel-syndication",
       "shortlink": "mf:rel-shortlink",
       "rsvp": "mf:rsvp",
+      "sex": "mf:h-card#p-sex",
+      "gender": "mf:h-card#p-gender-identity",
 
       "mf2ex": "mf:microformats2-experimental-properties#",
       "x-dietary-preference": "mf2ex:p-x-dietary-preference",
