@@ -57,6 +57,10 @@
     
     <section id='syntax'>
       <h2>Syntax</h2>
+      <p>
+        All values in JF2 MAY contain either a single item, or a set of items, serialized
+        as an array.  The only exception are reserved words defined below.
+      </p>
       <section id='reservedkeywords'>
         <h3>Reserved Keywords</h3>
         <p>
@@ -68,6 +72,15 @@
             <li>children</li>
             <li>content-type</li>
             <li>value</li>
+            <li>lang</li>
+            <li>@context</li>
+        </p>
+        <p>
+          The reserved word <code>children</code> MUST be serialized as an array of items, even if there
+          is only a single entry within it.  The reseved word is a special item that MAY be omitted.  If
+          present is MUST appear only in the top level element. The <code>@context</code> value may be
+          any valid context defined in [[!JSON-LD]].  See the <a href="#JSON-LD">JSON-LD Consideration</a>
+          section below.  All other reserved words are single value only, and MUST NOT be serialized as arrays.
         </p>
       </section>
   
