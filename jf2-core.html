@@ -68,19 +68,19 @@
         </p>
         <p>
           <ul>
-            <li>type</li>
-            <li>children</li>
+            <li><dfn lt="type">type</dfn> - The type of the object, any value from a set vocabulary
+            may be used here but for the presumed Microformats vocabulary this is any h-* class. 
+            Type MUST be a single string value and may not be an object or an array.  </li>
+            <li><dfn lt="children">children</dfn> - The container for all unnamed sub-objects inside
+            an entry.  If a children value is set, it MUST be serialized as an array even if only a
+            single item is present.</li>
             <li>content-type</li>
             <li>value</li>
             <li>lang</li>
-            <li>@context</li>
-        </p>
-        <p>
-          The reserved word <code>children</code> MUST be serialized as an array of items, even if there
-          is only a single entry within it.  The reseved word is a special item that MAY be omitted.  If
-          present is MUST appear only in the top level element. The <code>@context</code> value may be
-          any valid context defined in [[!JSON-LD]].  See the <a href="#JSON-LD">JSON-LD Consideration</a>
-          section below.  All other reserved words are single value only, and MUST NOT be serialized as arrays.
+            <li><dfn lt="@context">@context</dfn> - The context of the vocabulary as defined in [[!JSON-LD]].
+              This attibute MAY be omitted and has an inferred value if not present.  If it is present it MUST be
+              present at the top level entry only.  See the <a href="#JSON-LD">JSON-LD Consideration</a>
+            </li>
         </p>
       </section>
   
