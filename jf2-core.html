@@ -68,16 +68,21 @@
         </p>
         <p>
           <ul>
-            <li><dfn lt="type">type</dfn> - The type of the object, any value from a set vocabulary
+            <li><dfn>type</dfn> defines the object classficiation, any value from a set vocabulary
             may be used here but for the presumed Microformats vocabulary this is any h-* class. 
             Type MUST be a single string value and may not be an object or an array.  </li>
-            <li><dfn lt="children">children</dfn> - The container for all unnamed sub-objects inside
+            <li><dfn>children</dfn> is a container for all unnamed sub-objects inside
             an entry.  If a children value is set, it MUST be serialized as an array even if only a
             single item is present.</li>
-            <li>content-type</li>
-            <li>value</li>
-            <li>lang</li>
-            <li><dfn lt="@context">@context</dfn> - The context of the vocabulary as defined in [[!JSON-LD]].
+            <li><dfn>content-type</dfn> is the MIME media type of the current object.  Content-type MUST be
+            a single value only.</li>
+            <li><dfn>value</dfn> is a textual representation of the object.  By default this is presumed to be
+            of content-type "text/plain" but MAY be other MIME types if content-type is defined.</li>
+            <li><dfn>lang</dfn> is the localization language of the data stored at the current level and all
+              subobjects, unless overridden by another lang.  
+              setting lang at a lower level overrides any lang value set at a higher level.
+              This value MUST be only a single string value and MUST be a [[!RFC5646]] language tag.</li>
+            <li><dfn>@context</dfn> is the context of the vocabulary as defined in [[!JSON-LD]].
               This attibute MAY be omitted and has an inferred value if not present.  If it is present it MUST be
               present at the top level entry only.  See the <a href="#JSON-LD">JSON-LD Consideration</a>
             </li>
