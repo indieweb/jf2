@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JF2 Post Serialization Format</title>
+    <meta charset='utf-8'>
+    <script src='https://www.w3.org/Tools/respec/respec-w3c-common'
+            async class='remove'></script>
+    <script class='remove'>
+      var respecConfig = {
+          specStatus: "ED",
+          shortName:  "jf2",
+          edDraftURI: "http://dissolve.github.io/jf2/jf2-core.html",
+          editors: [
+                {   name:       "Benjamin Roberts",
+                    url:        "https://ben.thatmustbe.me/",
+                    mailto:    "ben@thatmustbe.me" }
+          ],
+          wg:           "Social Web Working Group",
+          wgURI:        "http://www.w3.org/Social/WG",
+          wgPublicList: "public-socialweb",
+          wgPatentURI:  "http://www.w3.org/2004/01/pp-impl/72531/status",
+      };
+    </script>
+  </head>
+  <body>
+    <section id='abstract'>
+      <p>
+        This document describes a JSON serialization format to describe simple
+        streams of data as well as single items of data for data transfer and
+        processing.
+      </p>
+    </section>
+
+    <section id='sotd'>
+      <p>
+        This document is very early in its development and is still just a basic
+        template.
+      </p>
+    </section>
+    
+    <section class='informative'>
+      <h2>Introduction</h2>
+      <p>
+        JF2 is a JSON based document format that describes lists and single entries
+        of information.   The primary use case for JF2 is to create a JSON format for
+        social web post objects to processed directly by client software and by other
+        servers.
+      </p>
+      <p>
+        The name JF2 comes directly from its root in being a direct parsed format of
+        Microformats2 (MF2) data from html.  The vocabulary of JF2 is largly based on
+        the work of the Microformats community however the vocabulary can be replaced
+        or mapped to other vocabularies.
+
+      </p>
+    </section>
+    
+    <section id='syntax'>
+      <h2>Syntax</h2>
+      <p>
+        All values in JF2 MAY contain either a single item, or a set of items, serialized
+        as an array.  The only exception are reserved words defined below.
+      </p>
+      <section id='reservedkeywords'>
+        <h3>Reserved Keywords</h3>
+        <p>
+          The following keywords are reserved and cannot be used as property names in vocabularies.
+        </p>
+        <p>
+          <ul>
+            <li><dfn>type</dfn> defines the object classficiation, any value from a set vocabulary
+            may be used here but for the presumed Microformats vocabulary this is any h-* class. 
+            Type MUST be a single string value and may not be an object or an array.  </li>
+            <li><dfn>children</dfn> is a container for all unnamed sub-objects inside
+            an entry.  If a children value is set, it MUST be serialized as an array even if only a
+            single item is present.</li>
+            <li><dfn>content-type</dfn> is the MIME media type of the current object.  Content-type MUST be
+            a single value only.</li>
+            <li><dfn>value</dfn> is a textual representation of the object.  By default this is presumed to be
+            of content-type "text/plain" but MAY be other MIME types if content-type is defined.</li>
+            <li><dfn>lang</dfn> is the localization language of the data stored at the current level and all
+              subobjects, unless overridden by another lang.  
+              setting lang at a lower level overrides any lang value set at a higher level.
+              This value MUST be only a single string value and MUST be a [[!RFC5646]] language tag.</li>
+            <li><dfn>@context</dfn> is the context of the vocabulary as defined in [[!JSON-LD]].
+              This attibute MAY be omitted and has an inferred value if not present.  If it is present it MUST be
+              present at the top level entry only.  See the <a href="#JSON-LD">JSON-LD Consideration</a>
+            </li>
+        </p>
+      </section>
+  
+      <section id='posts'>
+        <h3>Posts</h3>
+
+        <section id="post-objects">
+          <h4>Post Objects</h4>
+          <p>
+            A post is composed of a "type" property, and one or more additional properties that describe the post.
+          </p>
+          <p>
+            The "type" property has a value that describes the vocabulary of this post. Common values include "entry", "card", etc. See [Microformats 2 vocabularies](http://microformats.org/wiki/microformats-2#v2_vocabularies) for the full list.
+          </p>
+          <p>
+            Any additional properties in the post object are considered part of the post's vocabulary.
+          </p>
+
+        </section>
+        <section id="post-properties">
+          <h4>Post Properties</h4>
+          <p>
+            The list of valid post properties is defined by the vocabularies. This allows new vocabularies to be developed outside the development of the syntax.
+          </p>
+          <p>
+            Most values will be strings. If a property (such as `author`) references another object and wants to include other data about the object, the value of the property is a JSON object with a property "url" referencing the object and other properties that belong to the original object. Consumers that encounter an object with a URL on a different domain should not trust the embedded data and should fetch it from the external domain.
+          </p>
+          <p>
+            Values may also be arrays if the vocabulary allows for multiple values of the property.
+          </p>
+           
+        </section>
+        <section id="example-post">
+          <h4>Example Post</h4>
+
+          <pre class="example">
+            {
+              "type": "entry",
+              "published": "2015-10-20T15:49:00-0700",
+              "url": "http://example.com/post/fsjeuu8372",
+              "author": {
+                "type": "card",
+                "name": "Alice",
+                "url": "http://alice.example.com",
+                "photo": "http://alice.example.com/photo.jpg"
+              },
+              "name": "Hello World",
+              "content": "This is a blog post"
+            }
+          </pre>
+
+          <pre class="example">
+            {
+              "type": "entry",
+              "published": "2015-10-20T15:49:00-0700",
+              "url": "http://example.com/like/r23eugi02c",
+              "author": {
+                "type": "card",
+                "name": "Alice",
+                "url": "http://alice.example.com",
+                "photo": "http://alice.example.com/photo.jpg"
+              },
+              "like-of": "http://bob.example.com/post/100"
+            }
+          </pre>
+        </section>
+      </section>
+
+      <section id="author">
+        <h3>Author</h3>
+        <p>
+          An author is represented by the h-card vocabulary, and consists of a name, photo URL, URL to the author profile, and [others](http://microformats.org/wiki/h-card). This is represented by the following JSON.
+        </p>
+
+        <pre class="example">
+          {
+            "type": "card",
+            "name": "Aaron Parecki",
+            "photo": "http://aaronparecki.com/photo.jpg",
+            "url": "http://aaronparecki.com/"
+          }
+        </pre>
+      </section>
+
+      <section id="html-content">
+        <h3>HTML Content</h3>
+        <p>
+          By default, any string value is to be interpreted as literal plaintext. This means when displaying a string in an HTML page, it must be HTML escaped.
+        </p>
+
+        <p>
+          If the value of a property should be interpreted as HTML, it should be enclosed in an object noting its content type as follows.
+        </p>
+
+        <pre class="example">
+          {
+            "type": "entry",
+            "content": {
+              "content-type": "text/html",
+              "value": "&lt;b&gt;Hello World&lt;/b&gt;"
+            }
+          }
+        </pre>
+
+        <section id="multiple-urls">
+          <h4>Multiple URLs for video/audio/picture</h4>
+          <p>
+            Since HTML video/audio/picture tags may have multiple URLs, we need a way to convey this information in the JSON representation.
+          </p>
+
+          <pre class="example">
+            &lt;div class="h-entry"&gt;
+              &lt;video class="u-video" width="640" height="360" preload controls&gt;
+                &lt;source src="sample_h264.mov" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' /&gt;
+                &lt;source src="sample_ogg.ogv" type='video/ogg; codecs="theora, vorbis"' /&gt;
+                &lt;source src="sample_webm.webm" type='video/webm; codecs="vp8, vorbis"' /&gt;
+              &lt;/video&gt;
+            &lt;/div&gt;
+          </pre>
+
+          <pre class="example">
+            {
+              "type": "entry",
+              "video": [
+                {
+                  "content-type": "video/mp4",
+                  "url": "sample_h264.mov"
+                },
+                {
+                  "content-type": "video/ogg",
+                  "url": "sample_ogg.ogg"
+                },
+                {
+                  "content-type": "video/webm",
+                  "url": "sample_webm.webm"
+                }
+              ]
+            }
+          </pre>
+
+        </section>
+      </section>
+    </section>
+    <section id="collections">
+      <h2>Collections</h2>
+
+      <p>
+        Posts can live inside of collections. A collection may be a home page feed, or a feed of other posts such as a list of contacts, a list of things someone has liked, etc. There is no requirement that all posts in a collection need to be of the same type.
+      </p>
+
+      <p>
+        The collection may also have its own properties such as "name" or "author". 
+      </p>
+
+      <pre class="example">
+        {
+          "type": "feed",
+          "url": "http://alice.example.com/collectionurl",
+          "name": "Alice's Home Page",
+          "author": {
+            "type": "card",
+            "name": "Alice",
+            "url": "http://alice.example.com",
+            "photo": "http://alice.example.com/photo"
+          },
+          "children": [
+            { ... },
+            { ... }
+          ]
+        }
+      </pre>
+
+      <section id="multiple-items">
+        <h3>Multiple items on a page</h3>
+        <p>
+          If an HTML page contains multiple top-level items, (most commonly found when a page contains a list of h-entrys), the parser creates an implicit top-level collection with no properties.
+        </p>
+
+        <pre class="example">
+          {
+            "children": [
+              { ... },
+              { ... }
+            ]
+          }
+        </pre>
+
+      </section>
+    </section>
+
+    <section id="alternatives">
+      <h2>Alternative</h2>
+
+      <p>
+        Using `@type` and `@id` instead of `type` and `url` lets people use JSON-LD if they want, but can ignore it otherwise. This is how the [annotations group](http://www.w3.org/TR/annotation-model/#annotations) has written their spec.
+      </p>
+
+      <pre class="example">
+        {
+          "@type": "entry",
+          "@id": "http://example.com/post/fsjeuu8372",
+          "published": "2015-10-20T15:49:00-0700",
+          "author": {
+            "@type": "card",
+            "@id": "http://alice.example.com",
+            "name": "Alice",
+            "photo": "http://alice.example.com/photo.jpg"
+          },
+          "name": "Hello World",
+          "content": "This is a blog post"
+        }
+      </pre>
+
+    </section>
+
+    <section id="deriving">
+      <h2>Deriving the Syntax</h2>
+      <p>
+        This syntax is derived from HTML with Microformats2, converted to JSON, converted to a simplified JSON. The examples below illustrate the process.
+      </p>
+
+      <section id="deriving-note">
+        <h3>Deriving a Note</h3>
+
+        <h4>HTML + Microformats</h4>
+        <pre class="example">
+          &lt;article class="h-entry"&gt;
+            &lt;h1 class="p-name"&gt;Hello World&lt;/h1&gt;
+            &lt;p&gt;Published by &lt;a class="p-author h-card" href="http://example.com/"&gt;A. Developer&lt;/a&gt;
+               on &lt;a href="http://example.com/2015/10/21" class="u-url"&gt;&lt;time class="dt-published" datetime="2015-10-21T12:00:00-0700"&gt;October 21&lt;sup&gt;st&lt;/sup&gt;, 2015&lt;/time&gt;&lt;/a&gt;
+           
+            &lt;p class="p-summary"&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet ultrices pulvinar.&lt;/p&gt;
+           
+            &lt;div class="e-content"&gt;&lt;p&gt;Donec dapibus enim lacus, &lt;i&gt;a vehicula magna bibendum non&lt;/i&gt;. Phasellus id lacinia felis, vitae pellentesque enim. Sed at quam dui. Suspendisse accumsan, est id pulvinar consequat, urna ex tincidunt enim, nec sodales lectus nulla et augue. Cras venenatis vehicula molestie. Donec sagittis elit orci, sit amet egestas ex pharetra in.&lt;/p&gt;&lt;/div&gt;
+          &lt;/article&gt;
+        </pre>
+
+        <h4>Parsed Microformats JSON</h4>
+
+        <pre class="example">
+        {
+          "items": [
+            {
+              "type": [
+                "h-entry"
+              ],
+              "properties": {
+                "author": [
+                  {
+                    "type": [
+                      "h-card"
+                    ],
+                    "properties": {
+                      "name": [
+                        "A. Developer"
+                      ],
+                      "url": [
+                        "http:\/\/example.com\/"
+                      ]
+                    },
+                    "value": "A. Developer"
+                  }
+                ],
+                "name": [
+                  "Hello World"
+                ],
+                "summary": [
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet ultrices pulvinar."
+                ],
+                "url": [
+                  "http:\/\/example.com\/2015\/10\/21"
+                ],
+                "published": [
+                  "2015-10-21T12:00:00-0700"
+                ],
+                "content": [
+                  {
+                    "html": "&lt;p&gt;Donec dapibus enim lacus, &lt;i&gt;a vehicula magna bibendum non&lt;/i&gt;. Phasellus id lacinia felis, vitae pellentesque enim. Sed at quam dui. Suspendisse accumsan, est id pulvinar consequat, urna ex tincidunt enim, nec sodales lectus nulla et augue. Cras venenatis vehicula molestie. Donec sagittis elit orci, sit amet egestas ex pharetra in.&lt;/p&gt;",
+                    "value": "Donec dapibus enim lacus, a vehicula magna bibendum non. Phasellus id lacinia felis, vitae pellentesque enim. Sed at quam dui. Suspendisse accumsan, est id pulvinar consequat, urna ex tincidunt enim, nec sodales lectus nulla et augue. Cras venenatis vehicula molestie. Donec sagittis elit orci, sit amet egestas ex pharetra in."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+        </pre>
+
+        <h4>Simplified JSON</h4>
+
+        <pre class="example">
+        {
+          "type": "entry",
+          "author": {
+            "type": "card",
+            "url": "http://example.com",
+            "name": "A. Developer"
+          },
+          "url": "http://example.com/2015/10/21",
+          "published": "2015-10-21T12:00:00-0700",
+          "name": "Hello World",
+          "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet ultrices pulvinar.",
+          "content": "Donec dapibus enim lacus, a vehicula magna bibendum non. Phasellus id lacinia felis, vitae pellentesque enim. Sed at quam dui. Suspendisse accumsan, est id pulvinar consequat, urna ex tincidunt enim, nec sodales lectus nulla et augue. Cras venenatis vehicula molestie. Donec sagittis elit orci, sit amet egestas ex pharetra in."
+        }
+        </pre>
+
+      </section>
+      <section id="JSON-LD">
+        <h2>JSON-LD Consideration</h2>
+        <p>
+          JF2 documents all have an implicit @context field which is optional.  This @context can be found at 
+          <a href="https://github.com/dissolve/jf2/blob/master/jf2-context.jsonld">https://github.com/dissolve/jf2/blob/master/jf2-context.jsonld</a>
+          and is provided only to make conversion to [[!JSON-LD]] format possible.  Most JF2 will process
+          fine in JSON-LD systems, however, this support is not guaranteed and those wishing to
+          use JF2 in JSON-LD may need to modify serialization slightly.
+        </p>
+      </section>
+    </section>
+  </body>
+</html>
