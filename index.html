@@ -276,31 +276,6 @@
       </section>
     </section>
 
-    <section id="alternatives">
-      <h2>Alternative</h2>
-
-      <p>
-        Using `@type` and `@id` instead of `type` and `url` lets people use JSON-LD if they want, but can ignore it otherwise. This is how the [annotations group](http://www.w3.org/TR/annotation-model/#annotations) has written their spec.
-      </p>
-
-      <pre class="example">
-        {
-          "@type": "entry",
-          "@id": "http://example.com/post/fsjeuu8372",
-          "published": "2015-10-20T15:49:00-0700",
-          "author": {
-            "@type": "card",
-            "@id": "http://alice.example.com",
-            "name": "Alice",
-            "photo": "http://alice.example.com/photo.jpg"
-          },
-          "name": "Hello World",
-          "content": "This is a blog post"
-        }
-      </pre>
-
-    </section>
-
     <section id="deriving">
       <h2>Deriving the Syntax</h2>
       <p>
@@ -387,8 +362,12 @@
           "published": "2015-10-21T12:00:00-0700",
           "name": "Hello World",
           "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet ultrices pulvinar.",
-          "content": "Donec dapibus enim lacus, a vehicula magna bibendum non. Phasellus id lacinia felis, vitae pellentesque enim. Sed at quam dui. Suspendisse accumsan, est id pulvinar consequat, urna ex tincidunt enim, nec sodales lectus nulla et augue. Cras venenatis vehicula molestie. Donec sagittis elit orci, sit amet egestas ex pharetra in."
+          "content": {
+            "value": "&lt;p&gt;Donec dapibus enim lacus, &lt;i&gt;a vehicula magna bibendum non&lt;/i&gt;. Phasellus id lacinia felis, vitae pellentesque enim. Sed at quam dui. Suspendisse accumsan, est id pulvinar consequat, urna ex tincidunt enim, nec sodales lectus nulla et augue. Cras venenatis vehicula molestie. Donec sagittis elit orci, sit amet egestas ex pharetra in.&lt;/p&gt;",
+            "content-type": "text/html"
+          }
         }
+
         </pre>
 
       </section>
