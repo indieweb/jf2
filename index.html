@@ -58,7 +58,7 @@
     <section id='syntax'>
       <h2>Syntax</h2>
       <p>
-        All values in JF2 MAY contain either a single item, or a set of items, serialized
+      JF2 consists of JSON objects which are defined by a <a>type</a> property that will specify the vocabulary of the object.  Properties are attatched to these objects which typically will contain a single string.  If a property has multiple values, the property will be an array of those values.  If there is only 1 value in the array, the array SHOULD be removed and the single value put in its place.  If a property references another object, it will instead contain that object or possibly an array of objects.  All properties in JF2 MAY contain either a single item, or a set of items, serialized
         as an array.  The only exception are reserved words defined below.
       </p>
       <section id='reservedkeywords'>
@@ -98,7 +98,7 @@
             A post is composed of a "type" property, and one or more additional properties that describe the post.
           </p>
           <p>
-            The "type" property has a value that describes the vocabulary of this post. Common values include "entry", "card", etc. See [Microformats 2 vocabularies](http://microformats.org/wiki/microformats-2#v2_vocabularies) for the full list.
+          The "type" property has a value that describes the vocabulary of this post. Common values include "entry", "card", etc. See <a href="http://microformats.org/wiki/microformats-2#v2_vocabularies">Microformats 2 vocabularies</a> for the full list.
           </p>
           <p>
             Any additional properties in the post object are considered part of the post's vocabulary.
@@ -175,11 +175,11 @@
       <section id="html-content">
         <h3>HTML Content</h3>
         <p>
-          By default, any string value is to be interpreted as literal plaintext. This means when displaying a string in an HTML page, it must be HTML escaped.
+          By default, any string value shouldbe interpreted as literal plaintext. This means when displaying a string in an HTML page, it must be HTML escaped.
         </p>
 
         <p>
-          If the value of a property should be interpreted as HTML, it should be enclosed in an object noting its content type as follows.
+        If the value of a property is to be interpreted as HTML, it MUST be enclosed in an object noting its <a>content-type</a> as follows.
         </p>
 
         <pre class="example">
