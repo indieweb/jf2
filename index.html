@@ -31,15 +31,16 @@
     <section id='abstract'>
       <p>
         This document describes a JSON serialization format to describe simple
-        streams of data as well as single items of data for data transfer and
+        streams of data as well as single objects of data for data transfer and
         processing.
       </p>
     </section>
 
     <section id='sotd'>
       <p>
-        This document is very early in its development and is still just a basic
-        template.
+        This document is an attempt to unify various simplified versions of the
+        Microformats-2 representative JSON format.  As such, much of this document
+        is likely to change as various implementations contribute input.
       </p>
     </section>
     
@@ -52,10 +53,9 @@
         servers.
       </p>
       <p>
-        The name JF2 comes directly from its root in being a direct parsed format of
-        Microformats2 (MF2) data from html.  The vocabulary of JF2 is largly based on
-        the work of the Microformats community however the vocabulary can be replaced
-        or mapped to other vocabularies.
+        The name JF2 comes from its origins in being a direct parsed format of
+        Microformats2 (MF2) data from html.  Rather than defining a new vocabulary,
+        JF2 uses the vocabulary defined by <a href="http://microformats.org">Microformats</a>.
 
       </p>
     </section>
@@ -73,12 +73,15 @@
         </p>
         <p>
           <ul>
-            <li><dfn>type</dfn> defines the object classficiation, any value from a set vocabulary
-            may be used here but for the presumed Microformats vocabulary this is any h-* class. 
+            <li><dfn>type</dfn> defines the object classficiation.  This is presumed to be the h-*
+            class from the Microformats vocabulary.
             Type MUST be a single string value and may not be an object or an array.  </li>
             <li><dfn>children</dfn> is a container for all unnamed sub-objects inside
             an entry.  If a children value is set, it MUST be serialized as an array even if only a
             single item is present.</li>
+            <!--<li><dfn>references</dfn> is a hash of all sub-objects inside an entry which have ID defined as
+            and external URL.  Any objects in this array are not authoritative.-->
+            </li>
             <li><dfn>content-type</dfn> is the MIME media type of the current object.  Content-type MUST be
             a single value only.</li>
             <li><dfn>value</dfn> is a textual representation of the object.  By default this is presumed to be
@@ -103,7 +106,7 @@
             A post is composed of a "type" property, and one or more additional properties that describe the post.
           </p>
           <p>
-          The "type" property has a value that describes the vocabulary of this post. Common values include "entry", "card", etc. See <a href="http://microformats.org/wiki/microformats-2#v2_vocabularies">Microformats 2 vocabularies</a> for the full list.
+          The "type" property has a value that describes the vocabulary of this post. Values include "entry", "card", etc. See <a href="http://microformats.org/wiki/microformats-2#v2_vocabularies">Microformats 2 vocabularies</a> for the full list.
           </p>
           <p>
             Any additional properties in the post object are considered part of the post's vocabulary.
@@ -389,10 +392,26 @@
         </p>
       </section>
     </section>
+    <section id="implementations" class="informative">
+      <h2>Implementations</h2>
+      <p>
+        The following is a list of currently known implementations of JF2-like formats and their current differences to this document 
+      </p>
+
+      <section id="webmention.io">
+        <h3>Webmention.io</h3>
+        <p>
+        <a href="https://webmention.io">Webmention.io</a> is a hosted servie for handling webmentions.
+          Webmentions are accessed from an API that that returns a set of objects in JSON format similar to JF2.
+          The key difference is the inclusion of some additional data wrapping the objects
+          (source, verified, verified_data, etc) and all wrapped in a "links" array.
+        </p>
+      </section>
+    </section>
     <section class="appendix">
       <h2>Acknowledgements</h2>
         <p>
-          The author wishes to thank the Microformats, IndieWebCamp, Pump.io, and Activity Streams communities for their continued work
+          The authors wish to thank the Microformats, IndieWebCamp, Pump.io, and Activity Streams communities for their continued work
           in building the social web and helping define standards such as this one.  This includes, but is certainly not limited to, 
           <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="http://aaronparecki.com/">Aaron Parecki</a><span>,
           <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="http://bengo.is/">Benjamin Goering</a><span>,
