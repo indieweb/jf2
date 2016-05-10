@@ -49,13 +49,14 @@
       <p>
         JF2 is a JSON based document format that describes lists and single entries
         of information.   The primary use case for JF2 is to create a JSON format for
-        social web post objects to processed directly by client software and by other
+        social web post objects to be processed directly by client software and by other
         servers.
       </p>
       <p>
         The name JF2 comes from its origins in being a direct parsed format of
         Microformats2 (MF2) data from html.  Rather than defining a new vocabulary,
-        JF2 uses the vocabulary defined by <a href="http://microformats.org">Microformats</a>.
+        JF2 uses the vocabulary defined by <a href="http://microformats.org">Microformats</a>
+        however any other suitable vocabulary.
 
       </p>
     </section>
@@ -63,8 +64,12 @@
     <section id='syntax'>
       <h2>Syntax</h2>
       <p>
-      JF2 consists of JSON objects which are defined by a <a>type</a> property that will specify the vocabulary of the object.  Properties are attatched to these objects which typically will contain a single string.  If a property has multiple values, the property will be an array of those values.  If there is only 1 value in the array, the array SHOULD be removed and the single value put in its place.  If a property references another object, it will instead contain that object or possibly an array of objects.  All properties in JF2 MAY contain either a single item, or a set of items, serialized
-        as an array.  The only exception are reserved words defined below.
+      JF2 consists of JSON objects which are defined by a <a>type</a> property that will specify
+      the vocabulary of the object.  Properties are attatched to these objects which will contain
+      either a single string, a single object, an array of strings, or an array of objects.
+      Arrays that have only a single item SHOULD be condensed into only the single containing item.
+      Any property of an object MAY be a single item or an array of items except for reserved words
+      defined below.
       </p>
       <section id='reservedkeywords'>
         <h3>Reserved Keywords</h3>
@@ -73,23 +78,29 @@
         </p>
         <p>
           <ul>
-            <li><dfn>type</dfn> defines the object classficiation.  This is presumed to be the h-*
-            class from the Microformats vocabulary.
+            <li><dfn>type</dfn> defines the object classficiation.  In microformats, this is presumed
+            to be the h-* class from the Microformats vocabulary.
             Type MUST be a single string value and may not be an object or an array.  </li>
             <li><dfn>children</dfn> is a container for all unnamed sub-objects inside
-            an entry.  If a children value is set, it MUST be serialized as an array even if only a
+            an entry.  That is, any sub-object that is not associated to a specific property of the object.
+            If a children value is set, it MUST be serialized as an array even if only a
             single item is present.</li>
-            <!--<li><dfn>references</dfn> is a hash of all sub-objects inside an entry which have ID defined as
-            and external URL.  Any objects in this array are not authoritative.-->
+            <li><dfn>references</dfn> is an associative array, serialized as a json object, of all sub-objects
+            inside an object which have ID defined as and external URL. 
+            Any objects in this array are not authoritative.
+            If the references property is defined, it MUST be serialized as an associative array and MUST be
+            present at the top leve entry only.
             </li>
-            <li><dfn>content-type</dfn> is the MIME media type of the current object.  Content-type MUST be
-            a single value only.</li>
+            <li><dfn>content-type</dfn> is the MIME media type of the containing object.
+            Content-type MUST be a single string value only.</li>
             <li><dfn>value</dfn> is a textual representation of the object.  By default this is presumed to be
-            of content-type "text/plain" but MAY be other MIME types if content-type is defined.</li>
-            <li><dfn>lang</dfn> is the localization language of the data stored at the current level and all
-              subobjects, unless overridden by another lang.  
-              setting lang at a lower level overrides any lang value set at a higher level.
-              This value MUST be only a single string value and MUST be a [[!RFC5646]] language tag.</li>
+            of content-type "text/plain" but MAY be other MIME types if content-type is defined.
+            Value MUST be a single string value only.
+            </li>
+            <li><dfn>lang</dfn> is the localization language of the containing object and all
+              sub-objects, unless overridden by another lang definition. 
+              Setting lang at a lower level overrides any lang value set at higher levels.
+              This value MUST be a single string value and MUST be a [[!RFC5646]] language tag.</li>
             <li><dfn>@context</dfn> is the context of the vocabulary as defined in [[!JSON-LD]].
               This attibute MAY be omitted and has an inferred value if not present.  If it is present it MUST be
               present at the top level entry only.  See the <a href="#JSON-LD">JSON-LD Consideration</a>
@@ -106,7 +117,7 @@
             A post is composed of a "type" property, and one or more additional properties that describe the post.
           </p>
           <p>
-          The "type" property has a value that describes the vocabulary of this post. Values include "entry", "card", etc. See <a href="http://microformats.org/wiki/microformats-2#v2_vocabularies">Microformats 2 vocabularies</a> for the full list.
+          The "type" property has a value that describes the vocabulary of this post. Common values include "entry", "card", etc. See <a href="http://microformats.org/wiki/microformats-2#v2_vocabularies">Microformats 2 vocabularies</a> for the full list when using a microformats based vocabulary.
           </p>
           <p>
             Any additional properties in the post object are considered part of the post's vocabulary.
@@ -119,7 +130,9 @@
             The list of valid post properties is defined by the vocabularies. This allows new vocabularies to be developed outside the development of the syntax.
           </p>
           <p>
-            Most values will be strings. If a property (such as `author`) references another object and wants to include other data about the object, the value of the property is a JSON object with a property "url" referencing the object and other properties that belong to the original object. Consumers that encounter an object with a URL on a different domain should not trust the embedded data and should fetch it from the external domain.
+            Most values will be strings. If a property (such as `author` for example) references another
+            object, it may be serialized in two ways: as an object serialized as the property value or as
+            the unique identifier or URL where the object can be found.  See <a href="#using-references">Using References</a>
           </p>
           <p>
             Values may also be arrays if the vocabulary allows for multiple values of the property.
@@ -238,6 +251,85 @@
 
         </section>
       </section>
+    </section>
+            
+    <section id="using-references">
+      <h2>Using References</h2>
+      <p>
+        The purpose of the `references` property is to exclude any non-authoritative
+        data from the defined object.  To do this, non-authoritative data is moved so
+        that implementations looking to process only authoritative data may simply ignore 
+        the references property and fetch any data that would be contained there from its
+        authoritative source.
+      </p>
+      <p>
+        If a property is a reference to an object that is defined authoritatively in
+        some other location, the `references` property SHOULD be used.  The property
+        SHOULD contain only the unique identifier or URL where the authoritative data
+        may be found.  In the references object, the URL or unique identifier MAY
+        be entered as the key field and a serialization of the referenced object MAY
+        be provided.  This serialization of the referenced object MAY be incomplete
+        so as to provide only necessary data.
+      </p>
+      <p>
+        Parsing implementations SHOULD fetch data from the authoritative source instead of using
+        the references object.
+      </p>
+      <section id="">
+        <h3>Example of References</h3>
+          <pre class="example">
+            {
+              "type": "entry",
+              "published": "2015-10-20T15:49:00-0700",
+              "url": "http://example.com/post/fsjeuu8372",
+              "author": "http://alice.example.com",
+              "name": "Hello World",
+              "content": "This is a blog post",
+              "category": "Posts"
+              "references": {
+                "http://alice.example.com": {
+                  "type": "card",
+                  "name": "Alice",
+                  "url": "http://alice.example.com",
+                  "photo": "http://alice.example.com/photo.jpg"
+                }
+              }
+            }
+          </pre>
+
+          <pre class="example">
+            {
+              "type": "entry",
+              "published": "2015-10-20T15:49:00-0700",
+              "url": "http://example.com/like/r23eugi02c",
+              "author": {
+                "type": "card",
+                "name": "Alice",
+                "url": "http://alice.example.com",
+                "photo": "http://alice.example.com/photo.jpg"
+              },
+              "like-of": "http://bob.example.com/post/100"
+              "category": ["Likes", "Posts"]
+              "references": {
+                "http://bob.example.com/post/100": {
+                  "type": "entry",
+                  "published": "2015-10-18T12:33:00-0700",
+                  "url": "http://bob.example.com/post/100",
+                  "author": "http://bob.example.com",
+                  "name": "My First Post",
+                  "content": "This is my first post on my new blog, I hope you like it",
+                },
+                "http://bob.example.com": {
+                  "type": "card",
+                  "name": "Bob",
+                  "url": "http://bob.example.com",
+                  "photo": "http://bob.example.com/mypicture.jpg"
+                }
+              }
+            }
+          </pre>
+      </section>
+
     </section>
     <section id="collections">
       <h2>Collections</h2>
