@@ -54,7 +54,7 @@
       </p>
       <p>
         The name JF2 comes from its origins in being a direct parsed format of
-        Microformats2 (MF2) data from html.  Rather than defining a new vocabulary,
+        Microformats-2 (MF2) data from html.  Rather than defining a new vocabulary,
         JF2 uses the vocabulary defined by <a href="http://microformats.org">Microformats</a>
         however any other suitable vocabulary.
 
@@ -78,18 +78,18 @@
         </p>
         <p>
           <ul>
-            <li><dfn>type</dfn> defines the object classficiation.  In microformats, this is presumed
+            <li><dfn>type</dfn> defines the object classification.  In microformats, this is presumed
             to be the h-* class from the Microformats vocabulary.
             Type MUST be a single string value and may not be an object or an array.  </li>
             <li><dfn>children</dfn> is a container for all unnamed sub-objects inside
             an entry.  That is, any sub-object that is not associated to a specific property of the object.
             If a children value is set, it MUST be serialized as an array even if only a
             single item is present.</li>
-            <li><dfn>references</dfn> is an associative array, serialized as a json object, of all sub-objects
+            <li><dfn>references</dfn> is an associative array, serialized as a JSON object, of all sub-objects
             inside an object which have ID defined as and external URL. 
             Any objects in this array are not authoritative.
             If the references property is defined, it MUST be serialized as an associative array and MUST be
-            present at the top leve entry only.
+            present at the top level entry only.
             </li>
             <li><dfn>content-type</dfn> is the MIME media type of the containing object.
             Content-type MUST be a single string value only.</li>
@@ -102,7 +102,7 @@
               Setting lang at a lower level overrides any lang value set at higher levels.
               This value MUST be a single string value and MUST be a [[!RFC5646]] language tag.</li>
             <li><dfn>@context</dfn> is the context of the vocabulary as defined in [[!JSON-LD]].
-              This attibute MAY be omitted and has an inferred value if not present.  If it is present it MUST be
+              This attribute MAY be omitted and has an inferred value if not present.  If it is present it MUST be
               present at the top level entry only.  See the <a href="#JSON-LD">JSON-LD Consideration</a>
             </li>
         </p>
@@ -196,7 +196,7 @@
       <section id="html-content">
         <h3>HTML Content</h3>
         <p>
-          By default, any string value shouldbe interpreted as literal plaintext. This means when displaying a string in an HTML page, it must be HTML escaped.
+          By default, any string value should be interpreted as literal plaintext. This means when displaying a string in an HTML page, it must be HTML escaped.
         </p>
 
         <p>
@@ -363,7 +363,7 @@
       <section id="multiple-items">
         <h3>Multiple items on a page</h3>
         <p>
-          If an HTML page contains multiple top-level items, (most commonly found when a page contains a list of h-entrys), the parser creates an implicit top-level collection with no properties.
+          If an HTML page contains multiple top-level items, (most commonly found when a page contains a list of h-entry objects), the parser creates an implicit top-level collection with no properties.
         </p>
 
         <pre class="example">
@@ -381,7 +381,7 @@
     <section id="deriving">
       <h2>Deriving the Syntax</h2>
       <p>
-        This syntax is derived from HTML with Microformats2, converted to JSON, converted to a simplified JSON. The examples below illustrate the process.
+        This syntax is derived from HTML with Microformats-2, converted to JSON, converted to a simplified JSON. The examples below illustrate the process.
       </p>
 
       <section id="deriving-note">
@@ -493,7 +493,7 @@
       <section id="webmention.io">
         <h3>Webmention.io</h3>
         <p>
-        <a href="https://webmention.io">Webmention.io</a> is a hosted servie for handling webmentions.
+        <a href="https://webmention.io">Webmention.io</a> is a hosted service for handling webmentions.
           Webmentions are accessed from an API that that returns a set of objects in JSON format similar to JF2.
           The key difference is the inclusion of some additional data wrapping the objects
           (source, verified, verified_data, etc) and all wrapped in a "links" array.
@@ -504,7 +504,7 @@
       <section id="xray">
         <h3>XRay</h3>
         <p>
-        <a href="https://xray.p3k.io">X-Ray</a> is tool to return strunctured data from any URL.
+        <a href="https://xray.p3k.io">X-Ray</a> is a tool to return structured data from any URL.
           Code available at <a href="https://github.com/aaronpk/XRay">https://github.com/aaronpk/XRay</a>
         </p>
       </section>
@@ -512,7 +512,7 @@
       <section id="unmung">
         <h3>Unmung</h3>
         <p>
-        <a href="http://www.unmung.com">Unmung</a> is tool for converting various formats.
+        <a href="http://www.unmung.com">Unmung</a> is a tool for converting various formats.
           Code available at <a href="https://github.com/kevinmarks/unmung">https://github.com/kevinmarks/unmung</a>
         </p>
       </section>
@@ -521,7 +521,7 @@
       <section id="socialstreams">
         <h3>SocialStreams</h3>
         <p>
-        <a href="http://stream.thatmustbe.us">SocialStreams</a> is translation service for converting social formats.
+        <a href="http://stream.thatmustbe.us">SocialStreams</a> is a translation service for converting social formats.
           Code available at <a href="https://github.com/dissolve/socialstream">https://github.com/dissolve/socialstream</a>
         </p>
       </section>
