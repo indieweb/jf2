@@ -24,6 +24,25 @@
           wgPublicList: "public-socialweb",
           wgPatentURI:  "http://www.w3.org/2004/01/pp-impl/72531/status",
           noRecTrack:   true,
+          otherLinks:   [
+            {
+              key: "Repository",
+              data: [
+                {
+                  value: "GitHub",
+                  href: "https://github.com/dissolve/jf2"
+                },
+                {
+                  value: "Issues",
+                  href: "https://github.com/dissolve/jf2/issues"
+                },
+                {
+                  value: "Commits",
+                  href: "https://github.com/dissolve/jf2/commits/master"
+                }
+              ]
+            }
+          ]
       };
     </script>
   </head>
@@ -63,7 +82,12 @@
         Microformats-2 (MF2) data from html.  Rather than defining a new vocabulary,
         JF2 uses the vocabulary defined by <a href="http://microformats.org">Microformats</a>
         however any other suitable vocabulary.
-
+      </p>
+      <p>
+        It is relevant to note that JF2 objects have been most useful as programming objects, not
+        as a serialization format.  This document using javascript object notation for serializing
+        to explain structure, but any language will have its own native structure in which JF2 would
+        be stored.
       </p>
     </section>
     
