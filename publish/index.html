@@ -17,98 +17,74 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       padding: 0.5em;
       color: #333;
       background: #f8f8f8;
-      -webkit-text-size-adjust: none;
     }
     
     .hljs-comment,
-    .diff .hljs-header {
+    .hljs-quote {
       color: #998;
       font-style: italic;
     }
     
     .hljs-keyword,
-    .css .rule .hljs-keyword,
-    .hljs-winutils,
-    .nginx .hljs-title,
-    .hljs-subst,
-    .hljs-request,
-    .hljs-status {
+    .hljs-selector-tag,
+    .hljs-subst {
       color: #333;
       font-weight: bold;
     }
     
     .hljs-number,
-    .hljs-hexcolor,
-    .ruby .hljs-constant {
+    .hljs-literal,
+    .hljs-variable,
+    .hljs-template-variable,
+    .hljs-tag .hljs-attr {
       color: #008080;
     }
     
     .hljs-string,
-    .hljs-tag .hljs-value,
-    .hljs-doctag,
-    .tex .hljs-formula {
+    .hljs-doctag {
       color: #d14;
     }
     
     .hljs-title,
-    .hljs-id,
-    .scss .hljs-preprocessor {
+    .hljs-section,
+    .hljs-selector-id {
       color: #900;
       font-weight: bold;
     }
     
-    .hljs-list .hljs-keyword,
     .hljs-subst {
       font-weight: normal;
     }
     
-    .hljs-class .hljs-title,
     .hljs-type,
-    .vhdl .hljs-literal,
-    .tex .hljs-command {
+    .hljs-class .hljs-title {
       color: #458;
       font-weight: bold;
     }
     
     .hljs-tag,
-    .hljs-tag .hljs-title,
-    .hljs-rule .hljs-property,
-    .django .hljs-tag .hljs-keyword {
+    .hljs-name,
+    .hljs-attribute {
       color: #000080;
       font-weight: normal;
     }
     
-    .hljs-attribute,
-    .hljs-variable,
-    .lisp .hljs-body,
-    .hljs-name {
-      color: #008080;
-    }
-    
-    .hljs-regexp {
+    .hljs-regexp,
+    .hljs-link {
       color: #009926;
     }
     
     .hljs-symbol,
-    .ruby .hljs-symbol .hljs-string,
-    .lisp .hljs-keyword,
-    .clojure .hljs-keyword,
-    .scheme .hljs-keyword,
-    .tex .hljs-special,
-    .hljs-prompt {
+    .hljs-bullet {
       color: #990073;
     }
     
-    .hljs-built_in {
+    .hljs-built_in,
+    .hljs-builtin-name {
       color: #0086b3;
     }
     
-    .hljs-preprocessor,
-    .hljs-pragma,
-    .hljs-pi,
-    .hljs-doctype,
-    .hljs-shebang,
-    .hljs-cdata {
+    .hljs-meta {
       color: #999;
       font-weight: bold;
     }
@@ -121,12 +97,60 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       background: #dfd;
     }
     
-    .diff .hljs-change {
-      background: #0086b3;
+    .hljs-emphasis {
+      font-style: italic;
     }
     
-    .hljs-chunk {
-      color: #aaa;
+    .hljs-strong {
+      font-weight: bold;
+    }
+  </style>
+  <style>
+    /* --- EXAMPLES --- */
+    
+    div.example-title {
+      min-width: 7.5em;
+      color: #b9ab2d;
+    }
+    
+    div.example-title span {
+      text-transform: uppercase;
+    }
+    
+    aside.example,
+    div.example,
+    div.illegal-example {
+      padding: 0.5em;
+      margin: 1em 0;
+      position: relative;
+      clear: both;
+    }
+    
+    div.illegal-example {
+      color: red
+    }
+    
+    div.illegal-example p {
+      color: black
+    }
+    
+    aside.example,
+    div.example {
+      padding: .5em;
+      border-left-width: .5em;
+      border-left-style: solid;
+      border-color: #e0cb52;
+      background: #fcfaee;
+    }
+    
+    aside.example div.example {
+      border-left-width: .1em;
+      border-color: #999;
+      background: #fff;
+    }
+    
+    aside.example div.example div.example-title {
+      color: #999;
     }
   </style>
   <style id="respec-mainstyle">
@@ -275,54 +299,6 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
 
 
-  <style>
-    /* --- EXAMPLES --- */
-    
-    div.example-title {
-      min-width: 7.5em;
-      color: #b9ab2d;
-    }
-    
-    div.example-title span {
-      text-transform: uppercase;
-    }
-    
-    aside.example,
-    div.example,
-    div.illegal-example {
-      padding: 0.5em;
-      margin: 1em 0;
-      position: relative;
-      clear: both;
-    }
-    
-    div.illegal-example {
-      color: red
-    }
-    
-    div.illegal-example p {
-      color: black
-    }
-    
-    aside.example,
-    div.example {
-      padding: .5em;
-      border-left-width: .5em;
-      border-left-style: solid;
-      border-color: #e0cb52;
-      background: #fcfaee;
-    }
-    
-    aside.example div.example {
-      border-left-width: .1em;
-      border-color: #999;
-      background: #fff;
-    }
-    
-    aside.example div.example div.example-title {
-      color: #999;
-    }
-  </style>
   <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-WD" rel="stylesheet">
   <!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]-->
   <script type="application/json" id="initialUserConfig">
@@ -576,7 +552,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     <h2 resource="#h-use-cases" id="h-use-cases"><span property="xhv:role" resource="xhv:heading"><span class="secno">2. </span>Use Cases</span></h2>
     <p><em>This section is non-normative.</em></p>
     <p>
-      JF2 has found a variety of use-cases for different implementations. All of these use cases are simply to have a single format for the storage and use of single social web objects.
+      JF2 has evolved as a result of a variety of use-cases for different implementations exploring ways to simplify their existing use of canonical parsed microformats2 JSON output. All of these use cases in particular are simply to have a single format for the storage and use of social web objects.
     </p>
     <p>
       <a href="#webmention.io">Webmention.io</a> is a service that provides webmention processing and verification on behalf of other sites. It uses a simple JSON object to transfer a processed webmention back to the client site's javascript for display. The attributes are intended to be processed only by the client site's javascript code, not by anything else.
@@ -601,8 +577,6 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <p>
         The following keywords are reserved and cannot be used as property names in vocabularies.
       </p>
-      <p>
-      </p>
       <ul>
         <li><dfn id="dfn-type" data-dfn-type="dfn">type</dfn> defines the object classification. In microformats, this is presumed to be the h-* class from the Microformats vocabulary. Type <em title="MUST" class="rfc2119">MUST</em> be a single string value and may not be an object or an array. </li>
         <li><dfn id="dfn-children" data-dfn-type="dfn">children</dfn> is a container for all unnamed sub-objects inside an entry. That is, any sub-object that is not associated to a specific property of the object. If a children value is set, it <em title="MUST" class="rfc2119">MUST</em> be serialized as an array even if only a single item is present.</li>
@@ -614,7 +588,6 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         <li><dfn id="dfn-lang" data-dfn-type="dfn">lang</dfn> is the localization language of the containing object and all sub-objects, unless overridden by another lang definition. Setting lang at a lower level overrides any lang value set at higher levels. This value <em title="MUST" class="rfc2119">MUST</em> be a single string value and <em title="MUST" class="rfc2119">MUST</em> be a [<cite><a href="#bib-RFC5646" class="bibref">RFC5646</a></cite>] language tag.</li>
         <li><dfn id="dfn-context" data-dfn-type="dfn">@context</dfn> is the context of the vocabulary as defined in [<cite><a href="#bib-JSON-LD" class="bibref">JSON-LD</a></cite>]. This attribute <em title="MAY" class="rfc2119">MAY</em> be omitted and has an inferred value if not present. If it is present it <em title="MUST" class="rfc2119">MUST</em> be present at the top level entry only. See the <a href="#JSON-LD">JSON-LD Consideration</a>
         </li>
-        <p></p>
       </ul>
     </section>
 
@@ -653,35 +626,35 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         <h4 resource="#h-example-post" id="h-example-post"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2.3 </span>Example Post</span></h4>
 
         <div class="example">
-          <div class="example-title marker"><span>Example 1</span></div><pre class="hljs json">{
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"entry"</span></span>,
-  "<span class="hljs-attribute">published</span>": <span class="hljs-value"><span class="hljs-string">"2015-10-20T15:49:00-0700"</span></span>,
-  "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://example.com/post/fsjeuu8372"</span></span>,
-  "<span class="hljs-attribute">author</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"card"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Alice"</span></span>,
-    "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://alice.example.com"</span></span>,
-    "<span class="hljs-attribute">photo</span>": <span class="hljs-value"><span class="hljs-string">"http://alice.example.com/photo.jpg"</span>
-  </span>}</span>,
-  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Hello World"</span></span>,
-  "<span class="hljs-attribute">content</span>": <span class="hljs-value"><span class="hljs-string">"This is a blog post"</span></span>,
-  "<span class="hljs-attribute">category</span>": <span class="hljs-value"><span class="hljs-string">"Posts"</span>
-</span>}</pre></div>
+          <div class="example-title marker"><span>Example 1</span></div><pre class="hljs xquery">{
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"entry"</span>,
+  <span class="hljs-string">"published"</span>: <span class="hljs-string">"2015-10-20T15:49:00-0700"</span>,
+  <span class="hljs-string">"url"</span>: <span class="hljs-string">"http://example.com/post/fsjeuu8372"</span>,
+  <span class="hljs-string">"author"</span>: {
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"card"</span>,
+    <span class="hljs-string">"name"</span>: <span class="hljs-string">"Alice"</span>,
+    <span class="hljs-string">"url"</span>: <span class="hljs-string">"http://alice.example.com"</span>,
+    <span class="hljs-string">"photo"</span>: <span class="hljs-string">"http://alice.example.com/photo.jpg"</span>
+  },
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"Hello World"</span>,
+  <span class="hljs-string">"content"</span>: <span class="hljs-string">"This is a blog post"</span>,
+  <span class="hljs-string">"category"</span>: <span class="hljs-string">"Posts"</span>
+}</pre></div>
 
         <div class="example">
-          <div class="example-title marker"><span>Example 2</span></div><pre class="hljs json">{
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"entry"</span></span>,
-  "<span class="hljs-attribute">published</span>": <span class="hljs-value"><span class="hljs-string">"2015-10-20T15:49:00-0700"</span></span>,
-  "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://example.com/like/r23eugi02c"</span></span>,
-  "<span class="hljs-attribute">author</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"card"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Alice"</span></span>,
-    "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://alice.example.com"</span></span>,
-    "<span class="hljs-attribute">photo</span>": <span class="hljs-value"><span class="hljs-string">"http://alice.example.com/photo.jpg"</span>
-  </span>}</span>,
-  "<span class="hljs-attribute">like-of</span>": <span class="hljs-value"><span class="hljs-string">"http://bob.example.com/post/100"</span></span>,
-  "<span class="hljs-attribute">category</span>": <span class="hljs-value">[<span class="hljs-string">"Likes"</span>, <span class="hljs-string">"Posts"</span>]
-</span>}</pre></div>
+          <div class="example-title marker"><span>Example 2</span></div><pre class="hljs xquery">{
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"entry"</span>,
+  <span class="hljs-string">"published"</span>: <span class="hljs-string">"2015-10-20T15:49:00-0700"</span>,
+  <span class="hljs-string">"url"</span>: <span class="hljs-string">"http://example.com/like/r23eugi02c"</span>,
+  <span class="hljs-string">"author"</span>: {
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"card"</span>,
+    <span class="hljs-string">"name"</span>: <span class="hljs-string">"Alice"</span>,
+    <span class="hljs-string">"url"</span>: <span class="hljs-string">"http://alice.example.com"</span>,
+    <span class="hljs-string">"photo"</span>: <span class="hljs-string">"http://alice.example.com/photo.jpg"</span>
+  },
+  <span class="hljs-string">"like-of"</span>: <span class="hljs-string">"http://bob.example.com/post/100"</span>,
+  <span class="hljs-string">"category"</span>: [<span class="hljs-string">"Likes"</span>, <span class="hljs-string">"Posts"</span>]
+}</pre></div>
       </section>
     </section>
 
@@ -692,12 +665,12 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       </p>
 
       <div class="example">
-        <div class="example-title marker"><span>Example 3</span></div><pre class="hljs json">{
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"card"</span></span>,
-  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Aaron Parecki"</span></span>,
-  "<span class="hljs-attribute">photo</span>": <span class="hljs-value"><span class="hljs-string">"http://aaronparecki.com/photo.jpg"</span></span>,
-  "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://aaronparecki.com/"</span>
-</span>}</pre></div>
+        <div class="example-title marker"><span>Example 3</span></div><pre class="hljs xquery">{
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"card"</span>,
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"Aaron Parecki"</span>,
+  <span class="hljs-string">"photo"</span>: <span class="hljs-string">"http://aaronparecki.com/photo.jpg"</span>,
+  <span class="hljs-string">"url"</span>: <span class="hljs-string">"http://aaronparecki.com/"</span>
+}</pre></div>
     </section>
 
     <section property="bibo:hasPart" resource="#html-content" typeof="bibo:Chapter" id="html-content">
@@ -711,13 +684,13 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       </p>
 
       <div class="example">
-        <div class="example-title marker"><span>Example 4</span></div><pre class="hljs json">{
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"entry"</span></span>,
-  "<span class="hljs-attribute">content</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">content-type</span>": <span class="hljs-value"><span class="hljs-string">"text/html"</span></span>,
-    "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"&lt;b&gt;Hello World&lt;/b&gt;"</span>
-  </span>}
-</span>}</pre></div>
+        <div class="example-title marker"><span>Example 4</span></div><pre class="hljs xquery">{
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"entry"</span>,
+  <span class="hljs-string">"content"</span>: {
+    <span class="hljs-string">"content-type"</span>: <span class="hljs-string">"text/html"</span>,
+    <span class="hljs-string">"value"</span>: <span class="hljs-string">"&lt;b&gt;Hello World&lt;/b&gt;"</span>
+  }
+}</pre></div>
 
       <section property="bibo:hasPart" resource="#multiple-urls" typeof="bibo:Chapter" id="multiple-urls">
         <h4 resource="#h-multiple-urls" id="h-multiple-urls"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.4.1 </span>Multiple URLs for video/audio/picture</span></h4>
@@ -726,32 +699,32 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         </p>
 
         <div class="example">
-          <div class="example-title marker"><span>Example 5</span></div><pre class="hljs scala">&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span>=</span><span class="hljs-string">"h-entry"</span>&gt;
-  &lt;video <span class="hljs-class"><span class="hljs-keyword">class</span>=</span><span class="hljs-string">"u-video"</span> width=<span class="hljs-string">"640"</span> height=<span class="hljs-string">"360"</span> preload controls&gt;
-    &lt;source src=<span class="hljs-string">"sample_h264.mov"</span> <span class="hljs-class"><span class="hljs-keyword">type</span>=</span><span class="hljs-symbol">'video</span>/mp4; codecs=<span class="hljs-string">"avc1.42E01E, mp4a.40.2"</span>' /&gt;
-    &lt;source src=<span class="hljs-string">"sample_ogg.ogv"</span> <span class="hljs-class"><span class="hljs-keyword">type</span>=</span><span class="hljs-symbol">'video</span>/ogg; codecs=<span class="hljs-string">"theora, vorbis"</span>' /&gt;
-    &lt;source src=<span class="hljs-string">"sample_webm.webm"</span> <span class="hljs-class"><span class="hljs-keyword">type</span>=</span><span class="hljs-symbol">'video</span>/webm; codecs=<span class="hljs-string">"vp8, vorbis"</span>' /&gt;
-  &lt;/video&gt;
-&lt;/div&gt;</pre></div>
+          <div class="example-title marker"><span>Example 5</span></div><pre class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"h-entry"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">video</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"u-video"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"640"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"360"</span> <span class="hljs-attr">preload</span> <span class="hljs-attr">controls</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"sample_h264.mov"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'video/mp4; codecs="avc1.42E01E, mp4a.40.2"'</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"sample_ogg.ogv"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'video/ogg; codecs="theora, vorbis"'</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"sample_webm.webm"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'video/webm; codecs="vp8, vorbis"'</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">video</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre></div>
 
         <div class="example">
-          <div class="example-title marker"><span>Example 6</span></div><pre class="hljs json">{
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"entry"</span></span>,
-  "<span class="hljs-attribute">video</span>": <span class="hljs-value">[
+          <div class="example-title marker"><span>Example 6</span></div><pre class="hljs xquery">{
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"entry"</span>,
+  <span class="hljs-string">"video"</span>: [
     {
-      "<span class="hljs-attribute">content-type</span>": <span class="hljs-value"><span class="hljs-string">"video/mp4"</span></span>,
-      "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"sample_h264.mov"</span>
-    </span>},
+      <span class="hljs-string">"content-type"</span>: <span class="hljs-string">"video/mp4"</span>,
+      <span class="hljs-string">"url"</span>: <span class="hljs-string">"sample_h264.mov"</span>
+    },
     {
-      "<span class="hljs-attribute">content-type</span>": <span class="hljs-value"><span class="hljs-string">"video/ogg"</span></span>,
-      "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"sample_ogg.ogg"</span>
-    </span>},
+      <span class="hljs-string">"content-type"</span>: <span class="hljs-string">"video/ogg"</span>,
+      <span class="hljs-string">"url"</span>: <span class="hljs-string">"sample_ogg.ogg"</span>
+    },
     {
-      "<span class="hljs-attribute">content-type</span>": <span class="hljs-value"><span class="hljs-string">"video/webm"</span></span>,
-      "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"sample_webm.webm"</span>
-    </span>}
+      <span class="hljs-string">"content-type"</span>: <span class="hljs-string">"video/webm"</span>,
+      <span class="hljs-string">"url"</span>: <span class="hljs-string">"sample_webm.webm"</span>
+    }
   ]
-</span>}</pre></div>
+}</pre></div>
 
       </section>
     </section>
@@ -774,54 +747,54 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     <section property="bibo:hasPart" resource="#example-of-references" typeof="bibo:Chapter" id="example-of-references">
       <h3 resource="#h-example-of-references" id="h-example-of-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1 </span>Example of References</span></h3>
       <div class="example">
-        <div class="example-title marker"><span>Example 7</span></div><pre class="hljs json">{
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"entry"</span></span>,
-  "<span class="hljs-attribute">published</span>": <span class="hljs-value"><span class="hljs-string">"2015-10-20T15:49:00-0700"</span></span>,
-  "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://example.com/post/fsjeuu8372"</span></span>,
-  "<span class="hljs-attribute">author</span>": <span class="hljs-value"><span class="hljs-string">"http://alice.example.com"</span></span>,
-  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Hello World"</span></span>,
-  "<span class="hljs-attribute">content</span>": <span class="hljs-value"><span class="hljs-string">"This is a blog post"</span></span>,
-  "<span class="hljs-attribute">category</span>": <span class="hljs-value"><span class="hljs-string">"Posts"</span></span>,
-  "<span class="hljs-attribute">references</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">http://alice.example.com</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"card"</span></span>,
-      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Alice"</span></span>,
-      "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://alice.example.com"</span></span>,
-      "<span class="hljs-attribute">photo</span>": <span class="hljs-value"><span class="hljs-string">"http://alice.example.com/photo.jpg"</span>
-    </span>}
-  </span>}
-</span>}</pre></div>
+        <div class="example-title marker"><span>Example 7</span></div><pre class="hljs xquery">{
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"entry"</span>,
+  <span class="hljs-string">"published"</span>: <span class="hljs-string">"2015-10-20T15:49:00-0700"</span>,
+  <span class="hljs-string">"url"</span>: <span class="hljs-string">"http://example.com/post/fsjeuu8372"</span>,
+  <span class="hljs-string">"author"</span>: <span class="hljs-string">"http://alice.example.com"</span>,
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"Hello World"</span>,
+  <span class="hljs-string">"content"</span>: <span class="hljs-string">"This is a blog post"</span>,
+  <span class="hljs-string">"category"</span>: <span class="hljs-string">"Posts"</span>,
+  <span class="hljs-string">"references"</span>: {
+    <span class="hljs-string">"http://alice.example.com"</span>: {
+      <span class="hljs-string">"type"</span>: <span class="hljs-string">"card"</span>,
+      <span class="hljs-string">"name"</span>: <span class="hljs-string">"Alice"</span>,
+      <span class="hljs-string">"url"</span>: <span class="hljs-string">"http://alice.example.com"</span>,
+      <span class="hljs-string">"photo"</span>: <span class="hljs-string">"http://alice.example.com/photo.jpg"</span>
+    }
+  }
+}</pre></div>
 
       <div class="example">
-        <div class="example-title marker"><span>Example 8</span></div><pre class="hljs json">{
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"entry"</span></span>,
-  "<span class="hljs-attribute">published</span>": <span class="hljs-value"><span class="hljs-string">"2015-10-20T15:49:00-0700"</span></span>,
-  "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://example.com/like/r23eugi02c"</span></span>,
-  "<span class="hljs-attribute">author</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"card"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Alice"</span></span>,
-    "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://alice.example.com"</span></span>,
-    "<span class="hljs-attribute">photo</span>": <span class="hljs-value"><span class="hljs-string">"http://alice.example.com/photo.jpg"</span>
-  </span>}</span>,
-  "<span class="hljs-attribute">like-of</span>": <span class="hljs-value"><span class="hljs-string">"http://bob.example.com/post/100"</span></span>,
-  "<span class="hljs-attribute">category</span>": <span class="hljs-value">[<span class="hljs-string">"Likes"</span>, <span class="hljs-string">"Posts"</span>]</span>,
-  "<span class="hljs-attribute">references</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">http://bob.example.com/post/100</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"entry"</span></span>,
-      "<span class="hljs-attribute">published</span>": <span class="hljs-value"><span class="hljs-string">"2015-10-18T12:33:00-0700"</span></span>,
-      "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://bob.example.com/post/100"</span></span>,
-      "<span class="hljs-attribute">author</span>": <span class="hljs-value"><span class="hljs-string">"http://bob.example.com"</span></span>,
-      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"My First Post"</span></span>,
-      "<span class="hljs-attribute">content</span>": <span class="hljs-value"><span class="hljs-string">"This is my first post on my new blog, I hope you like it"</span>
-    </span>}</span>,
-    "<span class="hljs-attribute">http://bob.example.com</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"card"</span></span>,
-      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Bob"</span></span>,
-      "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://bob.example.com"</span></span>,
-      "<span class="hljs-attribute">photo</span>": <span class="hljs-value"><span class="hljs-string">"http://bob.example.com/mypicture.jpg"</span>
-    </span>}
-  </span>}
-</span>}</pre></div>
+        <div class="example-title marker"><span>Example 8</span></div><pre class="hljs xquery">{
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"entry"</span>,
+  <span class="hljs-string">"published"</span>: <span class="hljs-string">"2015-10-20T15:49:00-0700"</span>,
+  <span class="hljs-string">"url"</span>: <span class="hljs-string">"http://example.com/like/r23eugi02c"</span>,
+  <span class="hljs-string">"author"</span>: {
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"card"</span>,
+    <span class="hljs-string">"name"</span>: <span class="hljs-string">"Alice"</span>,
+    <span class="hljs-string">"url"</span>: <span class="hljs-string">"http://alice.example.com"</span>,
+    <span class="hljs-string">"photo"</span>: <span class="hljs-string">"http://alice.example.com/photo.jpg"</span>
+  },
+  <span class="hljs-string">"like-of"</span>: <span class="hljs-string">"http://bob.example.com/post/100"</span>,
+  <span class="hljs-string">"category"</span>: [<span class="hljs-string">"Likes"</span>, <span class="hljs-string">"Posts"</span>],
+  <span class="hljs-string">"references"</span>: {
+    <span class="hljs-string">"http://bob.example.com/post/100"</span>: {
+      <span class="hljs-string">"type"</span>: <span class="hljs-string">"entry"</span>,
+      <span class="hljs-string">"published"</span>: <span class="hljs-string">"2015-10-18T12:33:00-0700"</span>,
+      <span class="hljs-string">"url"</span>: <span class="hljs-string">"http://bob.example.com/post/100"</span>,
+      <span class="hljs-string">"author"</span>: <span class="hljs-string">"http://bob.example.com"</span>,
+      <span class="hljs-string">"name"</span>: <span class="hljs-string">"My First Post"</span>,
+      <span class="hljs-string">"content"</span>: <span class="hljs-string">"This is my first post on my new blog, I hope you like it"</span>
+    },
+    <span class="hljs-string">"http://bob.example.com"</span>: {
+      <span class="hljs-string">"type"</span>: <span class="hljs-string">"card"</span>,
+      <span class="hljs-string">"name"</span>: <span class="hljs-string">"Bob"</span>,
+      <span class="hljs-string">"url"</span>: <span class="hljs-string">"http://bob.example.com"</span>,
+      <span class="hljs-string">"photo"</span>: <span class="hljs-string">"http://bob.example.com/mypicture.jpg"</span>
+    }
+  }
+}</pre></div>
     </section>
 
   </section>
@@ -839,21 +812,21 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     </p>
 
     <div class="example">
-      <div class="example-title marker"><span>Example 9</span></div><pre class="hljs clojure"><span class="hljs-collection">{
+      <div class="example-title marker"><span>Example 9</span></div><pre class="hljs xquery">{
   <span class="hljs-string">"type"</span>: <span class="hljs-string">"feed"</span>,
   <span class="hljs-string">"url"</span>: <span class="hljs-string">"http://alice.example.com/collectionurl"</span>,
   <span class="hljs-string">"name"</span>: <span class="hljs-string">"Alice's Home Page"</span>,
-  <span class="hljs-string">"author"</span>: <span class="hljs-collection">{
+  <span class="hljs-string">"author"</span>: {
     <span class="hljs-string">"type"</span>: <span class="hljs-string">"card"</span>,
     <span class="hljs-string">"name"</span>: <span class="hljs-string">"Alice"</span>,
     <span class="hljs-string">"url"</span>: <span class="hljs-string">"http://alice.example.com"</span>,
     <span class="hljs-string">"photo"</span>: <span class="hljs-string">"http://alice.example.com/photo"</span>
-  }</span>,
-  <span class="hljs-string">"children"</span>: <span class="hljs-collection">[
-    <span class="hljs-collection">{ ... }</span>,
-    <span class="hljs-collection">{ ... }</span>
-  ]</span>
-}</span></pre></div>
+  },
+  <span class="hljs-string">"children"</span>: [
+    { ... },
+    { ... }
+  ]
+}</pre></div>
 
     <section property="bibo:hasPart" resource="#multiple-items" typeof="bibo:Chapter" id="multiple-items">
       <h3 resource="#h-multiple-items" id="h-multiple-items"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.1 </span>Multiple items on a page</span></h3>
@@ -862,12 +835,12 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       </p>
 
       <div class="example">
-        <div class="example-title marker"><span>Example 10</span></div><pre class="hljs clojure"><span class="hljs-collection">{
-  <span class="hljs-string">"children"</span>: <span class="hljs-collection">[
-    <span class="hljs-collection">{ ... }</span>,
-    <span class="hljs-collection">{ ... }</span>
-  ]</span>
-}</span></pre></div>
+        <div class="example-title marker"><span>Example 10</span></div><pre class="hljs xquery">{
+  <span class="hljs-string">"children"</span>: [
+    { ... },
+    { ... }
+  ]
+}</pre></div>
 
     </section>
   </section>
@@ -884,84 +857,84 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
       <h3 id="html-microformats">HTML + Microformats</h3>
       <div class="example">
-        <div class="example-title marker"><span>Example 11</span></div><pre class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-title">article</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"h-entry"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">h1</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"p-name"</span>&gt;</span>Hello World<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Published by <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"p-author h-card"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"http://example.com/"</span>&gt;</span>A. Developer<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
-     on <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"http://example.com/2015/10/21"</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"u-url"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">time</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"dt-published"</span> <span class="hljs-attribute">datetime</span>=<span class="hljs-value">"2015-10-21T12:00:00-0700"</span>&gt;</span>October 21<span class="hljs-tag">&lt;<span class="hljs-title">sup</span>&gt;</span>st<span class="hljs-tag">&lt;/<span class="hljs-title">sup</span>&gt;</span>, 2015<span class="hljs-tag">&lt;/<span class="hljs-title">time</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+        <div class="example-title marker"><span>Example 11</span></div><pre class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">article</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"h-entry"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"p-name"</span>&gt;</span>Hello World<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Published by <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"p-author h-card"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://example.com/"</span>&gt;</span>A. Developer<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+     on <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://example.com/2015/10/21"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"u-url"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">time</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dt-published"</span> <span class="hljs-attr">datetime</span>=<span class="hljs-string">"2015-10-21T12:00:00-0700"</span>&gt;</span>October 21<span class="hljs-tag">&lt;<span class="hljs-name">sup</span>&gt;</span>st<span class="hljs-tag">&lt;/<span class="hljs-name">sup</span>&gt;</span>, 2015<span class="hljs-tag">&lt;/<span class="hljs-name">time</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
  
-  <span class="hljs-tag">&lt;<span class="hljs-title">p</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"p-summary"</span>&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet ultrices pulvinar.<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"p-summary"</span>&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet ultrices pulvinar.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
  
-  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"e-content"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Donec dapibus enim lacus, <span class="hljs-tag">&lt;<span class="hljs-title">i</span>&gt;</span>a vehicula magna bibendum non<span class="hljs-tag">&lt;/<span class="hljs-title">i</span>&gt;</span>. Phasellus id lacinia felis, vitae pellentesque enim. Sed at quam dui. Suspendisse accumsan, est id pulvinar consequat, urna ex tincidunt enim, nec sodales lectus nulla et augue. Cras venenatis vehicula molestie. Donec sagittis elit orci, sit amet egestas ex pharetra in.<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-title">article</span>&gt;</span></pre></div>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"e-content"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Donec dapibus enim lacus, <span class="hljs-tag">&lt;<span class="hljs-name">i</span>&gt;</span>a vehicula magna bibendum non<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>. Phasellus id lacinia felis, vitae pellentesque enim. Sed at quam dui. Suspendisse accumsan, est id pulvinar consequat, urna ex tincidunt enim, nec sodales lectus nulla et augue. Cras venenatis vehicula molestie. Donec sagittis elit orci, sit amet egestas ex pharetra in.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span></pre></div>
 
       <h3 id="parsed-microformats-json">Parsed Microformats JSON</h3>
 
       <div class="example">
-        <div class="example-title marker"><span>Example 12</span></div><pre class="hljs json">{
-  "<span class="hljs-attribute">items</span>": <span class="hljs-value">[
+        <div class="example-title marker"><span>Example 12</span></div><pre class="hljs xquery">{
+  <span class="hljs-string">"items"</span>: [
     {
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value">[
+      <span class="hljs-string">"type"</span>: [
         <span class="hljs-string">"h-entry"</span>
-      ]</span>,
-      "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">author</span>": <span class="hljs-value">[
+      ],
+      <span class="hljs-string">"properties"</span>: {
+        <span class="hljs-string">"author"</span>: [
           {
-            "<span class="hljs-attribute">type</span>": <span class="hljs-value">[
+            <span class="hljs-string">"type"</span>: [
               <span class="hljs-string">"h-card"</span>
-            ]</span>,
-            "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-              "<span class="hljs-attribute">name</span>": <span class="hljs-value">[
+            ],
+            <span class="hljs-string">"properties"</span>: {
+              <span class="hljs-string">"name"</span>: [
                 <span class="hljs-string">"A. Developer"</span>
-              ]</span>,
-              "<span class="hljs-attribute">url</span>": <span class="hljs-value">[
+              ],
+              <span class="hljs-string">"url"</span>: [
                 <span class="hljs-string">"http:\/\/example.com\/"</span>
               ]
-            </span>}</span>,
-            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"A. Developer"</span>
-          </span>}
-        ]</span>,
-        "<span class="hljs-attribute">name</span>": <span class="hljs-value">[
+            },
+            <span class="hljs-string">"value"</span>: <span class="hljs-string">"A. Developer"</span>
+          }
+        ],
+        <span class="hljs-string">"name"</span>: [
           <span class="hljs-string">"Hello World"</span>
-        ]</span>,
-        "<span class="hljs-attribute">summary</span>": <span class="hljs-value">[
+        ],
+        <span class="hljs-string">"summary"</span>: [
           <span class="hljs-string">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet ultrices pulvinar."</span>
-        ]</span>,
-        "<span class="hljs-attribute">url</span>": <span class="hljs-value">[
+        ],
+        <span class="hljs-string">"url"</span>: [
           <span class="hljs-string">"http:\/\/example.com\/2015\/10\/21"</span>
-        ]</span>,
-        "<span class="hljs-attribute">published</span>": <span class="hljs-value">[
+        ],
+        <span class="hljs-string">"published"</span>: [
           <span class="hljs-string">"2015-10-21T12:00:00-0700"</span>
-        ]</span>,
-        "<span class="hljs-attribute">content</span>": <span class="hljs-value">[
+        ],
+        <span class="hljs-string">"content"</span>: [
           {
-            "<span class="hljs-attribute">html</span>": <span class="hljs-value"><span class="hljs-string">"&lt;p&gt;Donec dapibus enim lacus, &lt;i&gt;a vehicula magna bibendum non&lt;/i&gt;. Phasellus id lacinia felis, vitae pellentesque enim. Sed at quam dui. Suspendisse accumsan, est id pulvinar consequat, urna ex tincidunt enim, nec sodales lectus nulla et augue. Cras venenatis vehicula molestie. Donec sagittis elit orci, sit amet egestas ex pharetra in.&lt;/p&gt;"</span></span>,
-            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"Donec dapibus enim lacus, a vehicula magna bibendum non. Phasellus id lacinia felis, vitae pellentesque enim. Sed at quam dui. Suspendisse accumsan, est id pulvinar consequat, urna ex tincidunt enim, nec sodales lectus nulla et augue. Cras venenatis vehicula molestie. Donec sagittis elit orci, sit amet egestas ex pharetra in."</span>
-          </span>}
+            <span class="hljs-string">"html"</span>: <span class="hljs-string">"&lt;p&gt;Donec dapibus enim lacus, &lt;i&gt;a vehicula magna bibendum non&lt;/i&gt;. Phasellus id lacinia felis, vitae pellentesque enim. Sed at quam dui. Suspendisse accumsan, est id pulvinar consequat, urna ex tincidunt enim, nec sodales lectus nulla et augue. Cras venenatis vehicula molestie. Donec sagittis elit orci, sit amet egestas ex pharetra in.&lt;/p&gt;"</span>,
+            <span class="hljs-string">"value"</span>: <span class="hljs-string">"Donec dapibus enim lacus, a vehicula magna bibendum non. Phasellus id lacinia felis, vitae pellentesque enim. Sed at quam dui. Suspendisse accumsan, est id pulvinar consequat, urna ex tincidunt enim, nec sodales lectus nulla et augue. Cras venenatis vehicula molestie. Donec sagittis elit orci, sit amet egestas ex pharetra in."</span>
+          }
         ]
-      </span>}
-    </span>}
+      }
+    }
   ]
-</span>}</pre></div>
+}</pre></div>
 
       <h4 id="simplified-json">Simplified JSON</h4>
 
       <div class="example">
-        <div class="example-title marker"><span>Example 13</span></div><pre class="hljs json">{
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"entry"</span></span>,
-  "<span class="hljs-attribute">author</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"card"</span></span>,
-    "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://example.com"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"A. Developer"</span>
-  </span>}</span>,
-  "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://example.com/2015/10/21"</span></span>,
-  "<span class="hljs-attribute">published</span>": <span class="hljs-value"><span class="hljs-string">"2015-10-21T12:00:00-0700"</span></span>,
-  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Hello World"</span></span>,
-  "<span class="hljs-attribute">summary</span>": <span class="hljs-value"><span class="hljs-string">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet ultrices pulvinar."</span></span>,
-  "<span class="hljs-attribute">content</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"&lt;p&gt;Donec dapibus enim lacus, &lt;i&gt;a vehicula magna bibendum non&lt;/i&gt;. Phasellus id lacinia felis, vitae pellentesque enim. Sed at quam dui. Suspendisse accumsan, est id pulvinar consequat, urna ex tincidunt enim, nec sodales lectus nulla et augue. Cras venenatis vehicula molestie. Donec sagittis elit orci, sit amet egestas ex pharetra in.&lt;/p&gt;"</span></span>,
-    "<span class="hljs-attribute">content-type</span>": <span class="hljs-value"><span class="hljs-string">"text/html"</span>
-  </span>}
-</span>}</pre></div>
+        <div class="example-title marker"><span>Example 13</span></div><pre class="hljs xquery">{
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"entry"</span>,
+  <span class="hljs-string">"author"</span>: {
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"card"</span>,
+    <span class="hljs-string">"url"</span>: <span class="hljs-string">"http://example.com"</span>,
+    <span class="hljs-string">"name"</span>: <span class="hljs-string">"A. Developer"</span>
+  },
+  <span class="hljs-string">"url"</span>: <span class="hljs-string">"http://example.com/2015/10/21"</span>,
+  <span class="hljs-string">"published"</span>: <span class="hljs-string">"2015-10-21T12:00:00-0700"</span>,
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"Hello World"</span>,
+  <span class="hljs-string">"summary"</span>: <span class="hljs-string">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet ultrices pulvinar."</span>,
+  <span class="hljs-string">"content"</span>: {
+    <span class="hljs-string">"value"</span>: <span class="hljs-string">"&lt;p&gt;Donec dapibus enim lacus, &lt;i&gt;a vehicula magna bibendum non&lt;/i&gt;. Phasellus id lacinia felis, vitae pellentesque enim. Sed at quam dui. Suspendisse accumsan, est id pulvinar consequat, urna ex tincidunt enim, nec sodales lectus nulla et augue. Cras venenatis vehicula molestie. Donec sagittis elit orci, sit amet egestas ex pharetra in.&lt;/p&gt;"</span>,
+    <span class="hljs-string">"content-type"</span>: <span class="hljs-string">"text/html"</span>
+  }
+}</pre></div>
 
     </section>
 
@@ -1027,10 +1000,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     <h2 resource="#h-acknowledgements" id="h-acknowledgements"><span property="xhv:role" resource="xhv:heading"><span class="secno">A. </span>Acknowledgements</span></h2>
     <p>
       The authors wish to thank the Microformats, IndieWebCamp, Pump.io, and Activity Streams communities for their continued work in building the social web and helping define standards such as this one. This includes, but is certainly not limited to,
-      <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="http://aaronparecki.com/">Aaron Parecki</a><span>,
+      <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="https://aaronparecki.com/">Aaron Parecki</a><span>,
           <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="http://bengo.is/">Benjamin Goering</a><span>,
           <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="http://dustycloud.org/">Christopher Webber</a><span>,
-          <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="http://www.wikie.io/">Dave Wilkinson II</a><span>,
+          <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="http://www.wilkie.io/">Dave Wilkinson II</a><span>,
           <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="http://www.chmod777self.com/">James Snell</a><span>,
           <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="https://kylewm.com/">Kyle Mahan</a><span>,
           and 
@@ -1078,6 +1051,6 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     </section>
   </section>
   <p role="navigation" id="back-to-top"><a href="#toc"><abbr title="Back to Top">↑</abbr></a></p>
-  <script src="https://www.w3.org/scripts/TR/2016/fixup.js" defer="" async=""></script>
+  <script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script>
 </body>
 </html>
