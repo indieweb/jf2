@@ -114,11 +114,36 @@
       </p>
     </section>
     
+    <section class='informative'>
+      <h2>Use Cases</h2>
+      <p>
+        JF2 has found a variety of use-cases for different implementations.  All of these use cases 
+        are simply to have a single format for the storage and use of single social web objects.
+      </p>
+      <p>
+      <a href="#webmention.io">Webmention.io</a> is a service that provides webmention
+      processing and verification on behalf of other sites.  It uses a simple JSON object to
+      transfer a processed webmention back to the client site's javascript for display.  The 
+      attributes are intended to be processed only by the client site's javascript code, not
+      by anything else.
+      </p>
+      <p>
+      <a href="#mf2util">mf2util</a> is a utility library that provides a layer on top
+      of microformats processing.  The library returns only a simple JSON object and strips
+      off any unnecessary information leaving the library user only the most essential information.
+      </p>
+      <p>
+      Various services (<a href="#xray">xray</a>, <a href="#unmung">unmung</a>, <a href="#socialstreams">socialstreams</a>)
+      provide conversion from microformats pages in to JF2 for quick inspection to 
+      validate proper semantics.
+      </p>
+    </section>
+
     <section id='syntax'>
       <h2>Syntax</h2>
       <p>
       JF2 consists of JSON objects which are defined by a <a>type</a> property that will specify
-      the vocabulary of the object.  Properties are attatched to these objects which will contain
+      the vocabulary of the object.  Properties are attached to these objects which will contain
       either a single string, a single object, an array of strings, or an array of objects.
       Arrays that have only a single item SHOULD be condensed into only the single containing item.
       Any property of an object MAY be a single item or an array of items except for reserved words
@@ -578,6 +603,15 @@
           Code available at <a href="https://github.com/dissolve/socialstream">https://github.com/dissolve/socialstream</a>
         </p>
       </section>
+
+      <section id="mf2util">
+        <h3>mf2util</h3>
+        <p>
+          Mf2util is a utility library for interpreting microformats2.
+          Code available at <a href="https://github.com/kylewm/mf2util">https://github.com/kylewm/mf2util</a>
+        </p>
+      </section>
+
 
 
     </section>

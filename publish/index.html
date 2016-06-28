@@ -406,10 +406,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <a class="logo" href="http://www.w3.org/"><img src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C" width="72" height="48"></a>
     </p>
     <h1 class="title p-name" id="title" property="dcterms:title">JF2 Post Serialization Format</h1>
-    <h2 id="w3c-first-public-working-draft-23-june-2016"><abbr title="World Wide Web Consortium">W3C</abbr> First Public Working Draft <time property="dcterms:issued" class="dt-published" datetime="2016-06-23">23 June 2016</time></h2>
+    <h2 id="w3c-first-public-working-draft-28-june-2016"><abbr title="World Wide Web Consortium">W3C</abbr> First Public Working Draft <time property="dcterms:issued" class="dt-published" datetime="2016-06-28">28 June 2016</time></h2>
     <dl>
       <dt>This version:</dt>
-      <dd><a class="u-url" href="http://www.w3.org/TR/2016/WD-jf2-20160623/">http://www.w3.org/TR/2016/WD-jf2-20160623/</a></dd>
+      <dd><a class="u-url" href="http://www.w3.org/TR/2016/WD-jf2-20160628/">http://www.w3.org/TR/2016/WD-jf2-20160628/</a></dd>
       <dt>Latest published version:</dt>
       <dd><a href="http://www.w3.org/TR/jf2/">http://www.w3.org/TR/jf2/</a></dd>
       <dt>Latest editor's draft:</dt>
@@ -500,46 +500,48 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     <h2 resource="#table-of-contents" id="table-of-contents" class="introductory"><span property="xhv:role" resource="xhv:heading">Table of Contents</span></h2>
     <ul role="directory" class="toc">
       <li class="tocline"><a class="tocxref" href="#introduction"><span class="secno">1. </span>Introduction</a></li>
-      <li class="tocline"><a class="tocxref" href="#syntax"><span class="secno">2. </span>Syntax</a>
+      <li class="tocline"><a class="tocxref" href="#use-cases"><span class="secno">2. </span>Use Cases</a></li>
+      <li class="tocline"><a class="tocxref" href="#syntax"><span class="secno">3. </span>Syntax</a>
         <ul class="toc">
-          <li class="tocline"><a class="tocxref" href="#reservedkeywords"><span class="secno">2.1 </span>Reserved Keywords</a></li>
-          <li class="tocline"><a class="tocxref" href="#posts"><span class="secno">2.2 </span>Posts</a>
+          <li class="tocline"><a class="tocxref" href="#reservedkeywords"><span class="secno">3.1 </span>Reserved Keywords</a></li>
+          <li class="tocline"><a class="tocxref" href="#posts"><span class="secno">3.2 </span>Posts</a>
             <ul class="toc">
-              <li class="tocline"><a class="tocxref" href="#post-objects"><span class="secno">2.2.1 </span>Post Objects</a></li>
-              <li class="tocline"><a class="tocxref" href="#post-properties"><span class="secno">2.2.2 </span>Post Properties</a></li>
-              <li class="tocline"><a class="tocxref" href="#example-post"><span class="secno">2.2.3 </span>Example Post</a></li>
+              <li class="tocline"><a class="tocxref" href="#post-objects"><span class="secno">3.2.1 </span>Post Objects</a></li>
+              <li class="tocline"><a class="tocxref" href="#post-properties"><span class="secno">3.2.2 </span>Post Properties</a></li>
+              <li class="tocline"><a class="tocxref" href="#example-post"><span class="secno">3.2.3 </span>Example Post</a></li>
             </ul>
           </li>
-          <li class="tocline"><a class="tocxref" href="#author"><span class="secno">2.3 </span>Author</a></li>
-          <li class="tocline"><a class="tocxref" href="#html-content"><span class="secno">2.4 </span>HTML Content</a>
+          <li class="tocline"><a class="tocxref" href="#author"><span class="secno">3.3 </span>Author</a></li>
+          <li class="tocline"><a class="tocxref" href="#html-content"><span class="secno">3.4 </span>HTML Content</a>
             <ul class="toc">
-              <li class="tocline"><a class="tocxref" href="#multiple-urls"><span class="secno">2.4.1 </span>Multiple URLs for video/audio/picture</a></li>
+              <li class="tocline"><a class="tocxref" href="#multiple-urls"><span class="secno">3.4.1 </span>Multiple URLs for video/audio/picture</a></li>
             </ul>
           </li>
         </ul>
       </li>
-      <li class="tocline"><a class="tocxref" href="#using-references"><span class="secno">3. </span>Using References</a>
+      <li class="tocline"><a class="tocxref" href="#using-references"><span class="secno">4. </span>Using References</a>
         <ul class="toc">
-          <li class="tocline"><a class="tocxref" href="#example-of-references"><span class="secno">3.1 </span>Example of References</a></li>
+          <li class="tocline"><a class="tocxref" href="#example-of-references"><span class="secno">4.1 </span>Example of References</a></li>
         </ul>
       </li>
-      <li class="tocline"><a class="tocxref" href="#collections"><span class="secno">4. </span>Collections</a>
+      <li class="tocline"><a class="tocxref" href="#collections"><span class="secno">5. </span>Collections</a>
         <ul class="toc">
-          <li class="tocline"><a class="tocxref" href="#multiple-items"><span class="secno">4.1 </span>Multiple items on a page</a></li>
+          <li class="tocline"><a class="tocxref" href="#multiple-items"><span class="secno">5.1 </span>Multiple items on a page</a></li>
         </ul>
       </li>
-      <li class="tocline"><a class="tocxref" href="#deriving"><span class="secno">5. </span>Deriving the Syntax</a>
+      <li class="tocline"><a class="tocxref" href="#deriving"><span class="secno">6. </span>Deriving the Syntax</a>
         <ul class="toc">
-          <li class="tocline"><a class="tocxref" href="#deriving-note"><span class="secno">5.1 </span>Deriving a Note</a></li>
-          <li class="tocline"><a class="tocxref" href="#JSON-LD"><span class="secno">5.2 </span>JSON-LD Consideration</a></li>
+          <li class="tocline"><a class="tocxref" href="#deriving-note"><span class="secno">6.1 </span>Deriving a Note</a></li>
+          <li class="tocline"><a class="tocxref" href="#JSON-LD"><span class="secno">6.2 </span>JSON-LD Consideration</a></li>
         </ul>
       </li>
-      <li class="tocline"><a class="tocxref" href="#implementations"><span class="secno">6. </span>Implementations</a>
+      <li class="tocline"><a class="tocxref" href="#implementations"><span class="secno">7. </span>Implementations</a>
         <ul class="toc">
-          <li class="tocline"><a class="tocxref" href="#webmention.io"><span class="secno">6.1 </span>Webmention.io</a></li>
-          <li class="tocline"><a class="tocxref" href="#xray"><span class="secno">6.2 </span>XRay</a></li>
-          <li class="tocline"><a class="tocxref" href="#unmung"><span class="secno">6.3 </span>Unmung</a></li>
-          <li class="tocline"><a class="tocxref" href="#socialstreams"><span class="secno">6.4 </span>SocialStreams</a></li>
+          <li class="tocline"><a class="tocxref" href="#webmention.io"><span class="secno">7.1 </span>Webmention.io</a></li>
+          <li class="tocline"><a class="tocxref" href="#xray"><span class="secno">7.2 </span>XRay</a></li>
+          <li class="tocline"><a class="tocxref" href="#unmung"><span class="secno">7.3 </span>Unmung</a></li>
+          <li class="tocline"><a class="tocxref" href="#socialstreams"><span class="secno">7.4 </span>SocialStreams</a></li>
+          <li class="tocline"><a class="tocxref" href="#mf2util"><span class="secno">7.5 </span>mf2util</a></li>
         </ul>
       </li>
       <li class="tocline"><a class="tocxref" href="#acknowledgements"><span class="secno">A. </span>Acknowledgements</a></li>
@@ -569,15 +571,33 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     </p>
   </section>
 
+  <section property="bibo:hasPart" resource="#use-cases" typeof="bibo:Chapter" id="use-cases" class="informative">
+    <!--OddPage-->
+    <h2 resource="#h-use-cases" id="h-use-cases"><span property="xhv:role" resource="xhv:heading"><span class="secno">2. </span>Use Cases</span></h2>
+    <p><em>This section is non-normative.</em></p>
+    <p>
+      JF2 has found a variety of use-cases for different implementations. All of these use cases are simply to have a single format for the storage and use of single social web objects.
+    </p>
+    <p>
+      <a href="#webmention.io">Webmention.io</a> is a service that provides webmention processing and verification on behalf of other sites. It uses a simple JSON object to transfer a processed webmention back to the client site's javascript for display. The attributes are intended to be processed only by the client site's javascript code, not by anything else.
+    </p>
+    <p>
+      <a href="#mf2util">mf2util</a> is a utility library that provides a layer on top of microformats processing. The library returns only a simple JSON object and strips off any unnecessary information leaving the library user only the most essential information.
+    </p>
+    <p>
+      Various services (<a href="#xray">xray</a>, <a href="#unmung">unmung</a>, <a href="#socialstreams">socialstreams</a>) provide conversion from microformats pages in to JF2 for quick inspection to validate proper semantics.
+    </p>
+  </section>
+
   <section property="bibo:hasPart" resource="#syntax" typeof="bibo:Chapter" id="syntax">
     <!--OddPage-->
-    <h2 resource="#h-syntax" id="h-syntax"><span property="xhv:role" resource="xhv:heading"><span class="secno">2. </span>Syntax</span></h2>
+    <h2 resource="#h-syntax" id="h-syntax"><span property="xhv:role" resource="xhv:heading"><span class="secno">3. </span>Syntax</span></h2>
     <p>
-      JF2 consists of JSON objects which are defined by a <a data-link-type="dfn" class="internalDFN" href="#dfn-type">type</a> property that will specify the vocabulary of the object. Properties are attatched to these objects which will contain either a single string, a single object, an array of strings, or an array of objects. Arrays that have only a single item <em title="SHOULD" class="rfc2119">SHOULD</em> be condensed into only the single containing item. Any property of an object <em title="MAY" class="rfc2119">MAY</em> be a single item or an array of items except for reserved words defined below.
+      JF2 consists of JSON objects which are defined by a <a data-link-type="dfn" class="internalDFN" href="#dfn-type">type</a> property that will specify the vocabulary of the object. Properties are attached to these objects which will contain either a single string, a single object, an array of strings, or an array of objects. Arrays that have only a single item <em title="SHOULD" class="rfc2119">SHOULD</em> be condensed into only the single containing item. Any property of an object <em title="MAY" class="rfc2119">MAY</em> be a single item or an array of items except for reserved words defined below.
     </p>
 
     <section property="bibo:hasPart" resource="#reservedkeywords" typeof="bibo:Chapter" id="reservedkeywords">
-      <h3 resource="#h-reservedkeywords" id="h-reservedkeywords"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1 </span>Reserved Keywords</span></h3>
+      <h3 resource="#h-reservedkeywords" id="h-reservedkeywords"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1 </span>Reserved Keywords</span></h3>
       <p>
         The following keywords are reserved and cannot be used as property names in vocabularies.
       </p>
@@ -599,10 +619,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     </section>
 
     <section property="bibo:hasPart" resource="#posts" typeof="bibo:Chapter" id="posts">
-      <h3 resource="#h-posts" id="h-posts"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2 </span>Posts</span></h3>
+      <h3 resource="#h-posts" id="h-posts"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2 </span>Posts</span></h3>
 
       <section property="bibo:hasPart" resource="#post-objects" typeof="bibo:Chapter" id="post-objects">
-        <h4 resource="#h-post-objects" id="h-post-objects"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.1 </span>Post Objects</span></h4>
+        <h4 resource="#h-post-objects" id="h-post-objects"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2.1 </span>Post Objects</span></h4>
         <p>
           A post is composed of a "type" property, and one or more additional properties that describe the post.
         </p>
@@ -616,7 +636,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       </section>
 
       <section property="bibo:hasPart" resource="#post-properties" typeof="bibo:Chapter" id="post-properties">
-        <h4 resource="#h-post-properties" id="h-post-properties"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.2 </span>Post Properties</span></h4>
+        <h4 resource="#h-post-properties" id="h-post-properties"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2.2 </span>Post Properties</span></h4>
         <p>
           The list of valid post properties is defined by the vocabularies. This allows new vocabularies to be developed outside the development of the syntax.
         </p>
@@ -630,7 +650,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       </section>
 
       <section property="bibo:hasPart" resource="#example-post" typeof="bibo:Chapter" id="example-post">
-        <h4 resource="#h-example-post" id="h-example-post"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.3 </span>Example Post</span></h4>
+        <h4 resource="#h-example-post" id="h-example-post"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2.3 </span>Example Post</span></h4>
 
         <div class="example">
           <div class="example-title marker"><span>Example 1</span></div><pre class="hljs json">{
@@ -666,7 +686,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     </section>
 
     <section property="bibo:hasPart" resource="#author" typeof="bibo:Chapter" id="author">
-      <h3 resource="#h-author" id="h-author"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.3 </span>Author</span></h3>
+      <h3 resource="#h-author" id="h-author"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3 </span>Author</span></h3>
       <p>
         An author is represented by the h-card vocabulary, and consists of a name, photo URL, URL to the author profile, and [others](http://microformats.org/wiki/h-card). This is represented by the following JSON.
       </p>
@@ -681,7 +701,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     </section>
 
     <section property="bibo:hasPart" resource="#html-content" typeof="bibo:Chapter" id="html-content">
-      <h3 resource="#h-html-content" id="h-html-content"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.4 </span>HTML Content</span></h3>
+      <h3 resource="#h-html-content" id="h-html-content"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.4 </span>HTML Content</span></h3>
       <p>
         By default, any string value should be interpreted as literal plaintext. This means when displaying a string in an HTML page, it must be HTML escaped.
       </p>
@@ -700,7 +720,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 </span>}</pre></div>
 
       <section property="bibo:hasPart" resource="#multiple-urls" typeof="bibo:Chapter" id="multiple-urls">
-        <h4 resource="#h-multiple-urls" id="h-multiple-urls"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.4.1 </span>Multiple URLs for video/audio/picture</span></h4>
+        <h4 resource="#h-multiple-urls" id="h-multiple-urls"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.4.1 </span>Multiple URLs for video/audio/picture</span></h4>
         <p>
           Since HTML video/audio/picture tags may have multiple URLs, we need a way to convey this information in the JSON representation.
         </p>
@@ -739,7 +759,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
   <section property="bibo:hasPart" resource="#using-references" typeof="bibo:Chapter" id="using-references">
     <!--OddPage-->
-    <h2 resource="#h-using-references" id="h-using-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">3. </span>Using References</span></h2>
+    <h2 resource="#h-using-references" id="h-using-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">4. </span>Using References</span></h2>
     <p>
       The purpose of the `references` property is to exclude any non-authoritative data from the defined object. To do this, non-authoritative data is moved so that implementations looking to process only authoritative data may simply ignore the references property and fetch any data that would be contained there from its authoritative source.
     </p>
@@ -752,7 +772,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     </p>
 
     <section property="bibo:hasPart" resource="#example-of-references" typeof="bibo:Chapter" id="example-of-references">
-      <h3 resource="#h-example-of-references" id="h-example-of-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1 </span>Example of References</span></h3>
+      <h3 resource="#h-example-of-references" id="h-example-of-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1 </span>Example of References</span></h3>
       <div class="example">
         <div class="example-title marker"><span>Example 7</span></div><pre class="hljs json">{
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"entry"</span></span>,
@@ -808,7 +828,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
   <section property="bibo:hasPart" resource="#collections" typeof="bibo:Chapter" id="collections">
     <!--OddPage-->
-    <h2 resource="#h-collections" id="h-collections"><span property="xhv:role" resource="xhv:heading"><span class="secno">4. </span>Collections</span></h2>
+    <h2 resource="#h-collections" id="h-collections"><span property="xhv:role" resource="xhv:heading"><span class="secno">5. </span>Collections</span></h2>
 
     <p>
       Posts can live inside of collections. A collection may be a home page feed, or a feed of other posts such as a list of contacts, a list of things someone has liked, etc. There is no requirement that all posts in a collection need to be of the same type.
@@ -836,7 +856,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 }</span></pre></div>
 
     <section property="bibo:hasPart" resource="#multiple-items" typeof="bibo:Chapter" id="multiple-items">
-      <h3 resource="#h-multiple-items" id="h-multiple-items"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1 </span>Multiple items on a page</span></h3>
+      <h3 resource="#h-multiple-items" id="h-multiple-items"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.1 </span>Multiple items on a page</span></h3>
       <p>
         If an HTML page contains multiple top-level items, (most commonly found when a page contains a list of [<cite><a href="#bib-h-entry" class="bibref">h-entry</a></cite>] objects), the parser creates an implicit top-level collection with no properties.
       </p>
@@ -854,13 +874,13 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
   <section property="bibo:hasPart" resource="#deriving" typeof="bibo:Chapter" id="deriving">
     <!--OddPage-->
-    <h2 resource="#h-deriving" id="h-deriving"><span property="xhv:role" resource="xhv:heading"><span class="secno">5. </span>Deriving the Syntax</span></h2>
+    <h2 resource="#h-deriving" id="h-deriving"><span property="xhv:role" resource="xhv:heading"><span class="secno">6. </span>Deriving the Syntax</span></h2>
     <p>
       This syntax is derived from HTML with Microformats-2, converted to JSON [<cite><a href="#bib-microformats2-parsing" class="bibref">microformats2-parsing</a></cite>] converted to a simplified JSON. The examples below illustrate the process.
     </p>
 
     <section property="bibo:hasPart" resource="#deriving-note" typeof="bibo:Chapter" id="deriving-note">
-      <h3 resource="#h-deriving-note" id="h-deriving-note"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.1 </span>Deriving a Note</span></h3>
+      <h3 resource="#h-deriving-note" id="h-deriving-note"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.1 </span>Deriving a Note</span></h3>
 
       <h3 id="html-microformats">HTML + Microformats</h3>
       <div class="example">
@@ -946,7 +966,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     </section>
 
     <section property="bibo:hasPart" resource="#JSON-LD" typeof="bibo:Chapter" id="JSON-LD">
-      <h3 resource="#h-json-ld" id="h-json-ld"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.2 </span>JSON-LD Consideration</span></h3>
+      <h3 resource="#h-json-ld" id="h-json-ld"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.2 </span>JSON-LD Consideration</span></h3>
       <p>
         JF2 documents all have an implicit @context field which is optional. This @context can be found at
         <a href="http://www.w3.org/ns/jf2">http://www.w3.org/ns/jf2</a> and is provided only to make conversion to [<cite><a href="#bib-JSON-LD" class="bibref">JSON-LD</a></cite>] format possible. Most JF2 will process fine in JSON-LD systems, however, this support is not guaranteed and those wishing to use JF2 in JSON-LD may need to modify serialization slightly.
@@ -956,28 +976,28 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
   <section property="bibo:hasPart" resource="#implementations" typeof="bibo:Chapter" id="implementations" class="informative">
     <!--OddPage-->
-    <h2 resource="#h-implementations" id="h-implementations"><span property="xhv:role" resource="xhv:heading"><span class="secno">6. </span>Implementations</span></h2>
+    <h2 resource="#h-implementations" id="h-implementations"><span property="xhv:role" resource="xhv:heading"><span class="secno">7. </span>Implementations</span></h2>
     <p><em>This section is non-normative.</em></p>
     <p>
       The following is a list of currently known implementations of JF2-like formats and their current differences to this document
     </p>
 
     <section property="bibo:hasPart" resource="#webmention.io" typeof="bibo:Chapter" id="webmention.io">
-      <h3 resource="#h-webmention.io" id="h-webmention.io"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.1 </span>Webmention.io</span></h3>
+      <h3 resource="#h-webmention.io" id="h-webmention.io"><span property="xhv:role" resource="xhv:heading"><span class="secno">7.1 </span>Webmention.io</span></h3>
       <p>
         <a href="https://webmention.io">Webmention.io</a> is a hosted service for handling webmentions. Webmentions are accessed from an API that that returns a set of objects in JSON format similar to JF2. The key difference is the inclusion of some additional data wrapping the objects (source, verified, verified_data, etc) and all wrapped in a "links" array. Code available at <a href="https://github.com/aaronpk/webmention.io">https://github.com/aaronpk/webmention.io</a>
       </p>
     </section>
 
     <section property="bibo:hasPart" resource="#xray" typeof="bibo:Chapter" id="xray">
-      <h3 resource="#h-xray" id="h-xray"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.2 </span>XRay</span></h3>
+      <h3 resource="#h-xray" id="h-xray"><span property="xhv:role" resource="xhv:heading"><span class="secno">7.2 </span>XRay</span></h3>
       <p>
         <a href="https://xray.p3k.io">X-Ray</a> is a tool to return structured data from any URL. Code available at <a href="https://github.com/aaronpk/XRay">https://github.com/aaronpk/XRay</a>
       </p>
     </section>
 
     <section property="bibo:hasPart" resource="#unmung" typeof="bibo:Chapter" id="unmung">
-      <h3 resource="#h-unmung" id="h-unmung"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.3 </span>Unmung</span></h3>
+      <h3 resource="#h-unmung" id="h-unmung"><span property="xhv:role" resource="xhv:heading"><span class="secno">7.3 </span>Unmung</span></h3>
       <p>
         <a href="http://www.unmung.com">Unmung</a> is a tool for converting various formats. Code available at <a href="https://github.com/kevinmarks/unmung">https://github.com/kevinmarks/unmung</a>
       </p>
@@ -985,11 +1005,19 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
 
     <section property="bibo:hasPart" resource="#socialstreams" typeof="bibo:Chapter" id="socialstreams">
-      <h3 resource="#h-socialstreams" id="h-socialstreams"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.4 </span>SocialStreams</span></h3>
+      <h3 resource="#h-socialstreams" id="h-socialstreams"><span property="xhv:role" resource="xhv:heading"><span class="secno">7.4 </span>SocialStreams</span></h3>
       <p>
         <a href="http://stream.thatmustbe.us">SocialStreams</a> is a translation service for converting social formats. Code available at <a href="https://github.com/dissolve/socialstream">https://github.com/dissolve/socialstream</a>
       </p>
     </section>
+
+    <section property="bibo:hasPart" resource="#mf2util" typeof="bibo:Chapter" id="mf2util">
+      <h3 resource="#h-mf2util" id="h-mf2util"><span property="xhv:role" resource="xhv:heading"><span class="secno">7.5 </span>mf2util</span></h3>
+      <p>
+        Mf2util is a utility library for interpreting microformats2. Code available at <a href="https://github.com/kylewm/mf2util">https://github.com/kylewm/mf2util</a>
+      </p>
+    </section>
+
 
 
   </section>
