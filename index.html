@@ -281,11 +281,13 @@
       <section id="html-content">
         <h3>HTML Content</h3>
         <p>
-          By default, any string value should be interpreted as literal plaintext. This means when displaying a string in an HTML page, it must be HTML escaped.
+          By default, any string value should be interpreted as literal plaintext. 
+          This means when displaying a string in an HTML page, it must be HTML escaped.
         </p>
 
         <p>
-        If the value of a property is to be interpreted as HTML, it MUST be enclosed in an object noting its <a>content-type</a> as follows.
+        If the value of a property is to be interpreted as HTML, it MUST be enclosed in
+        an object noting its <a>content-type</a> as follows.
         </p>
 
         <pre class="example">
@@ -297,6 +299,12 @@
             }
           }
         </pre>
+
+        <p>
+        Note that only one content-type is allowed and also only one entry is given under content.
+        It is usually preferrable to select the most expressive option for this.  So it is preferrable
+        to select the html content-type over plaintext for the content property.
+        </p>
 
         <section id="multiple-urls">
           <h4>Multiple URLs for video/audio/picture</h4>
