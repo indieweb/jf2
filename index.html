@@ -577,11 +577,11 @@
       <section id="profile_introduction" class="informative">
         <h3>Intro</h3>
         <p>
-          JF2 on its own is intentionally vocabulary unaware, that is, any value may contain a single value, a
+          JF2 on its own is intentionally vocabulary independent, that is, any value may contain a single value, a
           set of values, or a structure and there are no requirements that fields be present.  While this keeps
-          the fidelity of the original [[microformats2]] encoded html, it is not desirable to some consumers as they
-          do not have any assurance to what fields are present.  This creates the need for vocabulary aware
-          profiles of JF2, where the profile adds additional constraints on the fields present.
+          the fidelity of the original [[microformats2]] encoded html, some consuming code can be simplified by
+          adding vocabulary requirements.  This creates the need for vocabulary aware profiles of JF2, where
+          the profile adds additional constraints on the fields present.
         </p>
       </section>
       <section id="jf2feed">
