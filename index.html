@@ -587,80 +587,111 @@
       <section id="jf2feed">
         <h3>JF2 Feed</h3>
 
-          <section id="jf2feed_intro" class="informative">
-            <h4>Introduction</h4>
-            <p>
-              XML formats have heavily dominated serializations of social activity feeds for blogs and news feeds for years.
-              Several attempts have been created over the years to attempt to bring these to a JSON format, most recently
-              [[jsonfeed-v1]], which JSON Feed gets the majority of its requirements from.  JF2 Feed is an attempt to bring
-              some of the advantages of these vocabulary aware specifications under a standard vocabulary from
-              [[microformats2]].
-            </p>
-          </section>
+        <section id="jf2feed_intro" class="informative">
+          <h4>Introduction</h4>
+          <p>
+            XML formats have heavily dominated serializations of social activity feeds for blogs and news feeds for years.
+            Several attempts have been created over the years to attempt to bring these to a JSON format, most recently
+            [[jsonfeed-v1]], which JSON Feed gets the majority of its requirements from.  JF2 Feed is an attempt to bring
+            some of the advantages of these vocabulary aware specifications under a standard vocabulary from
+            [[microformats2]].
+          </p>
+        </section>
 
-          <section id="jf2feed_required_fields">
-            <h4>Required Fields and Required Formats</h4>
-            <p>
-              The following fields have additional constraints to be a valid JF2 Feed that only apply 
-              to the top level feed object, its child entry object, and any properties of them.
-            </p>
-              
-            <ul>
-              <li><strong>type</strong> MUST be defined with a value of "feed" on the top level entry.
-                All other sub-object items MUST NOT have a type value of "feed".  All direct children
-                of the top level feed object MUST have a value of "entry".
-              </li>
-              <li><strong>name</strong> MUST be defined on the top level "feed" object.  This value MUST
-                be a single string value. Any direct children of the top level item SHOULD have this
-                property and if present MUST be a single string value.
-              </li>
-              <li><strong>url</strong> SHOULD be defined on the top level "feed" object.  This value MUST
-                be a single string value and is expected to contain the URL of the data which this
-                JF2 Feed describes. Additionally, if present in the author property object, or any direct
-                child entry object, it MUST contain a single string value only.
-              </li>
-              <li><strong>photo</strong> MUST be a single string value if present on the top level feed
-                object, its author property object, or any direct child item object.
-              </li>
-              <li><strong>uid</strong> MUST be present on any entry object which is a direct child of the
-                top level feed object.  This property MUST be a single string value and MUST uniquely
-                identify this entry object.  This MAY be a duplicate of the entry's url property.
-              </li>
-              <li><strong>published</strong> SHOULD be present on any entry object which is a direct
-                child of the top level feed object.  If present, this property MUST be a single string
-                value and MUST be formatted as specified by [[ISO8601]].
-              </li>
-              <li><strong>published</strong> MAY be present on any entry object which is a direct
-                child of the top level feed object.  If present, this property MUST be a single string
-                value and MUST be formatted as specified by [[ISO8601]].
-              </li>
-              <li><strong>category</strong> MAY be present on any entry object which is a direct
-                child of the top level feed object.  If present, this property MUST be an array of
-                string values.
-              </li>
-              <li><strong>author</strong> MAY be present on the top level feed or second level entry 
-                objects. If present, it MUST be an object and it MUST contain at least a name, url,
-                or photo property.
-              </li>
-              <li><strong>content</strong> MAY be present on any entry object which is a direct
-                child of the top level feed object.  If present, this property MUST be an object as
-                described in the <a href="#html-content">html content</a> regardless if the content-type
-                is text/plain.
-              </li>
+        <section id="jf2feed_required_fields">
+          <h4>Required Fields and Required Formats</h4>
+          <p>
+            The following fields have additional constraints to be a valid JF2 Feed that only apply 
+            to the top level feed object, its child entry object, and any properties of them.
+          </p>
+            
+          <ul>
+            <li><strong>type</strong> MUST be defined with a value of "feed" on the top level entry.
+              All other sub-object items MUST NOT have a type value of "feed".  All direct children
+              of the top level feed object MUST have a value of "entry".
+            </li>
+            <li><strong>name</strong> MUST be defined on the top level "feed" object.  This value MUST
+              be a single string value. Any direct children of the top level item SHOULD have this
+              property and if present MUST be a single string value.
+            </li>
+            <li><strong>url</strong> SHOULD be defined on the top level "feed" object.  This value MUST
+              be a single string value and is expected to contain the URL of the data which this
+              JF2 Feed describes. Additionally, if present in the author property object, or any direct
+              child entry object, it MUST contain a single string value only.
+            </li>
+            <li><strong>photo</strong> MUST be a single string value if present on the top level feed
+              object, its author property object, or any direct child item object.
+            </li>
+            <li><strong>uid</strong> MUST be present on any entry object which is a direct child of the
+              top level feed object.  This property MUST be a single string value and MUST uniquely
+              identify this entry object.  This MAY be a duplicate of the entry's url property.
+            </li>
+            <li><strong>published</strong> SHOULD be present on any entry object which is a direct
+              child of the top level feed object.  If present, this property MUST be a single string
+              value and MUST be formatted as specified by [[ISO8601]].
+            </li>
+            <li><strong>published</strong> MAY be present on any entry object which is a direct
+              child of the top level feed object.  If present, this property MUST be a single string
+              value and MUST be formatted as specified by [[ISO8601]].
+            </li>
+            <li><strong>category</strong> MAY be present on any entry object which is a direct
+              child of the top level feed object.  If present, this property MUST be an array of
+              string values.
+            </li>
+            <li><strong>author</strong> MAY be present on the top level feed or second level entry 
+              objects. If present, it MUST be an object and it MUST contain at least a name, url,
+              or photo property.
+            </li>
+            <li><strong>content</strong> MAY be present on any entry object which is a direct
+              child of the top level feed object.  If present, this property MUST be an object as
+              described in the <a href="#html-content">html content</a> regardless if the content-type
+              is text/plain.
+            </li>
 
-            </ul>
+          </ul>
 
-          </section>
+        </section>
 
-          <section id="jf2feed_discovery">
-            <h4>Discovery</h4>
-            <p>
-            The JF2 Feed for a page may be published as HTTP Link header [[RFC5988]], or as an HTML
-            &lt;link&gt; or &lt;a&gt; tag element with the following attributes.
-              <pre>rel="alternate" type="application/json+jf2feed" href="http://www.example.com/jf2feed.json" </pre>
-            </p>
-          </section>
+        <section id="jf2feed_discovery">
+          <h4>Discovery</h4>
+          <p>
+          The JF2 Feed for a page may be published as HTTP Link header [[RFC5988]], or as an HTML
+          &lt;link&gt; or &lt;a&gt; tag element with the following attributes.
+            <pre>rel="alternate" type="application/json+jf2feed" href="http://www.example.com/jf2feed.json" </pre>
+          </p>
+          <p class="note">
+          Discovery via &lt;link&gt; and/or &lt;a&gt; is being considered for removal, please leave your feedback on this via github issues.
+          </p>
+        </section>
+        <section id="jf2feed_example">
+          <h4>JF2 Feed Example</h4>
 
+          <pre class="example">
+            {
+                "type": "feed",
+                "url": "https://example.org/myfeed.html",
+                "name": "Brent Simmons’s Microblog",
+                "author": {
+                    "type": "card",
+                    "name": "Brent Simmons",
+                    "url": "http://example.org/",
+                    "photo": "https://example.org/avatar.png"
+                },
+                "children": [
+                    {
+                        "type": "entry",
+                        "uid": "https://example.org/2347259",
+                        "url": "https://example.org/2347259",
+                        "content": {
+                          "content-type": "text/plain"
+                          "value": "Cats are neat. \n\nhttps://example.org/cats",
+                        "published": "2016-02-09T14:22:00-07:00"
+                    }
+                ]
+            }
+
+          </pre>
+        </section>
       </section>
     </section>
     <section id="extensions">
