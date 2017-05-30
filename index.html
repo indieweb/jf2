@@ -630,7 +630,7 @@
               child of the top level feed object.  If present, this property MUST be a single string
               value and MUST be formatted as specified by [[ISO8601]].
             </li>
-            <li><strong>published</strong> MAY be present on any entry object which is a direct
+            <li><strong>updated</strong> MAY be present on any entry object which is a direct
               child of the top level feed object.  If present, this property MUST be a single string
               value and MUST be formatted as specified by [[ISO8601]].
             </li>
@@ -649,6 +649,9 @@
             </li>
 
           </ul>
+          <p class="note">
+          The format of published and updated fields may change from [[ISO8601]] to [[RFC3339]] or use [[Microformats2]]'s more liberal date field.  Please discuss on github issues
+          </p>
 
         </section>
 
