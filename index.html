@@ -10,7 +10,7 @@
           license: "w3c-software-doc",
           specStatus: "ED",
           shortName:  "jf2",
-          edDraftURI: "http://dissolve.github.io/jf2/",
+          edDraftURI: "https://dissolve.github.io/jf2/",
           editors: [
                 {   name:       "Benjamin Roberts",
                     url:        "https://ben.thatmustbe.me/",
@@ -20,9 +20,9 @@
                     w3cid:      "" }
           ],
           wg:           "Social Web Working Group",
-          wgURI:        "http://www.w3.org/Social/WG",
+          wgURI:        "https://www.w3.org/Social/WG",
           wgPublicList: "public-socialweb",
-          wgPatentURI:  "http://www.w3.org/2004/01/pp-impl/72531/status",
+          wgPatentURI:  "https://www.w3.org/2004/01/pp-impl/72531/status",
           noRecTrack:   true,
           otherLinks:   [
             {
@@ -97,12 +97,6 @@
         Microformats-2 representative JSON format.  As such, much of this document
         is likely to change as various implementations contribute input.
       </p>
-
-      <p>
-        This document is being drafted as a Non-Rec Track document, and is intended
-        to end up a Working Group Note to describe one potential minimal method of representing
-        a social web object.
-      </p>
     </section>
     
     <section class='informative'>
@@ -118,12 +112,6 @@
         Microformats-2 (MF2) data from html.  Rather than defining a new vocabulary,
         JF2 uses the vocabulary defined by [[microformats2]]
         however any other suitable vocabulary.
-      </p>
-      <p>
-        It is relevant to note that JF2 objects have been most useful as programming objects, not
-        as a serialization format.  This document using javascript object notation for serializing
-        to explain structure, but any language will have its own native structure in which JF2 would
-        be stored.
       </p>
     </section>
     
@@ -732,10 +720,57 @@
           Code available at <a href="https://github.com/kylewm/mf2util">https://github.com/kylewm/mf2util</a>
         </p>
       </section>
+    </section>
 
+    <section id="privacy">
+      <h2>Privacy Considerations</h2>
 
+      <p>
+        As with any serialization format, JF2 streams can potentially contain private and personally identifiable information.
+        As such, producing and consuming implementations SHOULD take a default stance that all information in these documents are 
+        private and take steps to ensure the privacy of their users.  This can include transmission only over secure connections,
+        limiting access to streams, deletion of stored secure information, or any other steps that would apply to any private
+        information.
+      </p>
+    </section>
+
+    <section id="security-considerations">
+      <h2>Security Considerations</h2>
+
+      <p>
+        Publisher and Consumers of any publicly accessible or third party JF2 streams SHOULD take reasonable preventative
+        measures to ensure against malicious code embedded in the stream and filter out such material wherever possible.
+      </p>
+
+      <p>
+        Publisher and Consumers of any publicly accessible or third party JF2 streams that contain HTML content SHOULD
+        take additional steps to ensure that there is no malicious code such as cross-site scripting attacks contained
+        in the HTML content.
+      </p>
+
+      <p>
+        JF2 Streams are JSON Documents and are subject to the same security considerations described in [[!RFC7159]].
+      </p>
 
     </section>
+
+    <section class="appendix">
+      <h2>Change Log</h2>
+        <section>
+          <h3>Changes from 28 July 2016 FPWD to this version</h3>
+
+          <p>This section lists changes from the <a href="https://www.w3.org/TR/2016/FPWD-jf2-20160728/">28 July 2016 FPWD</a> to this version</p>
+
+          <ul>
+            <li>Added Privacy and Security Considerations sections</li>
+            <li>Added Note describing only one content type allowed</li>
+            <li>Corrections to referenced URLs<li>
+            <li>Updated Introduction and Authors Note</li>
+          <ul>
+
+        </section>
+    </section>
+
     <section class="appendix">
       <h2>Acknowledgements</h2>
         <p>
