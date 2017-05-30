@@ -51,6 +51,20 @@
               status: "Living Specification",
               publisher: "http://microformats.org"
             },
+            "h-card": {
+              title: "h-card",
+              href: "http://microformats.org/wiki/h-card",
+              authors: [ "Tantek Çelik"],
+              status: "Living Specification",
+              publisher: "http://microformats.org"
+            },
+            "h-feed": {
+              title: "h-feed",
+              href: "http://microformats.org/wiki/h-feed",
+              authors: [ "Tantek Çelik"],
+              status: "Living Specification",
+              publisher: "http://microformats.org"
+            },
             "microformats2": {
               title: "Microformats2",
               href: "http://microformats.org/wiki/microformats2",
@@ -594,7 +608,8 @@
             Several attempts have been created over the years to attempt to bring these to a JSON format, most recently
             [[jsonfeed-v1]], which JSON Feed gets the majority of its requirements from.  JF2 Feed is an attempt to bring
             some of the advantages of these vocabulary aware specifications under a standard vocabulary from
-            [[microformats2]].
+            [[microformats2]].  Keep in mind that any additional fields from [[h-feed]], [[h-entry]], and [[h-card]] may
+            be present in the corresponding type object.
           </p>
         </section>
 
@@ -797,10 +812,13 @@
           <p>This section lists changes from the <a href="https://www.w3.org/TR/2016/FPWD-jf2-20160728/">28 July 2016 FPWD</a> to this version</p>
 
           <ul>
+            <li>Added Profiles section to allow for JF2 Feed</li>
+            <li>Added Extension Section</li>
             <li>Added Privacy and Security Considerations sections</li>
             <li>Added Note describing only one content type allowed</li>
-            <li>Corrections to referenced URLs<li>
+            <li>Corrections to referenced URLs</li>
             <li>Updated Introduction and Authors Note</li>
+            <li>Minor Editorial Changes</li>
           <ul>
 
         </section>
