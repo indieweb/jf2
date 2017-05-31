@@ -608,8 +608,14 @@
             Several attempts have been created over the years to attempt to bring these to a JSON format, most recently
             [[jsonfeed-v1]], which JSON Feed gets the majority of its requirements from.  JF2 Feed is an attempt to bring
             some of the advantages of these vocabulary aware specifications under a standard vocabulary from
-            [[microformats2]].  Keep in mind that any additional fields from [[h-feed]], [[h-entry]], and [[h-card]] may
-            be present in the corresponding type object.
+            [[microformats2]].  
+          </p>
+
+          <p>
+            Fields described below have additional requirements to be considered a valid JF2 Feed, however they may contain
+            any number of additional fields from [[h-feed]], [[h-entry]], and [[h-card]].  The entries below are codified as
+            they are likely the most useful for feed readers and additional data is expected to be fetchable at the entry URL,
+            preferrably though valid [[microformats2]] markup.
           </p>
         </section>
 
@@ -632,10 +638,10 @@
             <li><strong>url</strong> SHOULD be defined on the top level "feed" object.  This value MUST
               be a single string value and is expected to contain the URL of the data which this
               JF2 Feed describes. Additionally, if present in the author property object, or any direct
-              child entry object, it MUST contain a single string value only.
+              child entry object, it MUST contain a single string value only and that value must be a [[URL]].
             </li>
             <li><strong>photo</strong> MUST be a single string value if present on the top level feed
-              object, its author property object, or any direct child item object.
+              object, its author property object, or any direct child entry object and MUST be a valid [[URL]].
             </li>
             <li><strong>uid</strong> MUST be present on any entry object which is a direct child of the
               top level feed object.  This property MUST be a single string value and MUST uniquely
@@ -661,6 +667,13 @@
               child of the top level feed object.  If present, this property MUST be an object as
               described in the <a href="#html-content">html content</a> regardless if the content-type
               is text/plain.
+            </li>
+            <li><strong>summary</strong> MAY be present on any second level entry object. If present,
+              it MUST be a single string.
+            </li>
+            <li><strong>video or audio</strong> MAY be present on any second level entry object. If present,
+              it MUST be an object as described in <a href="#multiple-urls">multiple urls</a> section with at least
+              a 'url' property which MUST be a single string and a valid [[URL]].
             </li>
 
           </ul>
