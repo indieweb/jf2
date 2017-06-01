@@ -187,8 +187,12 @@
           </li>
           <li><dfn>content-type</dfn> is the MIME media type of the containing object.
           Content-type MUST be a single string value only.</li>
+          <li><dfn>html</dfn> is the text/html version of the containing object.
+          Content-type MUST be a single string value only.</li>
+          <li><dfn>text</dfn> is the text/plain version of the containing object.
+          Content-type MUST be a single string value only.</li>
           <li><dfn>value</dfn> is a textual representation of the object.  By default this is presumed to be
-          of content-type "text/plain" but MAY be other MIME types if content-type is defined.
+          of content-type "text/plain".
           Value MUST be a single string value only.
           </li>
           <li><dfn>lang</dfn> is the localization language of the containing object and all
@@ -296,24 +300,19 @@
 
         <p>
         If the value of a property is to be interpreted as HTML, it MUST be enclosed in
-        an object noting its <a>content-type</a> as follows.
+        an object and placed under the "html" property as follows.  If a plaintext version
+        is also available, that is placed under the "text" property.
         </p>
 
         <pre class="example">
           {
             "type": "entry",
             "content": {
-              "content-type": "text/html",
-              "value": "&lt;p&gt;Hello World&lt;/p&gt;"
+              "html": "&lt;p&gt;Hello World&lt;/p&gt;"
+              "text": "Hello World"
             }
           }
         </pre>
-
-        <p>
-        Note that only one content-type is allowed and also only one entry is given under content.
-        It is usually preferable to select the most expressive option for this.  So it is preferable
-        to select the html content-type over plaintext for the content property.
-        </p>
 
         <section id="multiple-urls">
           <h4>Multiple URLs for video/audio/picture</h4>
@@ -568,7 +567,7 @@
           "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet ultrices pulvinar.",
           "content": {
             "value": "&lt;p&gt;Donec dapibus enim lacus, &lt;i&gt;a vehicula magna bibendum non&lt;/i&gt;. Phasellus id lacinia felis, vitae pellentesque enim. Sed at quam dui. Suspendisse accumsan, est id pulvinar consequat, urna ex tincidunt enim, nec sodales lectus nulla et augue. Cras venenatis vehicula molestie. Donec sagittis elit orci, sit amet egestas ex pharetra in.&lt;/p&gt;",
-            "content-type": "text/html"
+            "text": "Donec dapibus enim lacus, a vehicula magna bibendum non. Phasellus id lacinia felis, vitae pellentesque enim. Sed at quam dui. Suspendisse accumsan, est id pulvinar consequat, urna ex tincidunt enim, nec sodales lectus nulla et augue. Cras venenatis vehicula molestie. Donec sagittis elit orci, sit amet egestas ex pharetra in."
           }
         }
 
@@ -665,8 +664,8 @@
             </li>
             <li><strong>content</strong> MAY be present on any entry object which is a direct
               child of the top level feed object.  If present, this property MUST be an object as
-              described in the <a href="#html-content">html content</a> regardless if the content-type
-              is text/plain.
+              described in the <a href="#html-content">html content</a> regardless if only a text/plain
+              version is available.
             </li>
             <li><strong>summary</strong> MAY be present on any second level entry object. If present,
               it MUST be a single string.
@@ -714,8 +713,7 @@
                         "uid": "https://example.org/2347259",
                         "url": "https://example.org/2347259",
                         "content": {
-                          "content-type": "text/plain",
-                          "value": "Cats are neat. \n\nhttps://example.org/cats"
+                          "text": "Cats are neat. \n\nhttps://example.org/cats"
                         },
                         "published": "2016-02-09T14:22:00-07:00"
                     }
@@ -724,8 +722,77 @@
 
           </pre>
         </section>
+        <section id="jsonfeed_to_jf2feed" class="informative">
+          <h4>JSON Feed to JF2 conversion</h4>
+
+          <p class="note">
+            As it is not sane to do this for every feed serialization currently available,
+            this section is likely to only be temporary in the spec and may be moved to a
+            more permanant home elsewhere.
+          </p>
+
+          <p>
+            JF2 Feed was based heavily on [[jsonfeed-v1]] and as such it is quite trivial to process a
+            JSON Feed as a JF2 Feed with only minor changes.  This section discusses the conversion that
+            must be made for this process, most of which is simply conversion of properties to their
+            [[microformats2]] equivalent.
+          </p>
+
+          <p>
+            <strong>Conversion of the top level sturcture</strong>
+          </p>
+          <ul>
+            <li>Drop or ignore the "version" property</li>
+            <li>Create a property "type" with the value "feed"</li>
+            <li>Rename the properties "title" to "name", "home_page_url" to "url", "icon" to "photo", and "description" to "summary"</li>
+            <li>Modify the "author" property as described below</li>
+            <li>Rename the "items" property to "children" and modify as described below</li>
+          </ul>
+
+          <p>
+            <strong>Conversion of the author property on the top level or on any lower level entry</strong>
+          </p>
+          <ul>
+            <li>Rename the property 'avatar' to 'photo'</li>
+          </ul>
+
+          <p>
+            <strong>Conversion each entry in items</strong>
+          </p>
+          <ul>
+            <li>Rename the 'id' property to 'uid'</li>
+            <li>Convert content_html and content_text in to a single object under the property "content" with properties "html" and "text", leaving out either if not present, or the entire property if neither are present.  </li>
+            <li>Rename the properties
+              "title" to "name",
+              "image" to "photo",
+              "date_published" to "published",
+              "date_modified" to "updated",
+              "tags" to "category",
+              "banner_image" to "featured" </li>
+            <li>Drop or ignore the 'external_url' property.  If content is not set, it may be useful to set content['text'] to the value of 'external_url'</li>
+            <li>Keep "summary" property the same</li>
+            <li>
+              For each entry in the "attachments" array,
+              <ol>
+                <li>Rename "mime-type" to "content-type".</li>
+                <li>Keep the "url" property as is.</li>
+                <li>If the "content-type" field begins with "video/", add the item to the "video" property array.</li>
+                <li>If the "content-type" field begins with "photo/", add the item to the "photo" property array.</li>
+              </ol>
+
+            </li>
+
+
+          </ul>
+          <p>
+            It may be benefitial to drop any properties other than those mentioned to avoid conflicts with any future [[microformats2]] properties.
+          </p>
+
+
+        </section>
       </section>
     </section>
+
     <section id="extensions">
       <h2>Extension</h2>
       <p>
@@ -734,6 +801,24 @@
         encounter.
       </p>
     </section>
+
+    <section id="internationalization" class="informative">
+      <h2>Language And Internationalization</h2>
+      <p>
+        In order to allow any language to be serialized in JF2, the 'lang' value can be set on any object to inform
+        annotate the natural language of the text.  Many often ask for control structures like directionality of text
+        and multiple language serializations.  Directionality of text can be accomplished with UTF-8 control characters
+        which can be added to any of the values in the document.  In addition, any content inside of 'html' properties
+        can have any markup as defined by [[HTML5]].
+      </p>
+      <p>
+        Multiple serializations of the same text has not been seen to be needed in practice. 
+        The suggested path for accomplishing this with JF2 is to have these hosted at different locations. 
+        For example, it is common practice on websites to host an alternate language version of a site under a different
+        directory structure for each language (such as /en/, /jp/, /fr/, etc).
+      </p>
+    </section>
+
     <section id="implementations" class="informative">
       <h2>Implementations</h2>
       <p>
@@ -825,10 +910,12 @@
           <p>This section lists changes from the <a href="https://www.w3.org/TR/2016/FPWD-jf2-20160728/">28 July 2016 FPWD</a> to this version</p>
 
           <ul>
+            <li>Changed format of html content items</li>
             <li>Added Profiles section to allow for JF2 Feed</li>
             <li>Added Extension Section</li>
-            <li>Added Privacy and Security Considerations sections</li>
-            <li>Added Note describing only one content type allowed</li>
+            <li>Added Privacy section</li>
+            <li>Added Security Considerations section</li>
+            <li>Added Internationalization section</li>
             <li>Corrections to referenced URLs</li>
             <li>Updated Introduction and Authors Note</li>
             <li>Minor Editorial Changes</li>
