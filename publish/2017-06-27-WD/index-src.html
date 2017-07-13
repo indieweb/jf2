@@ -8,9 +8,10 @@
     <script class='remove'>
       var respecConfig = {
           license: "w3c-software-doc",
-          specStatus: "ED",
+          specStatus: "WD",
           shortName:  "jf2",
-          edDraftURI: "https://dissolve.github.io/jf2/",
+          publishDate: "2017-06-27",
+          edDraftURI: "http://dissolve.github.io/jf2/",
           editors: [
                 {   name:       "Benjamin Roberts",
                     url:        "https://ben.thatmustbe.me/",
@@ -24,6 +25,8 @@
           wgPublicList: "public-socialweb",
           wgPatentURI:  "https://www.w3.org/2004/01/pp-impl/72531/status",
           noRecTrack:   true,
+          previousPublishDate: "2017-06-12",
+          previousMaturity: "WD",
           otherLinks:   [
             {
               key: "Repository",
@@ -41,25 +44,7 @@
                   href: "https://github.com/dissolve/jf2/commits/gh-pages"
                 }
               ]
-            }, 
-            {
-              key: "Test",
-              data: [
-                {
-                  value: "Validator",
-                  href: "http://jf2.rocks/"
-                },
-                {
-                  value: "Sample Set",
-                  href: "http://jf2.rocks/"
-                },
-                {
-                  value: "Implementation Reports",
-                  href: "http://jf2.rocks/"
-                }
-              ]
             }
-
           ],
           localBiblio:  {
             "h-entry": {
@@ -174,178 +159,6 @@
       validate proper semantics.
       </p>
     </section>
-
-    <section id="conformance">
-      <h2>Conformance</h2>
-
-      <p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-      "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
-      document are to be interpreted as described in [[!RFC2119]].</p>
-
-      <section>
-        <h3>Documents</h3>
-
-        <p>
-          Conforming documents are those that comply with all the conformance
-          criteria for JF2 documents. For readability, some of these conformance
-          requirements are phrased as conformance requirements on publishers;
-          such requirements are implicitly requirements on documents: by
-          definition, all documents are assumed to have a publisher.
-        </p>
-
-        <p>
-          Conforming documents must not use features of JSON-LD or other
-          serialization features disallowed in this specification. Conforming
-          documents that include types or properties beyond those defined in the
-          [[microformats2]] must use its prefixing methods to indicate non-standard
-          properties.
-        </p>
-
-        <p>
-          A non-exhaustive list of examples of documents includes:
-
-          <ul>
-            <li>
-              A document representing a author
-            </li>
-            <li>
-              A document representing an event
-            </li>
-            <li>
-              A document representing a post
-            </li>
-            <li>
-              A document representing a collection of the posts created by an author
-            </li>
-            <li>
-              A document representing a collection of people
-            </li>
-
-          </ul>
-
-        </p>
-
-      </section>
-
-      <section>
-
-        <h3>Implementations</h3>
-
-        <p>
-          Conforming implementations are software that publish, store, analyze,
-          consume or otherwise process conforming documents. The two main kinds
-          of implementations are publishers and consumers.
-        </p>
-
-        <section>
-
-          <h4>Publishers</h4>
-
-          <p>
-            Conforming publishers are implementations that create and publish
-            conforming documents. Conforming publishers must make conforming
-            documents available according to the serialization requirements of
-            this document. Conforming publishers must consider privacy as described
-            in the <a href="#privacy">Privacy</a> section of this document.
-            Conforming publishers must consider security as described in the
-            <a href="#security-considerations">Security Considerations</a> section
-            of this document.
-          </p>
-
-          <p>
-            A non-exhaustive list of example publishers includes:
-
-            <ul>
-              <li>
-                A social network
-              </li>
-              <li>
-                A personal web site
-              </li>
-              <li>
-                A document publishing system
-              </li>
-              <li>
-                A bridge from a non-conforming social network
-              </li>
-              <li>
-                A document converter from similar document types such as RSS or
-                Atom
-              </li>
-            </ul>
-          </p>
-
-        </section>
-
-        <section>
-
-          <h4>Consumers</h4>
-
-          <p>
-            Conforming consumers are implementations that read and analyze
-            conforming documents. Conforming consumers must not halt on any
-            unrecognized properties or types.
-          </p>
-
-          <p>
-            Conforming consumers may re-publish conforming documents in other
-            other data formats. Conforming consumers may present conforming
-            documents to a user on screen, in print, in audio format, or using
-            other presentation mechanisms. Conforming consumers must faithfully
-            translate the information represented in conforming documents into
-            these other formats or media. Conforming consumers that re-publish
-            conforming documents must consider privacy and security as described
-            in the <a href="#privacy">Privacy</a> section and 
-            <a href="#security-considerations">Security Considerations</a> section
-            of this document.
-          </p>
-
-          <p>A non-exhaustive list of example consumers includes:
-
-            <ul>
-              <li>
-                A social network
-              </li>
-              <li>
-                A search engine
-              </li>
-              <li>
-                A feed reader
-              </li>
-              <li>
-                A document validator
-              </li>
-              <li>
-                A feed aggregator
-              </li>
-            </ul>
-
-          </p>
-
-        </section>
-      </section>
-
-      <section class="informative">
-        <h3>Validator and Reporting</h3>
-
-        <p>
-          A validator for conforming documents is available at
-          <a href="https://jf2.rocks/">http://f2.rocks/</a>.
-          This also offers example conforming and non-conforming
-          documents for testing purposes.
-        </p>
-
-        <p>
-          Please submit your implementation reports at 
-          <a href="https://jf2.rocks/">http://f2.rocks/</a>.
-          Instructions are provided at the URL.
-        </p>
-
-      </section>
-
-    </section>
-
-
 
     <section id='syntax'>
       <h2>Syntax</h2>
@@ -499,7 +312,7 @@
           {
             "type": "entry",
             "content": {
-              "html": "&lt;p&gt;Hello World&lt;/p&gt;",
+              "html": "&lt;p&gt;Hello World&lt;/p&gt;"
               "text": "Hello World"
             }
           }
@@ -646,20 +459,8 @@
             "photo": "http://alice.example.com/photo"
           },
           "children": [
-            { 
-			  "type": "entry",
-			  "content": {
-				"html": "<p>Hello World</p>",
-				"text": "Hello World"
-			  }
-			},
-			{
-			  "type": "entry",
-			  "content": {
-				"html": "<p>A Second Post</p>",
-				"text": "A Second Post"
-			  }
-            }
+            { ... },
+            { ... }
           ]
         }
       </pre>
@@ -673,20 +474,8 @@
         <pre class="example">
           {
             "children": [
-			  { 
-				"type": "entry",
-				"content": {
-				  "html": "<p>Hello World</p>",
-				  "text": "Hello World"
-				}
-			  },
-			  {
-				"type": "entry",
-				"content": {
-				  "html": "<p>A Second Post</p>",
-				  "text": "A Second Post"
-				}
-			  }
+              { ... },
+              { ... }
             ]
           }
         </pre>
@@ -1160,7 +949,7 @@
         </tr>
         <tr>
           <td>Security considerations: </td>
-          <td>See [[RFC7159]] section 12 and the <a href="https://w3.org/TR/jf2#security-considerations">Security Considerations</a> section of this specification.</td>
+          <td>See [[RFC7159]] section 12 and the <a href="https://www.w3.org/TR/jf2/#security-considerations">Security Considerations</a> section of this specification.</td>
         </tr>
         <tr>
           <td>Contact: </td>
@@ -1178,21 +967,9 @@
     <section class="appendix">
       <h2>Change Log</h2>
         <section>
-          <h3>Changes from 27 June 2017 WD to this version</h3>
+          <h3>Changes from 12 June 2017 WD to this version</h3>
 
-          <p>This section lists changes from the <a href="https://www.w3.org/TR/2017/WD-jf2-20170627/">27 June 2017 WD</a> to this version.</p>
-
-          <ul>
-            <li>Expanded and corrected examples.</li>
-            <li>Added a <a href="#conformance">Conformance</a> section.</li>
-            <li>Added links to validator, implementation reports, and sample set.</li>
-          <ul>
-
-        </section>
-        <section>
-          <h3>Changes from 12 June 2017 WD to 27 June 2017</h3>
-
-          <p>This section lists changes from the <a href="https://www.w3.org/TR/2017/WD-jf2-20170612/">12 June 2017 WD</a> to <a href="https://www.w3.org/TR/2016/WD-jf2-20170627/">27 June 2017 WD</a>.</p>
+          <p>This section lists changes from the <a href="https://www.w3.org/TR/2017/WD-jf2-20170612/">12 June 2017 FPWD</a> to this version.</p>
 
           <ul>
             <li>Remove at-risk warning for JF2 Feed Discovery via 'a' tags in body</li>

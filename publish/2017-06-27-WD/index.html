@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html dir="ltr" typeof="bibo:Document w3p:WD" prefix="bibo: http://purl.org/ontology/bibo/ w3p: http://www.w3.org/2001/02pd/rec54#" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="dc:language" content="en" lang="">
+  <style>
+    /*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+    .hljs {
+      display: block;
+      overflow-x: auto;
+      padding: 0.5em;
+      color: #333;
+      background: #f8f8f8;
+    }
+
+    .hljs-comment,
+    .hljs-quote {
+      color: #998;
+      font-style: italic;
+    }
+
+    .hljs-keyword,
+    .hljs-selector-tag,
+    .hljs-subst {
+      color: #333;
+      font-weight: bold;
+    }
+
+    .hljs-number,
+    .hljs-literal,
+    .hljs-variable,
+    .hljs-template-variable,
+    .hljs-tag .hljs-attr {
+      color: #008080;
+    }
+
+    .hljs-string,
+    .hljs-doctag {
+      color: #d14;
+    }
+
+    .hljs-title,
+    .hljs-section,
+    .hljs-selector-id {
+      color: #900;
+      font-weight: bold;
+    }
+
+    .hljs-subst {
+      font-weight: normal;
+    }
+
+    .hljs-type,
+    .hljs-class .hljs-title {
+      color: #458;
+      font-weight: bold;
+    }
+
+    .hljs-tag,
+    .hljs-name,
+    .hljs-attribute {
+      color: #000080;
+      font-weight: normal;
+    }
+
+    .hljs-regexp,
+    .hljs-link {
+      color: #009926;
+    }
+
+    .hljs-symbol,
+    .hljs-bullet {
+      color: #990073;
+    }
+
+    .hljs-built_in,
+    .hljs-builtin-name {
+      color: #0086b3;
+    }
+
+    .hljs-meta {
+      color: #999;
+      font-weight: bold;
+    }
+
+    .hljs-deletion {
+      background: #fdd;
+    }
+
+    .hljs-addition {
+      background: #dfd;
+    }
+
+    .hljs-emphasis {
+      font-style: italic;
+    }
+
+    .hljs-strong {
+      font-weight: bold;
+    }
+  </style>
+  <style>
+    /* --- EXAMPLES --- */
+
+    div.example-title {
+      min-width: 7.5em;
+      color: #b9ab2d;
+    }
+
+    div.example-title span {
+      text-transform: uppercase;
+    }
+
+    aside.example,
+    div.example,
+    div.illegal-example {
+      padding: 0.5em;
+      margin: 1em 0;
+      position: relative;
+      clear: both;
+    }
+
+    div.illegal-example {
+      color: red
+    }
+
+    div.illegal-example p {
+      color: black
+    }
+
+    aside.example,
+    div.example {
+      padding: .5em;
+      border-left-width: .5em;
+      border-left-style: solid;
+      border-color: #e0cb52;
+      background: #fcfaee;
+    }
+
+    aside.example div.example {
+      border-left-width: .1em;
+      border-color: #999;
+      background: #fff;
+    }
+
+    aside.example div.example div.example-title {
+      color: #999;
+    }
+  </style>
+  <style>
+    /* --- ISSUES/NOTES --- */
+
+    div.issue-title,
+    div.note-title,
+    div.ednote-title,
+    div.warning-title {
+      padding-right: 1em;
+      min-width: 7.5em;
+      color: #b9ab2d;
+    }
+
+    div.issue-title {
+      color: #e05252;
+    }
+
+    div.note-title,
+    div.ednote-title {
+      color: #2b2;
+    }
+
+    div.warning-title {
+      color: #f22;
+    }
+
+    div.issue-title span,
+    div.note-title span,
+    div.ednote-title span,
+    div.warning-title span {
+      text-transform: uppercase;
+    }
+
+    div.note,
+    div.issue,
+    div.ednote,
+    div.warning {
+      margin-top: 1em;
+      margin-bottom: 1em;
+    }
+
+    .note>p:first-child,
+    .ednote>p:first-child,
+    .issue>p:first-child,
+    .warning>p:first-child {
+      margin-top: 0
+    }
+
+    .issue,
+    .note,
+    .ednote,
+    .warning {
+      padding: .5em;
+      border-left-width: .5em;
+      border-left-style: solid;
+    }
+
+    div.issue,
+    div.note,
+    div.ednote,
+    div.warning {
+      padding: 1em 1.2em 0.5em;
+      margin: 1em 0;
+      position: relative;
+      clear: both;
+    }
+
+    span.note,
+    span.ednote,
+    span.issue,
+    span.warning {
+      padding: .1em .5em .15em;
+    }
+
+    .issue {
+      border-color: #e05252;
+      background: #fbe9e9;
+    }
+
+    .note,
+    .ednote {
+      border-color: #52e052;
+      background: #e9fbe9;
+    }
+
+    .warning {
+      border-color: #f11;
+      border-width: .2em;
+      border-style: solid;
+      background: #fbe9e9;
+    }
+
+    .warning-title:before {
+      content: "⚠";
+      /*U+26A0 WARNING SIGN*/
+      font-size: 3em;
+      float: left;
+      height: 100%;
+      padding-right: .3em;
+      vertical-align: top;
+      margin-top: -0.5em;
+    }
+
+    li.task-list-item {
+      list-style: none;
+    }
+
+    input.task-list-item-checkbox {
+      margin: 0 0.35em 0.25em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <title>JF2 Post Serialization Format</title>
+
+
+
+  <link rel="pingback" href="https://webmention.io/w3c/xmlrpc">
+  <link rel="webmention" href="https://webmention.io/w3c/webmention">
+  <style id="respec-mainstyle">
+    /*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+    /* Override code highlighter background */
+
+    .hljs {
+      background: transparent !important;
+    }
+    /* --- INLINES --- */
+
+    em.rfc2119 {
+      text-transform: lowercase;
+      font-style: normal;
+      color: #900;
+    }
+
+    h1 abbr,
+    h2 abbr,
+    h3 abbr,
+    h4 abbr,
+    h5 abbr,
+    h6 abbr,
+    a abbr {
+      border: none;
+    }
+
+    dfn {
+      font-weight: bold;
+    }
+
+    a.internalDFN {
+      color: inherit;
+      border-bottom: 1px solid #99c;
+      text-decoration: none;
+    }
+
+    a.externalDFN {
+      color: inherit;
+      border-bottom: 1px dotted #ccc;
+      text-decoration: none;
+    }
+
+    a.bibref {
+      text-decoration: none;
+    }
+
+    cite .bibref {
+      font-style: normal;
+    }
+
+    code {
+      color: #C83500;
+    }
+
+    th code {
+      color: inherit;
+    }
+    /* --- TOC --- */
+
+    .toc a,
+    .tof a {
+      text-decoration: none;
+    }
+
+    a .secno,
+    a .figno {
+      color: #000;
+    }
+
+    ul.tof,
+    ol.tof {
+      list-style: none outside none;
+    }
+
+    .caption {
+      margin-top: 0.5em;
+      font-style: italic;
+    }
+    /* --- TABLE --- */
+
+    table.simple {
+      border-spacing: 0;
+      border-collapse: collapse;
+      border-bottom: 3px solid #005a9c;
+    }
+
+    .simple th {
+      background: #005a9c;
+      color: #fff;
+      padding: 3px 5px;
+      text-align: left;
+    }
+
+    .simple th[scope="row"] {
+      background: inherit;
+      color: inherit;
+      border-top: 1px solid #ddd;
+    }
+
+    .simple td {
+      padding: 3px 10px;
+      border-top: 1px solid #ddd;
+    }
+
+    .simple tr:nth-child(even) {
+      background: #f0f6ff;
+    }
+    /* --- DL --- */
+
+    .section dd>p:first-child {
+      margin-top: 0;
+    }
+
+    .section dd>p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section dd {
+      margin-bottom: 1em;
+    }
+
+    .section dl.attrs dd,
+    .section dl.eldef dd {
+      margin-bottom: 0;
+    }
+
+    #issue-summary>ul,
+    .respec-dfn-list {
+      column-count: 2;
+    }
+
+    #issue-summary li,
+    .respec-dfn-list li {
+      list-style: none;
+    }
+
+    @media print {
+      .removeOnSave {
+        display: none;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-WD">
+  <link rel="canonical" href="https://www.w3.org/TR/jf2/">
+  <meta name="generator" content="ReSpec 14.1.0">
+  <script id="initialUserConfig" type="application/json">
+    {
+      "license": "w3c-software-doc",
+      "specStatus": "WD",
+      "shortName": "jf2",
+      "publishDate": "2017-06-27",
+      "edDraftURI": "http://dissolve.github.io/jf2/",
+      "editors": [
+      {
+        "name": "Benjamin Roberts",
+        "url": "https://ben.thatmustbe.me/",
+        "w3cid": "76388"
+      },
+      {
+        "name": "Kevin Marks",
+        "url": "http://www.kevinmarks.com/",
+        "w3cid": ""
+      }],
+      "wg": "Social Web Working Group",
+      "wgURI": "https://www.w3.org/Social/WG",
+      "wgPublicList": "public-socialweb",
+      "wgPatentURI": "https://www.w3.org/2004/01/pp-impl/72531/status",
+      "noRecTrack": true,
+      "previousPublishDate": "2017-06-12",
+      "previousMaturity": "WD",
+      "otherLinks": [
+      {
+        "key": "Repository",
+        "data": [
+        {
+          "value": "GitHub",
+          "href": "https://github.com/dissolve/jf2"
+        },
+        {
+          "value": "Issues",
+          "href": "https://github.com/dissolve/jf2/issues"
+        },
+        {
+          "value": "Commits",
+          "href": "https://github.com/dissolve/jf2/commits/gh-pages"
+        }]
+      }],
+      "localBiblio":
+      {
+        "h-entry":
+        {
+          "title": "h-entry",
+          "href": "http://microformats.org/wiki/h-entry",
+          "authors": [
+            "Tantek Çelik"
+          ],
+          "status": "Living Specification",
+          "publisher": "http://microformats.org"
+        },
+        "h-card":
+        {
+          "title": "h-card",
+          "href": "http://microformats.org/wiki/h-card",
+          "authors": [
+            "Tantek Çelik"
+          ],
+          "status": "Living Specification",
+          "publisher": "http://microformats.org"
+        },
+        "h-feed":
+        {
+          "title": "h-feed",
+          "href": "http://microformats.org/wiki/h-feed",
+          "authors": [
+            "Tantek Çelik"
+          ],
+          "status": "Living Specification",
+          "publisher": "http://microformats.org"
+        },
+        "microformats2":
+        {
+          "title": "Microformats2",
+          "href": "http://microformats.org/wiki/microformats2",
+          "authors": [
+            "Tantek Çelik"
+          ],
+          "status": "Living Specification",
+          "publisher": "http://microformats.org"
+        },
+        "microformats2-parsing":
+        {
+          "title": "Microformats2 Parsing",
+          "href": "http://microformats.org/wiki/microformats2-parsing",
+          "authors": [
+            "Tantek Çelik"
+          ],
+          "status": "Living Specification",
+          "publisher": "http://microformats.org"
+        },
+        "jsonfeed-v1":
+        {
+          "title": "JSON Feed Version 1",
+          "href": "http://jsonfeed.org/version/1",
+          "authors": [
+            "Brent Simmons",
+            "Manton Reece"
+          ],
+          "status": "Draft",
+          "publisher": "http://jsonfeed.org"
+        }
+      },
+      "publishISODate": "2017-06-27T00:00:00.000Z",
+      "generatedSubtitle": "Working Draft 27 June 2017"
+    }
+  </script>
+</head>
+<body aria-busy="false" class="h-entry" id="respecDocument">
+  <div class="head" role="contentinfo" id="respecHeader">
+    <p>
+      <a class="logo" href="https://www.w3.org/"><img src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C" width="72" height="48"></a>
+    </p>
+    <p></p>
+    <h1 class="title p-name" id="title" property="dcterms:title">JF2 Post Serialization Format</h1>
+    <h2 id="w3c-working-draft-27-june-2017"><abbr title="World Wide Web Consortium">W3C</abbr> Working Draft <time property="dcterms:issued" class="dt-published" datetime="2017-06-27">27 June 2017</time></h2>
+    <dl>
+      <dt>This version:</dt>
+      <dd><a class="u-url" href="https://www.w3.org/TR/2017/WD-jf2-20170627/">https://www.w3.org/TR/2017/WD-jf2-20170627/</a></dd>
+      <dt>Latest published version:</dt>
+      <dd><a href="https://www.w3.org/TR/jf2/">https://www.w3.org/TR/jf2/</a></dd>
+      <dt>Latest editor's draft:</dt>
+      <dd><a href="http://dissolve.github.io/jf2/">http://dissolve.github.io/jf2/</a></dd>
+      <dt>Previous version:</dt>
+      <dd><a rel="dcterms:replaces" href="https://www.w3.org/TR/2017/WD-jf2-20170612/">https://www.w3.org/TR/2017/WD-jf2-20170612/</a></dd>
+      <dt>Editors:</dt>
+      <dd class="p-author h-card vcard" property="bibo:editor" resource="_:editor0" data-editor-id="76388"><span property="rdf:first" typeof="foaf:Person"><meta property="foaf:name" content="Benjamin Roberts"><a class="u-url url p-name fn" property="foaf:homepage" href="https://ben.thatmustbe.me/">Benjamin Roberts</a></span>
+        <span property="rdf:rest" resource="_:editor1"></span>
+      </dd>
+      <dd class="p-author h-card vcard" resource="_:editor1" data-editor-id="76388"><span property="rdf:first" typeof="foaf:Person"><meta property="foaf:name" content="Kevin Marks"><a class="u-url url p-name fn" property="foaf:homepage" href="http://www.kevinmarks.com/">Kevin Marks</a></span>
+        <span property="rdf:rest" resource="rdf:nil"></span>
+      </dd>
+
+      <dt>Repository:</dt>
+      <dd>
+        <a href="https://github.com/dissolve/jf2">
+                      GitHub
+                    </a>
+      </dd>
+      <dd>
+        <a href="https://github.com/dissolve/jf2/issues">
+                      Issues
+                    </a>
+      </dd>
+      <dd>
+        <a href="https://github.com/dissolve/jf2/commits/gh-pages">
+                      Commits
+                    </a>
+      </dd>
+    </dl>
+    <p class="copyright">
+      <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2017
+
+      <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>,
+      <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>,
+      <a href="https://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>).
+      <abbr title="World Wide Web Consortium">W3C</abbr> <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
+      <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and
+      <a rel="license" href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document">permissive document license</a> rules apply.
+    </p>
+    <hr title="Separator for header">
+  </div>
+
+  <section id="abstract" class="introductory" property="dc:abstract">
+    <h2 id="h-abstract" resource="#h-abstract"><span property="xhv:role" resource="xhv:heading">Abstract</span></h2>
+    <p>
+      This document describes a JSON serialization format to describe simple streams of data as well as single objects of data for data transfer and processing.
+    </p>
+  </section>
+
+  <section id="sotd" class="introductory">
+    <h2 id="h-sotd" resource="#h-sotd"><span property="xhv:role" resource="xhv:heading">Status of This Document</span></h2>
+    <p>
+      <em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this technical report can be found in the <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at https://www.w3.org/TR/.</em>
+    </p>
+
+
+    <p>
+      This document was published by the <a href="https://www.w3.org/Social/WG">Social Web Working Group</a> as a Working Draft. Comments regarding this document are welcome. Please send them to
+      <a href="mailto:public-socialweb@w3.org">public-socialweb@w3.org</a> (<a href="mailto:public-socialweb-request@w3.org?subject=subscribe">subscribe</a>,
+      <a href="https://lists.w3.org/Archives/Public/public-socialweb/">archives</a>).
+    </p>
+    <p>
+      Publication as a Working Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress.
+    </p>
+    <p>
+      This document was produced by a group operating under the
+      <a id="sotd_patent" property="w3p:patentRules" href="https://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2004 <abbr title="World Wide Web Consortium">W3C</abbr> Patent
+            Policy</a>. The group does not expect this document to become a <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation.
+      <abbr title="World Wide Web Consortium">W3C</abbr> maintains a <a href="https://www.w3.org/2004/01/pp-impl/72531/status" rel="disclosure">public list of any patent
+              disclosures</a> made in connection with the deliverables of the group; that page also includes instructions for disclosing a patent. An individual who has actual knowledge of a patent which the individual believes contains
+      <a href="https://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential
+            Claim(s)</a> must disclose the information in accordance with
+      <a href="https://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section
+            6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
+    </p>
+    <p>This document is governed by the <a id="w3c_process_revision" href="https://www.w3.org/2017/Process-20170301/">1 March 2017 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
+    </p>
+
+
+  </section>
+  <nav id="toc">
+    <h2 class="introductory" id="table-of-contents" resource="#table-of-contents"><span property="xhv:role" resource="xhv:heading">Table of Contents</span></h2>
+    <ol class="toc" role="directory">
+      <li class="tocline"><a href="#authorsnote" class="tocxref"><span class="secno">1. </span>Author's Note</a></li>
+      <li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">2. </span>Introduction</a></li>
+      <li class="tocline"><a href="#use-cases" class="tocxref"><span class="secno">3. </span>Use Cases</a></li>
+      <li class="tocline"><a href="#syntax" class="tocxref"><span class="secno">4. </span>Syntax</a>
+        <ol class="toc">
+          <li class="tocline"><a href="#reservedkeywords" class="tocxref"><span class="secno">4.1 </span>Reserved Keywords</a></li>
+          <li class="tocline"><a href="#posts" class="tocxref"><span class="secno">4.2 </span>Posts</a>
+            <ol class="toc">
+              <li class="tocline"><a href="#post-objects" class="tocxref"><span class="secno">4.2.1 </span>Post Objects</a></li>
+              <li class="tocline"><a href="#post-properties" class="tocxref"><span class="secno">4.2.2 </span>Post Properties</a></li>
+              <li class="tocline"><a href="#example-post" class="tocxref"><span class="secno">4.2.3 </span>Example Post</a></li>
+            </ol>
+          </li>
+          <li class="tocline"><a href="#author" class="tocxref"><span class="secno">4.3 </span>Author</a></li>
+          <li class="tocline"><a href="#html-content" class="tocxref"><span class="secno">4.4 </span>HTML Content</a>
+            <ol class="toc">
+              <li class="tocline"><a href="#multiple-urls" class="tocxref"><span class="secno">4.4.1 </span>Multiple URLs for video/audio/picture</a></li>
+            </ol>
+          </li>
+        </ol>
+      </li>
+      <li class="tocline"><a href="#using-references" class="tocxref"><span class="secno">5. </span>Using References</a>
+        <ol class="toc">
+          <li class="tocline"><a href="#example-of-references" class="tocxref"><span class="secno">5.1 </span>Example of References</a></li>
+        </ol>
+      </li>
+      <li class="tocline"><a href="#collections" class="tocxref"><span class="secno">6. </span>Collections</a>
+        <ol class="toc">
+          <li class="tocline"><a href="#multiple-items" class="tocxref"><span class="secno">6.1 </span>Multiple items on a page</a></li>
+        </ol>
+      </li>
+      <li class="tocline"><a href="#deriving" class="tocxref"><span class="secno">7. </span>Deriving the Syntax</a>
+        <ol class="toc">
+          <li class="tocline"><a href="#deriving-note" class="tocxref"><span class="secno">7.1 </span>Deriving a Note</a></li>
+          <li class="tocline"><a href="#JSON-LD" class="tocxref"><span class="secno">7.2 </span>JSON-LD Consideration</a></li>
+        </ol>
+      </li>
+      <li class="tocline"><a href="#profiles" class="tocxref"><span class="secno">8. </span>Profiles</a>
+        <ol class="toc">
+          <li class="tocline"><a href="#profile_introduction" class="tocxref"><span class="secno">8.1 </span>Intro</a></li>
+          <li class="tocline"><a href="#jf2feed" class="tocxref"><span class="secno">8.2 </span>JF2 Feed</a>
+            <ol class="toc">
+              <li class="tocline"><a href="#jf2feed_intro" class="tocxref"><span class="secno">8.2.1 </span>Introduction</a></li>
+              <li class="tocline"><a href="#jf2feed_required_fields" class="tocxref"><span class="secno">8.2.2 </span>Required Fields and Required Formats</a></li>
+              <li class="tocline"><a href="#jf2feed_discovery" class="tocxref"><span class="secno">8.2.3 </span>Discovery</a></li>
+              <li class="tocline"><a href="#jf2feed_example" class="tocxref"><span class="secno">8.2.4 </span>JF2 Feed Example</a></li>
+              <li class="tocline"><a href="#jsonfeed_to_jf2feed" class="tocxref"><span class="secno">8.2.5 </span>JSON Feed to JF2 conversion</a></li>
+            </ol>
+          </li>
+        </ol>
+      </li>
+      <li class="tocline"><a href="#extensions" class="tocxref"><span class="secno">9. </span>Extension</a></li>
+      <li class="tocline"><a href="#internationalization" class="tocxref"><span class="secno">10. </span>Language And Internationalization</a></li>
+      <li class="tocline"><a href="#implementations" class="tocxref"><span class="secno">11. </span>Implementations</a>
+        <ol class="toc">
+          <li class="tocline"><a href="#webmention.io" class="tocxref"><span class="secno">11.1 </span>Webmention.io</a></li>
+          <li class="tocline"><a href="#xray" class="tocxref"><span class="secno">11.2 </span>XRay</a></li>
+          <li class="tocline"><a href="#unmung" class="tocxref"><span class="secno">11.3 </span>Unmung</a></li>
+          <li class="tocline"><a href="#socialstreams" class="tocxref"><span class="secno">11.4 </span>SocialStreams</a></li>
+          <li class="tocline"><a href="#mf2util" class="tocxref"><span class="secno">11.5 </span>mf2util</a></li>
+        </ol>
+      </li>
+      <li class="tocline"><a href="#privacy" class="tocxref"><span class="secno">12. </span>Privacy Considerations</a></li>
+      <li class="tocline"><a href="#security-considerations" class="tocxref"><span class="secno">13. </span>Security Considerations</a></li>
+      <li class="tocline"><a href="#iana" class="tocxref"><span class="secno">14. </span>IANA Considerations</a>
+        <ol class="toc">
+          <li class="tocline"><a href="#media-type" class="tocxref"><span class="secno">14.1 </span>The <code>application/jf2feed+json</code> Media Type</a></li>
+        </ol>
+      </li>
+      <li class="tocline"><a href="#change-log" class="tocxref"><span class="secno">A. </span>Change Log</a>
+        <ol class="toc">
+          <li class="tocline"><a href="#changes-from-12-june-2017-wd-to-this-version" class="tocxref"><span class="secno">A.1 </span>Changes from 12 June 2017 WD to this version</a></li>
+          <li class="tocline"><a href="#changes-from-28-july-2016-fpwd-to-12-jun-2017-wd" class="tocxref"><span class="secno">A.2 </span>Changes from 28 July 2016 FPWD to 12 Jun 2017 WD</a></li>
+        </ol>
+      </li>
+      <li class="tocline"><a href="#acknowledgements" class="tocxref"><span class="secno">B. </span>Acknowledgements</a></li>
+      <li class="tocline"><a href="#references" class="tocxref"><span class="secno">C. </span>References</a>
+        <ol class="toc">
+          <li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">C.1 </span>Normative references</a></li>
+          <li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">C.2 </span>Informative references</a></li>
+        </ol>
+      </li>
+    </ol>
+  </nav>
+
+  <section id="authorsnote" class="informative" typeof="bibo:Chapter" resource="#authorsnote" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-authorsnote" resource="#h-authorsnote"><span property="xhv:role" resource="xhv:heading"><span class="secno">1. </span>Author's Note</span>
+    </h2>
+    <p><em>This section is non-normative.</em></p>
+    <p>
+      This document is an attempt to unify various simplified versions of the Microformats-2 representative JSON format. As such, much of this document is likely to change as various implementations contribute input.
+    </p>
+  </section>
+
+  <section class="informative" id="introduction" typeof="bibo:Chapter" resource="#introduction" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-introduction" resource="#h-introduction"><span property="xhv:role" resource="xhv:heading"><span class="secno">2. </span>Introduction</span>
+    </h2>
+    <p><em>This section is non-normative.</em></p>
+    <p>
+      JF2 is a JSON based document format that describes lists and single entries of information. The primary use case for JF2 is to create a JSON format for social web post objects to be processed directly by client software and by other servers.
+    </p>
+    <p>
+      The name JF2 comes from its origins in being a direct parsed format of Microformats-2 (MF2) data from html. Rather than defining a new vocabulary, JF2 uses the vocabulary defined by [<cite><a class="bibref" href="#bib-microformats2">microformats2</a></cite>] however any other suitable vocabulary could be used. JF2 is vocabulary independent except for its profiles which are fully vocabulary aware.
+    </p>
+  </section>
+
+  <section class="informative" id="use-cases" typeof="bibo:Chapter" resource="#use-cases" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-use-cases" resource="#h-use-cases"><span property="xhv:role" resource="xhv:heading"><span class="secno">3. </span>Use Cases</span>
+    </h2>
+    <p><em>This section is non-normative.</em></p>
+    <p>
+      JF2 has evolved as a result of a variety of use-cases for different implementations exploring ways to simplify their existing use of canonical parsed microformats2 JSON output. All of these use cases in particular are simply to have a single format for the storage and use of social web objects.
+    </p>
+    <p>
+      <a href="#webmention.io">Webmention.io</a> is a service that provides webmention processing and verification on behalf of other sites. It uses a simple JSON object to transfer a processed webmention back to the client site's javascript for display. The attributes are intended to be processed only by the client site's javascript code, not by anything else.
+    </p>
+    <p>
+      <a href="#mf2util">mf2util</a> is a utility library that provides a layer on top of microformats processing. The library returns only a simple JSON object and strips off any unnecessary information leaving the library user only the most essential information.
+    </p>
+    <p>
+      Various services (<a href="#xray">xray</a>, <a href="#unmung">unmung</a>, <a href="#socialstreams">socialstreams</a>) provide conversion from microformats pages in to JF2 for quick inspection to validate proper semantics.
+    </p>
+  </section>
+
+  <section id="syntax" typeof="bibo:Chapter" resource="#syntax" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-syntax" resource="#h-syntax"><span property="xhv:role" resource="xhv:heading"><span class="secno">4. </span>Syntax</span>
+    </h2>
+    <p>
+      JF2 consists of JSON objects which are defined by a <a href="#dfn-type" class="internalDFN" data-link-type="dfn">type</a> property that will specify the vocabulary of the object. Properties are attached to these objects which will contain either a single string, a single object, an array of strings, or an array of objects. Arrays that have only a single item <em class="rfc2119" title="SHOULD">SHOULD</em> be condensed into only the single containing item. Any property of an object <em class="rfc2119" title="MAY">MAY</em> be a single item or an array of items except for reserved words defined below.
+    </p>
+
+    <section id="reservedkeywords" typeof="bibo:Chapter" resource="#reservedkeywords" property="bibo:hasPart">
+      <h3 id="h-reservedkeywords" resource="#h-reservedkeywords"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1 </span>Reserved Keywords</span>
+      </h3>
+      <p>
+        The following keywords are reserved and cannot be used as property names in vocabularies.
+      </p>
+      <ul>
+        <li><dfn data-dfn-type="dfn" id="dfn-type">type</dfn> defines the object classification. In microformats, this is presumed to be the h-* class from the Microformats vocabulary. Type <em class="rfc2119" title="MUST">MUST</em> be a single string value and may not be an object or an array. </li>
+        <li><dfn data-dfn-type="dfn" id="dfn-children">children</dfn> is a container for all unnamed sub-objects inside an entry. That is, any sub-object that is not associated to a specific property of the object. If a children value is set, it <em class="rfc2119" title="MUST">MUST</em> be serialized as an array even if only a single item is present.</li>
+        <li><dfn data-dfn-type="dfn" id="dfn-references">references</dfn> is an associative array, serialized as a JSON object, of all sub-objects inside an object which have ID defined as and external URL. Any objects in this array are not authoritative. If the references property is defined, it <em class="rfc2119" title="MUST">MUST</em> be serialized as an associative array and <em class="rfc2119" title="MUST">MUST</em> be present at the top level entry only.
+        </li>
+        <li><dfn data-dfn-type="dfn" id="dfn-content-type">content-type</dfn> is the MIME media type of the containing object. Content-type <em class="rfc2119" title="MUST">MUST</em> be a single string value only.</li>
+        <li><dfn data-dfn-type="dfn" id="dfn-html">html</dfn> is the text/html version of the containing object. Content-type <em class="rfc2119" title="MUST">MUST</em> be a single string value only.</li>
+        <li><dfn data-dfn-type="dfn" id="dfn-text">text</dfn> is the text/plain version of the containing object. Content-type <em class="rfc2119" title="MUST">MUST</em> be a single string value only.</li>
+        <li><dfn data-dfn-type="dfn" id="dfn-value">value</dfn> is a textual representation of the object. By default this is presumed to be of content-type "text/plain". Value <em class="rfc2119" title="MUST">MUST</em> be a single string value only.
+        </li>
+        <li><dfn data-dfn-type="dfn" id="dfn-lang">lang</dfn> is the localization language of the containing object and all sub-objects, unless overridden by another lang definition. Setting lang at a lower level overrides any lang value set at higher levels. This value <em class="rfc2119" title="MUST">MUST</em> be a single string value and <em class="rfc2119" title="MUST">MUST</em> be a [<cite><a class="bibref" href="#bib-RFC5646">RFC5646</a></cite>] language tag.</li>
+        <li><dfn data-dfn-type="dfn" id="dfn-context">@context</dfn> is the context of the vocabulary as defined in [<cite><a class="bibref" href="#bib-JSON-LD">JSON-LD</a></cite>]. This attribute <em class="rfc2119" title="MAY">MAY</em> be omitted and has an inferred value if not present. If it is present it <em class="rfc2119" title="MUST">MUST</em> be present at the top level entry only. See the <a href="#JSON-LD">JSON-LD Consideration</a>
+        </li>
+      </ul>
+    </section>
+
+    <section id="posts" typeof="bibo:Chapter" resource="#posts" property="bibo:hasPart">
+      <h3 id="h-posts" resource="#h-posts"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.2 </span>Posts</span>
+      </h3>
+
+      <section id="post-objects" typeof="bibo:Chapter" resource="#post-objects" property="bibo:hasPart">
+        <h4 id="h-post-objects" resource="#h-post-objects"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.2.1 </span>Post Objects</span>
+        </h4>
+        <p>
+          A post is composed of a "type" property, and one or more additional properties that describe the post.
+        </p>
+        <p>
+          The "type" property has a value that describes the vocabulary of this post. Common values include "entry", "card", etc. See <a href="http://microformats.org/wiki/microformats-2#v2_vocabularies">Microformats 2 vocabularies</a> for the full list when using a microformats based vocabulary.
+        </p>
+        <p>
+          Any additional properties in the post object are considered part of the post's vocabulary.
+        </p>
+
+      </section>
+
+      <section id="post-properties" typeof="bibo:Chapter" resource="#post-properties" property="bibo:hasPart">
+        <h4 id="h-post-properties" resource="#h-post-properties"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.2.2 </span>Post Properties</span>
+        </h4>
+        <p>
+          The list of valid post properties is defined by the vocabularies. This allows new vocabularies to be developed outside the development of the syntax.
+        </p>
+        <p>
+          Most values will be strings. If a property (such as `author` for example) references another object, it may be serialized in two ways: as an object serialized as the property value or as the unique identifier or URL where the object can be found. See <a href="#using-references">Using References</a>
+        </p>
+        <p>
+          Values may also be arrays if the vocabulary allows for multiple values of the property.
+        </p>
+
+      </section>
+
+      <section id="example-post" typeof="bibo:Chapter" resource="#example-post" property="bibo:hasPart">
+        <h4 id="h-example-post" resource="#h-example-post"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.2.3 </span>Example Post</span>
+        </h4>
+
+        <div class="example">
+          <div class="example-title marker"><span>Example 1</span></div>
+          <pre class="hljs json" aria-busy="false" aria-live="polite">{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"entry"</span>,
+  <span class="hljs-attr">"published"</span>: <span class="hljs-string">"2015-10-20T15:49:00-0700"</span>,
+  <span class="hljs-attr">"url"</span>: <span class="hljs-string">"http://example.com/post/fsjeuu8372"</span>,
+  <span class="hljs-attr">"author"</span>: {
+    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"card"</span>,
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Alice"</span>,
+    <span class="hljs-attr">"url"</span>: <span class="hljs-string">"http://alice.example.com"</span>,
+    <span class="hljs-attr">"photo"</span>: <span class="hljs-string">"http://alice.example.com/photo.jpg"</span>
+  },
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Hello World"</span>,
+  <span class="hljs-attr">"content"</span>: <span class="hljs-string">"This is a blog post"</span>,
+  <span class="hljs-attr">"category"</span>: <span class="hljs-string">"Posts"</span>
+}</pre>
+        </div>
+
+        <div class="example">
+          <div class="example-title marker"><span>Example 2</span></div>
+          <pre class="hljs json" aria-busy="false" aria-live="polite">{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"entry"</span>,
+  <span class="hljs-attr">"published"</span>: <span class="hljs-string">"2015-10-20T15:49:00-0700"</span>,
+  <span class="hljs-attr">"url"</span>: <span class="hljs-string">"http://example.com/like/r23eugi02c"</span>,
+  <span class="hljs-attr">"author"</span>: {
+    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"card"</span>,
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Alice"</span>,
+    <span class="hljs-attr">"url"</span>: <span class="hljs-string">"http://alice.example.com"</span>,
+    <span class="hljs-attr">"photo"</span>: <span class="hljs-string">"http://alice.example.com/photo.jpg"</span>
+  },
+  <span class="hljs-attr">"like-of"</span>: <span class="hljs-string">"http://bob.example.com/post/100"</span>,
+  <span class="hljs-attr">"category"</span>: [<span class="hljs-string">"Likes"</span>, <span class="hljs-string">"Posts"</span>]
+}</pre>
+        </div>
+      </section>
+    </section>
+
+    <section id="author" typeof="bibo:Chapter" resource="#author" property="bibo:hasPart">
+      <h3 id="h-author" resource="#h-author"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.3 </span>Author</span>
+      </h3>
+      <p>
+        An author is represented by the h-card vocabulary, and consists of a name, photo URL, URL to the author profile, and [others](http://microformats.org/wiki/h-card). This is represented by the following JSON.
+      </p>
+
+      <div class="example">
+        <div class="example-title marker"><span>Example 3</span></div>
+        <pre class="hljs json" aria-busy="false" aria-live="polite">{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"card"</span>,
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Aaron Parecki"</span>,
+  <span class="hljs-attr">"photo"</span>: <span class="hljs-string">"http://aaronparecki.com/photo.jpg"</span>,
+  <span class="hljs-attr">"url"</span>: <span class="hljs-string">"http://aaronparecki.com/"</span>
+}</pre>
+      </div>
+    </section>
+
+    <section id="html-content" typeof="bibo:Chapter" resource="#html-content" property="bibo:hasPart">
+      <h3 id="h-html-content" resource="#h-html-content"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.4 </span>HTML Content</span>
+      </h3>
+      <p>
+        By default, any string value should be interpreted as literal plaintext. This means when displaying a string in an HTML page, it must be HTML escaped.
+      </p>
+
+      <p>
+        If the value of a property is to be interpreted as HTML, it <em class="rfc2119" title="MUST">MUST</em> be enclosed in an object and placed under the "html" property as follows. If a plaintext version is also available, that is placed under the "text" property.
+      </p>
+
+      <div class="example">
+        <div class="example-title marker"><span>Example 4</span></div>
+        <pre class="hljs json" aria-busy="false" aria-live="polite">{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"entry"</span>,
+  <span class="hljs-attr">"content"</span>: {
+    <span class="hljs-attr">"html"</span>: <span class="hljs-string">"&lt;p&gt;Hello World&lt;/p&gt;"</span>
+    <span class="hljs-string">"text"</span>: <span class="hljs-string">"Hello World"</span>
+  }
+}</pre>
+      </div>
+
+      <section id="multiple-urls" typeof="bibo:Chapter" resource="#multiple-urls" property="bibo:hasPart">
+        <h4 id="h-multiple-urls" resource="#h-multiple-urls"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.4.1 </span>Multiple URLs for video/audio/picture</span>
+        </h4>
+        <p>
+          Since HTML video/audio/picture tags may have multiple URLs, we need a way to convey this information in the JSON representation.
+        </p>
+
+        <div class="example">
+          <div class="example-title marker"><span>Example 5</span></div>
+          <pre class="hljs xml" aria-busy="false" aria-live="polite"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"h-entry"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">video</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"u-video"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"640"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"360"</span> <span class="hljs-attr">preload</span> <span class="hljs-attr">controls</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"sample_h264.mov"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'video/mp4; codecs="avc1.42E01E, mp4a.40.2"'</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"sample_ogg.ogv"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'video/ogg; codecs="theora, vorbis"'</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"sample_webm.webm"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'video/webm; codecs="vp8, vorbis"'</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">video</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre>
+        </div>
+
+        <div class="example">
+          <div class="example-title marker"><span>Example 6</span></div>
+          <pre class="hljs json" aria-busy="false" aria-live="polite">{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"entry"</span>,
+  <span class="hljs-attr">"video"</span>: [
+    {
+      <span class="hljs-attr">"content-type"</span>: <span class="hljs-string">"video/mp4"</span>,
+      <span class="hljs-attr">"url"</span>: <span class="hljs-string">"sample_h264.mov"</span>
+    },
+    {
+      <span class="hljs-attr">"content-type"</span>: <span class="hljs-string">"video/ogg"</span>,
+      <span class="hljs-attr">"url"</span>: <span class="hljs-string">"sample_ogg.ogg"</span>
+    },
+    {
+      <span class="hljs-attr">"content-type"</span>: <span class="hljs-string">"video/webm"</span>,
+      <span class="hljs-attr">"url"</span>: <span class="hljs-string">"sample_webm.webm"</span>
+    }
+  ]
+}</pre>
+        </div>
+
+      </section>
+    </section>
+  </section>
+
+  <section id="using-references" typeof="bibo:Chapter" resource="#using-references" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-using-references" resource="#h-using-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">5. </span>Using References</span>
+    </h2>
+    <p>
+      The purpose of the `references` property is to exclude any non-authoritative data from the defined object. To do this, non-authoritative data is moved so that implementations looking to process only authoritative data may simply ignore the references property and fetch any data that would be contained there from its authoritative source.
+    </p>
+    <p>
+      If a property is a reference to an object that is defined authoritatively in some other location, the `references` property <em class="rfc2119" title="SHOULD">SHOULD</em> be used. The property
+      <em class="rfc2119" title="SHOULD">SHOULD</em> contain only the unique identifier or URL where the authoritative data may be found. In the references object, the URL or unique identifier <em class="rfc2119" title="MAY">MAY</em> be entered as the key field and a serialization of the referenced object <em class="rfc2119" title="MAY">MAY</em> be provided. This serialization of the referenced object <em class="rfc2119" title="MAY">MAY</em> be incomplete so as to provide only necessary data.
+    </p>
+    <p>
+      Parsing implementations <em class="rfc2119" title="SHOULD">SHOULD</em> fetch data from the authoritative source instead of using the references object.
+    </p>
+
+    <section id="example-of-references" typeof="bibo:Chapter" resource="#example-of-references" property="bibo:hasPart">
+      <h3 id="h-example-of-references" resource="#h-example-of-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.1 </span>Example of References</span>
+      </h3>
+      <div class="example">
+        <div class="example-title marker"><span>Example 7</span></div>
+        <pre class="hljs json" aria-busy="false" aria-live="polite">{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"entry"</span>,
+  <span class="hljs-attr">"published"</span>: <span class="hljs-string">"2015-10-20T15:49:00-0700"</span>,
+  <span class="hljs-attr">"url"</span>: <span class="hljs-string">"http://example.com/post/fsjeuu8372"</span>,
+  <span class="hljs-attr">"author"</span>: <span class="hljs-string">"http://alice.example.com"</span>,
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Hello World"</span>,
+  <span class="hljs-attr">"content"</span>: <span class="hljs-string">"This is a blog post"</span>,
+  <span class="hljs-attr">"category"</span>: <span class="hljs-string">"Posts"</span>,
+  <span class="hljs-attr">"references"</span>: {
+    <span class="hljs-attr">"http://alice.example.com"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"card"</span>,
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Alice"</span>,
+      <span class="hljs-attr">"url"</span>: <span class="hljs-string">"http://alice.example.com"</span>,
+      <span class="hljs-attr">"photo"</span>: <span class="hljs-string">"http://alice.example.com/photo.jpg"</span>
+    }
+  }
+}</pre>
+      </div>
+
+      <div class="example">
+        <div class="example-title marker"><span>Example 8</span></div>
+        <pre class="hljs json" aria-busy="false" aria-live="polite">{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"entry"</span>,
+  <span class="hljs-attr">"published"</span>: <span class="hljs-string">"2015-10-20T15:49:00-0700"</span>,
+  <span class="hljs-attr">"url"</span>: <span class="hljs-string">"http://example.com/like/r23eugi02c"</span>,
+  <span class="hljs-attr">"author"</span>: {
+    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"card"</span>,
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Alice"</span>,
+    <span class="hljs-attr">"url"</span>: <span class="hljs-string">"http://alice.example.com"</span>,
+    <span class="hljs-attr">"photo"</span>: <span class="hljs-string">"http://alice.example.com/photo.jpg"</span>
+  },
+  <span class="hljs-attr">"like-of"</span>: <span class="hljs-string">"http://bob.example.com/post/100"</span>,
+  <span class="hljs-attr">"category"</span>: [<span class="hljs-string">"Likes"</span>, <span class="hljs-string">"Posts"</span>],
+  <span class="hljs-attr">"references"</span>: {
+    <span class="hljs-attr">"http://bob.example.com/post/100"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"entry"</span>,
+      <span class="hljs-attr">"published"</span>: <span class="hljs-string">"2015-10-18T12:33:00-0700"</span>,
+      <span class="hljs-attr">"url"</span>: <span class="hljs-string">"http://bob.example.com/post/100"</span>,
+      <span class="hljs-attr">"author"</span>: <span class="hljs-string">"http://bob.example.com"</span>,
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"My First Post"</span>,
+      <span class="hljs-attr">"content"</span>: <span class="hljs-string">"This is my first post on my new blog, I hope you like it"</span>
+    },
+    <span class="hljs-attr">"http://bob.example.com"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"card"</span>,
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Bob"</span>,
+      <span class="hljs-attr">"url"</span>: <span class="hljs-string">"http://bob.example.com"</span>,
+      <span class="hljs-attr">"photo"</span>: <span class="hljs-string">"http://bob.example.com/mypicture.jpg"</span>
+    }
+  }
+}</pre>
+      </div>
+    </section>
+
+  </section>
+
+  <section id="collections" typeof="bibo:Chapter" resource="#collections" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-collections" resource="#h-collections"><span property="xhv:role" resource="xhv:heading"><span class="secno">6. </span>Collections</span>
+    </h2>
+
+    <p>
+      Posts can live inside of collections. A collection may be a home page feed, or a feed of other posts such as a list of contacts, a list of things someone has liked, etc. There is no requirement that all posts in a collection need to be of the same type.
+    </p>
+
+    <p>
+      The collection may also have its own properties such as "name" or "author".
+    </p>
+
+    <div class="example">
+      <div class="example-title marker"><span>Example 9</span></div>
+      <pre class="hljs javascript" aria-busy="false" aria-live="polite">{
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"feed"</span>,
+  <span class="hljs-string">"url"</span>: <span class="hljs-string">"http://alice.example.com/collectionurl"</span>,
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"Alice's Home Page"</span>,
+  <span class="hljs-string">"author"</span>: {
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"card"</span>,
+    <span class="hljs-string">"name"</span>: <span class="hljs-string">"Alice"</span>,
+    <span class="hljs-string">"url"</span>: <span class="hljs-string">"http://alice.example.com"</span>,
+    <span class="hljs-string">"photo"</span>: <span class="hljs-string">"http://alice.example.com/photo"</span>
+  },
+  <span class="hljs-string">"children"</span>: [
+    { ... },
+    { ... }
+  ]
+}</pre>
+    </div>
+
+    <section id="multiple-items" typeof="bibo:Chapter" resource="#multiple-items" property="bibo:hasPart">
+      <h3 id="h-multiple-items" resource="#h-multiple-items"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.1 </span>Multiple items on a page</span>
+      </h3>
+      <p>
+        If an HTML page contains multiple top-level items, (most commonly found when a page contains a list of [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] objects), the parser creates an implicit top-level collection with no properties.
+      </p>
+
+      <div class="example">
+        <div class="example-title marker"><span>Example 10</span></div>
+        <pre class="hljs javascript" aria-busy="false" aria-live="polite">{
+  <span class="hljs-string">"children"</span>: [
+    { ... },
+    { ... }
+  ]
+}</pre>
+      </div>
+
+    </section>
+  </section>
+
+  <section id="deriving" typeof="bibo:Chapter" resource="#deriving" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-deriving" resource="#h-deriving"><span property="xhv:role" resource="xhv:heading"><span class="secno">7. </span>Deriving the Syntax</span>
+    </h2>
+    <p>
+      This syntax is derived from HTML with Microformats-2, converted to JSON [<cite><a class="bibref" href="#bib-microformats2-parsing">microformats2-parsing</a></cite>] converted to a simplified JSON. The examples below illustrate the process.
+    </p>
+
+    <section id="deriving-note" typeof="bibo:Chapter" resource="#deriving-note" property="bibo:hasPart">
+      <h3 id="h-deriving-note" resource="#h-deriving-note"><span property="xhv:role" resource="xhv:heading"><span class="secno">7.1 </span>Deriving a Note</span>
+      </h3>
+
+      <h3 id="html-microformats">HTML + Microformats</h3>
+      <div class="example">
+        <div class="example-title marker"><span>Example 11</span></div>
+        <pre class="hljs xml" aria-busy="false" aria-live="polite"><span class="hljs-tag">&lt;<span class="hljs-name">article</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"h-entry"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"p-name"</span>&gt;</span>Hello World<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Published by <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"p-author h-card"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://example.com/"</span>&gt;</span>A. Developer<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+     on <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://example.com/2015/10/21"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"u-url"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">time</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dt-published"</span> <span class="hljs-attr">datetime</span>=<span class="hljs-string">"2015-10-21T12:00:00-0700"</span>&gt;</span>October 21<span class="hljs-tag">&lt;<span class="hljs-name">sup</span>&gt;</span>st<span class="hljs-tag">&lt;/<span class="hljs-name">sup</span>&gt;</span>, 2015<span class="hljs-tag">&lt;/<span class="hljs-name">time</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+ 
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"p-summary"</span>&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet ultrices pulvinar.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+ 
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"e-content"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Donec dapibus enim lacus, <span class="hljs-tag">&lt;<span class="hljs-name">i</span>&gt;</span>a vehicula magna bibendum non<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>. Phasellus id lacinia felis, vitae pellentesque enim. Sed at quam dui. Suspendisse accumsan, est id pulvinar consequat, urna ex tincidunt enim, nec sodales lectus nulla et augue. Cras venenatis vehicula molestie. Donec sagittis elit orci, sit amet egestas ex pharetra in.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span></pre>
+      </div>
+
+      <h3 id="parsed-microformats-json">Parsed Microformats JSON</h3>
+
+      <div class="example">
+        <div class="example-title marker"><span>Example 12</span></div>
+        <pre class="hljs json" aria-busy="false" aria-live="polite">{
+  <span class="hljs-attr">"items"</span>: [
+    {
+      <span class="hljs-attr">"type"</span>: [
+        <span class="hljs-string">"h-entry"</span>
+      ],
+      <span class="hljs-attr">"properties"</span>: {
+        <span class="hljs-attr">"author"</span>: [
+          {
+            <span class="hljs-attr">"type"</span>: [
+              <span class="hljs-string">"h-card"</span>
+            ],
+            <span class="hljs-attr">"properties"</span>: {
+              <span class="hljs-attr">"name"</span>: [
+                <span class="hljs-string">"A. Developer"</span>
+              ],
+              <span class="hljs-attr">"url"</span>: [
+                <span class="hljs-string">"http:\/\/example.com\/"</span>
+              ]
+            },
+            <span class="hljs-attr">"value"</span>: <span class="hljs-string">"A. Developer"</span>
+          }
+        ],
+        <span class="hljs-attr">"name"</span>: [
+          <span class="hljs-string">"Hello World"</span>
+        ],
+        <span class="hljs-attr">"summary"</span>: [
+          <span class="hljs-string">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet ultrices pulvinar."</span>
+        ],
+        <span class="hljs-attr">"url"</span>: [
+          <span class="hljs-string">"http:\/\/example.com\/2015\/10\/21"</span>
+        ],
+        <span class="hljs-attr">"published"</span>: [
+          <span class="hljs-string">"2015-10-21T12:00:00-0700"</span>
+        ],
+        <span class="hljs-attr">"content"</span>: [
+          {
+            <span class="hljs-attr">"html"</span>: <span class="hljs-string">"&lt;p&gt;Donec dapibus enim lacus, &lt;i&gt;a vehicula magna bibendum non&lt;/i&gt;. Phasellus id lacinia felis, vitae pellentesque enim. Sed at quam dui. Suspendisse accumsan, est id pulvinar consequat, urna ex tincidunt enim, nec sodales lectus nulla et augue. Cras venenatis vehicula molestie. Donec sagittis elit orci, sit amet egestas ex pharetra in.&lt;/p&gt;"</span>,
+            <span class="hljs-attr">"value"</span>: <span class="hljs-string">"Donec dapibus enim lacus, a vehicula magna bibendum non. Phasellus id lacinia felis, vitae pellentesque enim. Sed at quam dui. Suspendisse accumsan, est id pulvinar consequat, urna ex tincidunt enim, nec sodales lectus nulla et augue. Cras venenatis vehicula molestie. Donec sagittis elit orci, sit amet egestas ex pharetra in."</span>
+          }
+        ]
+      }
+    }
+  ]
+}</pre>
+      </div>
+
+      <h4 id="simplified-json">Simplified JSON</h4>
+
+      <div class="example">
+        <div class="example-title marker"><span>Example 13</span></div>
+        <pre class="hljs json" aria-busy="false" aria-live="polite">{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"entry"</span>,
+  <span class="hljs-attr">"author"</span>: {
+    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"card"</span>,
+    <span class="hljs-attr">"url"</span>: <span class="hljs-string">"http://example.com"</span>,
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"A. Developer"</span>
+  },
+  <span class="hljs-attr">"url"</span>: <span class="hljs-string">"http://example.com/2015/10/21"</span>,
+  <span class="hljs-attr">"published"</span>: <span class="hljs-string">"2015-10-21T12:00:00-0700"</span>,
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Hello World"</span>,
+  <span class="hljs-attr">"summary"</span>: <span class="hljs-string">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet ultrices pulvinar."</span>,
+  <span class="hljs-attr">"content"</span>: {
+    <span class="hljs-attr">"value"</span>: <span class="hljs-string">"&lt;p&gt;Donec dapibus enim lacus, &lt;i&gt;a vehicula magna bibendum non&lt;/i&gt;. Phasellus id lacinia felis, vitae pellentesque enim. Sed at quam dui. Suspendisse accumsan, est id pulvinar consequat, urna ex tincidunt enim, nec sodales lectus nulla et augue. Cras venenatis vehicula molestie. Donec sagittis elit orci, sit amet egestas ex pharetra in.&lt;/p&gt;"</span>,
+    <span class="hljs-attr">"text"</span>: <span class="hljs-string">"Donec dapibus enim lacus, a vehicula magna bibendum non. Phasellus id lacinia felis, vitae pellentesque enim. Sed at quam dui. Suspendisse accumsan, est id pulvinar consequat, urna ex tincidunt enim, nec sodales lectus nulla et augue. Cras venenatis vehicula molestie. Donec sagittis elit orci, sit amet egestas ex pharetra in."</span>
+  }
+}</pre>
+      </div>
+
+    </section>
+
+    <section id="JSON-LD" typeof="bibo:Chapter" resource="#JSON-LD" property="bibo:hasPart">
+      <h3 id="h-json-ld" resource="#h-json-ld"><span property="xhv:role" resource="xhv:heading"><span class="secno">7.2 </span>JSON-LD Consideration</span>
+      </h3>
+      <p>
+        JF2 documents all have an implicit @context field which is optional. This @context can be found at
+        <a href="http://www.w3.org/ns/jf2">http://www.w3.org/ns/jf2</a> and is provided only to make conversion to [<cite><a class="bibref" href="#bib-JSON-LD">JSON-LD</a></cite>] format possible. Most JF2 will process fine in JSON-LD systems, however, this support is not guaranteed and those wishing to use JF2 in JSON-LD may need to modify serialization slightly.
+      </p>
+    </section>
+  </section>
+
+  <section id="profiles" typeof="bibo:Chapter" resource="#profiles" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-profiles" resource="#h-profiles"><span property="xhv:role" resource="xhv:heading"><span class="secno">8. </span>Profiles</span>
+    </h2>
+
+    <section id="profile_introduction" class="informative" typeof="bibo:Chapter" resource="#profile_introduction" property="bibo:hasPart">
+      <h3 id="h-profile_introduction" resource="#h-profile_introduction"><span property="xhv:role" resource="xhv:heading"><span class="secno">8.1 </span>Intro</span>
+      </h3>
+      <p><em>This section is non-normative.</em></p>
+      <p>
+        JF2 on its own is intentionally vocabulary independent, that is, any value may contain a single value, a set of values, or a structure and there are no requirements that fields be present. While this keeps the fidelity of the original [<cite><a class="bibref" href="#bib-microformats2">microformats2</a></cite>] encoded html, some consuming code can be simplified by adding vocabulary requirements. This creates the need for vocabulary aware profiles of JF2, where the profile adds additional constraints on the fields present.
+      </p>
+    </section>
+
+    <section id="jf2feed" typeof="bibo:Chapter" resource="#jf2feed" property="bibo:hasPart">
+      <h3 id="h-jf2feed" resource="#h-jf2feed"><span property="xhv:role" resource="xhv:heading"><span class="secno">8.2 </span>JF2 Feed</span>
+      </h3>
+
+      <section id="jf2feed_intro" class="informative" typeof="bibo:Chapter" resource="#jf2feed_intro" property="bibo:hasPart">
+        <h4 id="h-jf2feed_intro" resource="#h-jf2feed_intro"><span property="xhv:role" resource="xhv:heading"><span class="secno">8.2.1 </span>Introduction</span>
+        </h4>
+        <p><em>This section is non-normative.</em></p>
+        <p>
+          XML formats have heavily dominated serializations of social activity feeds for blogs and news feeds for years. Several attempts have been created over the years to attempt to bring these to a JSON format, most recently [
+          <cite><a class="bibref" href="#bib-jsonfeed-v1">jsonfeed-v1</a></cite>], which JF2 Feed gets the majority of its requirements from. JF2 Feed is an attempt to bring some of the advantages of these vocabulary aware specifications under a standard vocabulary from [
+          <cite><a class="bibref" href="#bib-microformats2">microformats2</a></cite>].
+        </p>
+
+        <p>
+          Fields described below have additional requirements to be considered a valid JF2 Feed, however they may contain any number of additional fields from [<cite><a class="bibref" href="#bib-h-feed">h-feed</a></cite>], [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>], and [<cite><a class="bibref" href="#bib-h-card">h-card</a></cite>]. The entries below are codified as they are likely the most useful for feed readers and additional data is expected to be fetchable at the entry URL, preferrably though valid [<cite><a class="bibref" href="#bib-microformats2">microformats2</a></cite>] markup.
+        </p>
+      </section>
+
+      <section id="jf2feed_required_fields" typeof="bibo:Chapter" resource="#jf2feed_required_fields" property="bibo:hasPart">
+        <h4 id="h-jf2feed_required_fields" resource="#h-jf2feed_required_fields"><span property="xhv:role" resource="xhv:heading"><span class="secno">8.2.2 </span>Required Fields and Required Formats</span>
+        </h4>
+        <p>
+          The following fields have additional constraints to be a valid JF2 Feed that only apply to the top level feed object, its child entry object, and any properties of them.
+        </p>
+
+        <ul>
+          <li><strong>type</strong> <em class="rfc2119" title="MUST">MUST</em> be defined with a value of "feed" on the top level entry. All other sub-object items <em class="rfc2119" title="MUST NOT">MUST NOT</em> have a type value of "feed". All direct children of the top level feed object <em class="rfc2119" title="MUST">MUST</em> have a value of "entry".
+          </li>
+          <li><strong>name</strong> <em class="rfc2119" title="MUST">MUST</em> be defined on the top level "feed" object. This value <em class="rfc2119" title="MUST">MUST</em> be a single string value. Any direct children of the top level item <em class="rfc2119" title="SHOULD">SHOULD</em> have this property and if present <em class="rfc2119" title="MUST">MUST</em> be a single string value.
+          </li>
+          <li><strong>url</strong> <em class="rfc2119" title="SHOULD">SHOULD</em> be defined on the top level "feed" object. This value <em class="rfc2119" title="MUST">MUST</em> be a single string value and is expected to contain the URL of the data which this JF2 Feed describes. Additionally, if present in the author property object, or any direct child entry object, it <em class="rfc2119" title="MUST">MUST</em> contain a single string value only and that value must be a [<cite><a class="bibref" href="#bib-URL">URL</a></cite>].
+          </li>
+          <li><strong>photo</strong> <em class="rfc2119" title="MUST">MUST</em> be a single string value if present on the top level feed object, its author property object, or any direct child entry object and <em class="rfc2119" title="MUST">MUST</em> be a valid [<cite><a class="bibref" href="#bib-URL">URL</a></cite>].
+          </li>
+          <li><strong>uid</strong> <em class="rfc2119" title="MUST">MUST</em> be present on any entry object which is a direct child of the top level feed object. This property <em class="rfc2119" title="MUST">MUST</em> be a single string value and <em class="rfc2119" title="MUST">MUST</em> uniquely identify this entry object. This <em class="rfc2119" title="MAY">MAY</em> be a duplicate of the entry's url property.
+          </li>
+          <li><strong>published</strong> <em class="rfc2119" title="SHOULD">SHOULD</em> be present on any entry object which is a direct child of the top level feed object. If present, this property <em class="rfc2119" title="MUST">MUST</em> be a single string value and <em class="rfc2119" title="MUST">MUST</em> be formatted as specified by [<cite><a class="bibref" href="#bib-ISO8601">ISO8601</a></cite>].
+          </li>
+          <li><strong>updated</strong> <em class="rfc2119" title="MAY">MAY</em> be present on any entry object which is a direct child of the top level feed object. If present, this property <em class="rfc2119" title="MUST">MUST</em> be a single string value and <em class="rfc2119" title="MUST">MUST</em> be formatted as specified by [<cite><a class="bibref" href="#bib-ISO8601">ISO8601</a></cite>].
+          </li>
+          <li><strong>category</strong> <em class="rfc2119" title="MAY">MAY</em> be present on any entry object which is a direct child of the top level feed object. If present, this property <em class="rfc2119" title="MUST">MUST</em> be an array of string values.
+          </li>
+          <li><strong>author</strong> <em class="rfc2119" title="MAY">MAY</em> be present on the top level feed or second level entry objects. If present, it <em class="rfc2119" title="MUST">MUST</em> be an object and it <em class="rfc2119" title="MUST">MUST</em> contain at least a name, url, or photo property.
+          </li>
+          <li><strong>content</strong> <em class="rfc2119" title="MAY">MAY</em> be present on any entry object which is a direct child of the top level feed object. If present, this property <em class="rfc2119" title="MUST">MUST</em> be an object as described in the <a href="#html-content">html content</a> regardless if only a text/plain version is available.
+          </li>
+          <li><strong>summary</strong> <em class="rfc2119" title="MAY">MAY</em> be present on any second level entry object. If present, it <em class="rfc2119" title="MUST">MUST</em> be a single string.
+          </li>
+          <li><strong>video or audio</strong> <em class="rfc2119" title="MAY">MAY</em> be present on any second level entry object. If present, it <em class="rfc2119" title="MUST">MUST</em> be an object as described in <a href="#multiple-urls">multiple urls</a> section with at least a 'url' property which <em class="rfc2119" title="MUST">MUST</em> be a single string and a valid [<cite><a class="bibref" href="#bib-URL">URL</a></cite>].
+          </li>
+
+        </ul>
+        <div class="note">
+          <div class="note-title marker" aria-level="5" role="heading" id="h-note1"><span>Note</span></div>
+          <p class="">
+            The format of published and updated fields may change from [<cite><a class="bibref" href="#bib-ISO8601">ISO8601</a></cite>] to [<cite><a class="bibref" href="#bib-RFC3339">RFC3339</a></cite>] or use [<cite><a class="bibref" href="#bib-microformats2">microformats2</a></cite>]'s more liberal date field. Please discuss on github issues
+          </p>
+        </div>
+
+      </section>
+
+      <section id="jf2feed_discovery" typeof="bibo:Chapter" resource="#jf2feed_discovery" property="bibo:hasPart">
+        <h4 id="h-jf2feed_discovery" resource="#h-jf2feed_discovery"><span property="xhv:role" resource="xhv:heading"><span class="secno">8.2.3 </span>Discovery</span>
+        </h4>
+        <p>
+          The JF2 Feed for a page may be published as HTTP Link header [<cite><a class="bibref" href="#bib-RFC5988">RFC5988</a></cite>], or as an HTML &lt;link&gt; or &lt;a&gt; tag element with the following attributes.
+        </p>
+        <pre aria-busy="false" aria-live="polite" class="hljs javascript">rel=<span class="hljs-string">"alternate"</span> type=<span class="hljs-string">"application/jf2feed+json"</span> href=<span class="hljs-string">"http://www.example.com/jf2feed.json"</span> </pre>
+        <p></p>
+      </section>
+
+      <section id="jf2feed_example" typeof="bibo:Chapter" resource="#jf2feed_example" property="bibo:hasPart">
+        <h4 id="h-jf2feed_example" resource="#h-jf2feed_example"><span property="xhv:role" resource="xhv:heading"><span class="secno">8.2.4 </span>JF2 Feed Example</span>
+        </h4>
+
+        <div class="example">
+          <div class="example-title marker"><span>Example 14</span></div>
+          <pre class="hljs json" aria-busy="false" aria-live="polite">{
+    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"feed"</span>,
+    <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://example.org/myfeed.html"</span>,
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Brent Simmons’s Microblog"</span>,
+    <span class="hljs-attr">"author"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"card"</span>,
+        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Brent Simmons"</span>,
+        <span class="hljs-attr">"url"</span>: <span class="hljs-string">"http://example.org/"</span>,
+        <span class="hljs-attr">"photo"</span>: <span class="hljs-string">"https://example.org/avatar.png"</span>
+    },
+    <span class="hljs-attr">"children"</span>: [
+        {
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"entry"</span>,
+            <span class="hljs-attr">"uid"</span>: <span class="hljs-string">"https://example.org/2347259"</span>,
+            <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://example.org/2347259"</span>,
+            <span class="hljs-attr">"content"</span>: {
+              <span class="hljs-attr">"text"</span>: <span class="hljs-string">"Cats are neat. \n\nhttps://example.org/cats"</span>
+            },
+            <span class="hljs-attr">"published"</span>: <span class="hljs-string">"2016-02-09T14:22:00-07:00"</span>
+        }
+    ]
+}</pre>
+        </div>
+      </section>
+
+      <section id="jsonfeed_to_jf2feed" class="informative" typeof="bibo:Chapter" resource="#jsonfeed_to_jf2feed" property="bibo:hasPart">
+        <h4 id="h-jsonfeed_to_jf2feed" resource="#h-jsonfeed_to_jf2feed"><span property="xhv:role" resource="xhv:heading"><span class="secno">8.2.5 </span>JSON Feed to JF2 conversion</span>
+        </h4>
+        <p><em>This section is non-normative.</em></p>
+
+        <div class="note">
+          <div class="note-title marker" aria-level="5" role="heading" id="h-note2"><span>Note</span></div>
+          <p class="">
+            As it is not sane to do this for every feed serialization currently available, this section is likely to only be temporary in the spec and may be moved to a more permanant home elsewhere.
+          </p>
+        </div>
+
+        <p>
+          JF2 Feed was based heavily on [<cite><a class="bibref" href="#bib-jsonfeed-v1">jsonfeed-v1</a></cite>] and as such it is quite trivial to process a JSON Feed as a JF2 Feed with only minor changes. This section discusses the conversion that must be made for this process, most of which is simply conversion of properties to their [
+          <cite><a class="bibref" href="#bib-microformats2">microformats2</a></cite>] equivalent.
+        </p>
+
+        <p>
+          <strong>Conversion of the top level sturcture</strong>
+        </p>
+        <ul>
+          <li>Drop or ignore the "version" property</li>
+          <li>Create a property "type" with the value "feed"</li>
+          <li>Rename the properties "title" to "name", "home_page_url" to "url", "icon" to "photo", and "description" to "summary"</li>
+          <li>Modify the "author" property as described below</li>
+          <li>Rename the "items" property to "children" and modify as described below</li>
+        </ul>
+
+        <p>
+          <strong>Conversion of the author property on the top level or on any lower level entry</strong>
+        </p>
+        <ul>
+          <li>Rename the property 'avatar' to 'photo'</li>
+        </ul>
+
+        <p>
+          <strong>Conversion each entry in items</strong>
+        </p>
+        <ul>
+          <li>Rename the 'id' property to 'uid'</li>
+          <li>Convert content_html and content_text in to a single object under the property "content" with properties "html" and "text", leaving out either if not present, or the entire property if neither are present. </li>
+          <li>Rename the properties "title" to "name", "image" to "photo", "date_published" to "published", "date_modified" to "updated", "tags" to "category", "banner_image" to "featured" </li>
+          <li>Drop or ignore the 'external_url' property. If content is not set, it may be useful to set content['text'] to the value of 'external_url'</li>
+          <li>Keep "summary" property the same</li>
+          <li>
+            For each entry in the "attachments" array,
+            <ol>
+              <li>Rename "mime-type" to "content-type".</li>
+              <li>Keep the "url" property as is.</li>
+              <li>If the "content-type" field begins with "video/", add the item to the "video" property array.</li>
+              <li>If the "content-type" field begins with "photo/", add the item to the "photo" property array.</li>
+            </ol>
+
+          </li>
+
+
+        </ul>
+        <p>
+          It may be benefitial to drop any properties other than those mentioned to avoid conflicts with any future [<cite><a class="bibref" href="#bib-microformats2">microformats2</a></cite>] properties.
+        </p>
+
+
+      </section>
+    </section>
+  </section>
+
+  <section id="extensions" typeof="bibo:Chapter" resource="#extensions" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-extensions" resource="#h-extensions"><span property="xhv:role" resource="xhv:heading"><span class="secno">9. </span>Extension</span>
+    </h2>
+    <p>
+      JF2 <em class="rfc2119" title="MAY">MAY</em> be extended by the [<cite><a class="bibref" href="#bib-microformats2">microformats2</a></cite>] extension mechanism. The 'x-*' properties created in this way <em class="rfc2119" title="MAY">MAY</em> be present in any serialization of JF2. Parsers <em class="rfc2119" title="MUST NOT">MUST NOT</em> halt on any unknown properties they encounter.
+    </p>
+  </section>
+
+  <section id="internationalization" class="informative" typeof="bibo:Chapter" resource="#internationalization" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-internationalization" resource="#h-internationalization"><span property="xhv:role" resource="xhv:heading"><span class="secno">10. </span>Language And Internationalization</span>
+    </h2>
+    <p><em>This section is non-normative.</em></p>
+    <p>
+      In order to allow any language to be serialized in JF2, the 'lang' value can be set on any object to inform annotate the natural language of the text. Many often ask for control structures like directionality of text and multiple language serializations. Directionality of text can be accomplished with UTF-8 control characters which can be added to any of the values in the document. In addition, any content inside of 'html' properties can have any markup as defined by [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>].
+    </p>
+    <p>
+      Multiple serializations of the same text has not been seen to be needed in practice. The suggested path for accomplishing this with JF2 is to have these hosted at different locations. For example, it is common practice on websites to host an alternate language version of a site under a different directory structure for each language (such as /en/, /jp/, /fr/, etc).
+    </p>
+  </section>
+
+  <section id="implementations" class="informative" typeof="bibo:Chapter" resource="#implementations" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-implementations" resource="#h-implementations"><span property="xhv:role" resource="xhv:heading"><span class="secno">11. </span>Implementations</span>
+    </h2>
+    <p><em>This section is non-normative.</em></p>
+    <p>
+      The following is a list of currently known implementations of JF2-like formats and their current differences to this document
+    </p>
+
+    <section id="webmention.io" typeof="bibo:Chapter" resource="#webmention.io" property="bibo:hasPart">
+      <h3 id="h-webmention.io" resource="#h-webmention.io"><span property="xhv:role" resource="xhv:heading"><span class="secno">11.1 </span>Webmention.io</span>
+      </h3>
+      <p>
+        <a href="https://webmention.io">Webmention.io</a> is a hosted service for handling webmentions. Webmentions are accessed from an API that that returns a set of objects in JSON format similar to JF2. The key difference is the inclusion of some additional data wrapping the objects (source, verified, verified_data, etc) and all wrapped in a "links" array. Code available at <a href="https://github.com/aaronpk/webmention.io">https://github.com/aaronpk/webmention.io</a>
+      </p>
+    </section>
+
+    <section id="xray" typeof="bibo:Chapter" resource="#xray" property="bibo:hasPart">
+      <h3 id="h-xray" resource="#h-xray"><span property="xhv:role" resource="xhv:heading"><span class="secno">11.2 </span>XRay</span>
+      </h3>
+      <p>
+        <a href="https://xray.p3k.io">X-Ray</a> is a tool to return structured data from any URL. Code available at <a href="https://github.com/aaronpk/XRay">https://github.com/aaronpk/XRay</a>
+      </p>
+    </section>
+
+    <section id="unmung" typeof="bibo:Chapter" resource="#unmung" property="bibo:hasPart">
+      <h3 id="h-unmung" resource="#h-unmung"><span property="xhv:role" resource="xhv:heading"><span class="secno">11.3 </span>Unmung</span>
+      </h3>
+      <p>
+        <a href="http://www.unmung.com">Unmung</a> is a tool for converting various formats. Code available at <a href="https://github.com/kevinmarks/unmung">https://github.com/kevinmarks/unmung</a>
+      </p>
+    </section>
+
+
+    <section id="socialstreams" typeof="bibo:Chapter" resource="#socialstreams" property="bibo:hasPart">
+      <h3 id="h-socialstreams" resource="#h-socialstreams"><span property="xhv:role" resource="xhv:heading"><span class="secno">11.4 </span>SocialStreams</span>
+      </h3>
+      <p>
+        <a href="http://stream.thatmustbe.us">SocialStreams</a> is a translation service for converting social formats. Code available at <a href="https://github.com/dissolve/socialstream">https://github.com/dissolve/socialstream</a>
+      </p>
+    </section>
+
+    <section id="mf2util" typeof="bibo:Chapter" resource="#mf2util" property="bibo:hasPart">
+      <h3 id="h-mf2util" resource="#h-mf2util"><span property="xhv:role" resource="xhv:heading"><span class="secno">11.5 </span>mf2util</span>
+      </h3>
+      <p>
+        Mf2util is a utility library for interpreting microformats2. Code available at <a href="https://github.com/kylewm/mf2util">https://github.com/kylewm/mf2util</a>
+      </p>
+    </section>
+  </section>
+
+  <section id="privacy" typeof="bibo:Chapter" resource="#privacy" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-privacy" resource="#h-privacy"><span property="xhv:role" resource="xhv:heading"><span class="secno">12. </span>Privacy Considerations</span>
+    </h2>
+
+    <p>
+      As with any serialization format, JF2 streams can potentially contain private and personally identifiable information. As such, producing and consuming implementations <em class="rfc2119" title="SHOULD">SHOULD</em> take a default stance that all information in these documents are private and take steps to ensure the privacy of their users. This can include transmission only over secure connections, limiting access to streams, deletion of stored secure information, or any other steps that would apply to any private information.
+    </p>
+  </section>
+
+  <section id="security-considerations" typeof="bibo:Chapter" resource="#security-considerations" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-security-considerations" resource="#h-security-considerations"><span property="xhv:role" resource="xhv:heading"><span class="secno">13. </span>Security Considerations</span>
+    </h2>
+
+    <p>
+      JF2 is not intended to contain executable code however, as JF2 allows arbitrary text it may be possible for publishers to craft text in an executable fashion. As such, JF2 documents should not be passed through any executable mechanism such as javascripts eval() function to be parsed. Processing of field contents should not execute any encountered code and it is recommended that any HTML formatted content be filtered to remove any executable code such as script and style tags.
+    </p>
+
+    <p>
+      JF2 documents may require privacy and integrity services depending on the document content and implementation concerns. If such services are required, they must be provided externally such as by the use of SSL/TLS connections to prevent forgery or exposure of data.
+    </p>
+
+    <p>
+      Any externally linked documents must be processed by their own format's security model. JF2 documents do not make any claims about the security of any externally referenced documents.
+    </p>
+
+    <p>
+      JF2 Streams are JSON Documents and are subject to the same security considerations described in [<cite><a class="bibref" href="#bib-RFC7159">RFC7159</a></cite>].
+    </p>
+
+  </section>
+
+
+
+  <section id="iana" typeof="bibo:Chapter" resource="#iana" property="bibo:hasPart">
+
+    <!--OddPage-->
+    <h2 id="h-iana" resource="#h-iana"><span property="xhv:role" resource="xhv:heading"><span class="secno">14. </span>IANA Considerations</span>
+    </h2>
+
+    <section id="media-type" typeof="bibo:Chapter" resource="#media-type" property="bibo:hasPart">
+      <h3 id="h-media-type" resource="#h-media-type"><span property="xhv:role" resource="xhv:heading"><span class="secno">14.1 </span>The <code>application/jf2feed+json</code> Media Type</span>
+      </h3>
+
+      <p>
+        This specification registers the <code><dfn data-dfn-type="dfn" id="dfn-application-jf2feed-json">application/jf2feed+json</dfn></code> MIME Media Type specifically for identifying documents conforming to the JF2 format with the JF2 Feed profile.
+      </p>
+
+      <table>
+        <tbody>
+          <tr>
+            <td>Type name: </td>
+            <td>application</td>
+          </tr>
+          <tr>
+            <td>Subtype name: </td>
+            <td>jf2feed+json</td>
+          </tr>
+          <tr>
+            <td>Required parameters: </td>
+            <td>None</td>
+          </tr>
+          <tr>
+            <td>Optional parameters: </td>
+            <td>None</td>
+          </tr>
+          <tr>
+            <td>Encoding considerations: </td>
+            <td>
+              Binary, as per [<cite><a class="bibref" href="#bib-RFC6839">RFC6839</a></cite>], section 3.1; the charset parameter is not used and byte-order marks are not permitted, as per [<cite><a class="bibref" href="#bib-RFC7159">RFC7159</a></cite>], sections 11 and 8.1
+            </td>
+          </tr>
+          <tr>
+            <td>Security considerations: </td>
+            <td>See [<cite><a class="bibref" href="#bib-RFC7159">RFC7159</a></cite>] section 12 and the <a href="https://www.w3.org/TR/jf2/#security-considerations">Security Considerations</a> section of this specification.</td>
+          </tr>
+          <tr>
+            <td>Contact: </td>
+            <td>
+              Ben Roberts &lt;<a href="mailto:ben@thatmustbe.me">ben@thatmustbe.me</a>&gt;
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </section>
+
+  </section>
+
+
+  <section class="appendix" id="change-log" typeof="bibo:Chapter" resource="#change-log" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-change-log" resource="#h-change-log"><span property="xhv:role" resource="xhv:heading"><span class="secno">A. </span>Change Log</span>
+    </h2>
+
+    <section id="changes-from-12-june-2017-wd-to-this-version" typeof="bibo:Chapter" resource="#changes-from-12-june-2017-wd-to-this-version" property="bibo:hasPart">
+      <h3 id="h-changes-from-12-june-2017-wd-to-this-version" resource="#h-changes-from-12-june-2017-wd-to-this-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">A.1 </span>Changes from 12 June 2017 WD to this version</span>
+      </h3>
+
+      <p>This section lists changes from the <a href="https://www.w3.org/TR/2017/WD-jf2-20170612/">12 June 2017 FPWD</a> to this version.</p>
+
+      <ul>
+        <li>Remove at-risk warning for JF2 Feed Discovery via 'a' tags in body</li>
+        <li>Updated Security Considerations</li>
+      </ul>
+
+    </section>
+
+    <section id="changes-from-28-july-2016-fpwd-to-12-jun-2017-wd" typeof="bibo:Chapter" resource="#changes-from-28-july-2016-fpwd-to-12-jun-2017-wd" property="bibo:hasPart">
+      <h3 id="h-changes-from-28-july-2016-fpwd-to-12-jun-2017-wd" resource="#h-changes-from-28-july-2016-fpwd-to-12-jun-2017-wd"><span property="xhv:role" resource="xhv:heading"><span class="secno">A.2 </span>Changes from 28 July 2016 FPWD to 12 Jun 2017 WD</span>
+      </h3>
+
+      <p>This section lists changes from the <a href="https://www.w3.org/TR/2016/WD-jf2-20160728/">28 July 2016 FPWD</a> to <a href="https://www.w3.org/TR/2017/WD-jf2-20170612/">12 June 2017 WD</a></p>
+
+      <ul>
+        <li>Changed format of html content items</li>
+        <li>Added Profiles section to allow for JF2 Feed</li>
+        <li>Added Extension Section</li>
+        <li>Added Privacy section</li>
+        <li>Added Security Considerations section</li>
+        <li>Added Internationalization section</li>
+        <li>Added IANA Considerations section for JF2 Feed</li>
+        <li>Corrections to referenced URLs</li>
+        <li>Updated Introduction and Authors Note</li>
+        <li>Minor Editorial Changes</li>
+      </ul>
+
+    </section>
+  </section>
+
+  <section class="appendix" id="acknowledgements" typeof="bibo:Chapter" resource="#acknowledgements" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-acknowledgements" resource="#h-acknowledgements"><span property="xhv:role" resource="xhv:heading"><span class="secno">B. </span>Acknowledgements</span>
+    </h2>
+    <p>
+      The authors wish to thank the Microformats, IndieWebCamp, Pump.io, and Activity Streams communities for their continued work in building the social web and helping define standards such as this one. This includes, but is certainly not limited to,
+      <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="https://aaronparecki.com/">Aaron Parecki</a></span>,
+      <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="http://bengo.is/">Benjamin Goering</a></span>,
+      <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="http://inessential.com/">Brent Simmons</a></span>,
+      <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="http://dustycloud.org/">Christopher Webber</a></span>,
+      <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="http://www.wilkie.how/">Dave Wilkinson II</a></span>,
+      <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="http://www.chmod777self.com/">James Snell</a></span>,
+      <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="https://cleverdevil.io/">Jonathan LaCour</a></span>,
+      <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="https://kylewm.com/">Kyle Mahan</a></span>,
+      <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="http://manton.org/">Manton Reece</a></span>,
+      <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="http://kodfabrik.se/">Pelle Wessman</a></span>, and
+      <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="http://tantek.com/">Tantek Çelik</a></span>.
+    </p>
+  </section>
+
+
+  <section id="references" class="appendix" typeof="bibo:Chapter" resource="#references" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-references" resource="#h-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">C. </span>References</span>
+    </h2>
+
+    <section id="normative-references" typeof="bibo:Chapter" resource="#normative-references" property="bibo:hasPart">
+      <h3 id="h-normative-references" resource="#h-normative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.1 </span>Normative references</span>
+      </h3>
+      <dl class="bibliography" resource=""><dt id="bib-RFC5646">[RFC5646]</dt>
+        <dd><a href="https://tools.ietf.org/html/rfc5646" property="dc:requires"><cite>Tags for Identifying Languages</cite></a>. A. Phillips, Ed.; M. Davis, Ed.. IETF. September 2009. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc5646" property="dc:requires">https://tools.ietf.org/html/rfc5646</a>
+        </dd><dt id="bib-RFC7159">[RFC7159]</dt>
+        <dd><a href="https://tools.ietf.org/html/rfc7159" property="dc:requires"><cite>The JavaScript Object Notation (JSON) Data Interchange Format</cite></a>. T. Bray, Ed.. IETF. March 2014. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc7159" property="dc:requires">https://tools.ietf.org/html/rfc7159</a>
+        </dd>
+      </dl>
+    </section>
+
+    <section id="informative-references" typeof="bibo:Chapter" resource="#informative-references" property="bibo:hasPart">
+      <h3 id="h-informative-references" resource="#h-informative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.2 </span>Informative references</span>
+      </h3>
+      <dl class="bibliography" resource=""><dt id="bib-HTML5">[HTML5]</dt>
+        <dd><a href="https://www.w3.org/TR/html5/" property="dc:references"><cite>HTML5</cite></a>. Ian Hickson; Robin Berjon; Steve Faulkner; Travis Leithead; Erika Doyle Navara; Theresa O'Connor; Silvia Pfeiffer. W3C. 28 October 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/html5/" property="dc:references">https://www.w3.org/TR/html5/</a>
+        </dd><dt id="bib-ISO8601">[ISO8601]</dt>
+        <dd><a href="http://www.iso.org/iso/catalogue_detail?csnumber=40874" property="dc:references"><cite>Representation of dates and times. ISO 8601:2004.</cite></a>. International Organization for Standardization (ISO). 2004. ISO 8601:2004. URL: <a href="http://www.iso.org/iso/catalogue_detail?csnumber=40874" property="dc:references">http://www.iso.org/iso/catalogue_detail?csnumber=40874</a>
+        </dd><dt id="bib-JSON-LD">[JSON-LD]</dt>
+        <dd><a href="https://www.w3.org/TR/json-ld/" property="dc:references"><cite>JSON-LD 1.0</cite></a>. Manu Sporny; Gregg Kellogg; Markus Lanthaler. W3C. 16 January 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/json-ld/" property="dc:references">https://www.w3.org/TR/json-ld/</a>
+        </dd><dt id="bib-RFC3339">[RFC3339]</dt>
+        <dd><a href="https://tools.ietf.org/html/rfc3339" property="dc:references"><cite>Date and Time on the Internet: Timestamps</cite></a>. G. Klyne; C. Newman. IETF. July 2002. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc3339" property="dc:references">https://tools.ietf.org/html/rfc3339</a>
+        </dd><dt id="bib-RFC5988">[RFC5988]</dt>
+        <dd><a href="https://tools.ietf.org/html/rfc5988" property="dc:references"><cite>Web Linking</cite></a>. M. Nottingham. IETF. October 2010. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc5988" property="dc:references">https://tools.ietf.org/html/rfc5988</a>
+        </dd><dt id="bib-RFC6839">[RFC6839]</dt>
+        <dd><a href="https://tools.ietf.org/html/rfc6839" property="dc:references"><cite>Additional Media Type Structured Syntax Suffixes</cite></a>. T. Hansen; A. Melnikov. IETF. January 2013. Informational. URL: <a href="https://tools.ietf.org/html/rfc6839" property="dc:references">https://tools.ietf.org/html/rfc6839</a>
+        </dd><dt id="bib-URL">[URL]</dt>
+        <dd><a href="https://url.spec.whatwg.org/" property="dc:references"><cite>URL Standard</cite></a>. Anne van Kesteren. WHATWG. Living Standard. URL: <a href="https://url.spec.whatwg.org/" property="dc:references">https://url.spec.whatwg.org/</a>
+        </dd><dt id="bib-h-card">[h-card]</dt>
+        <dd><a href="http://microformats.org/wiki/h-card" property="dc:references"><cite>h-card</cite></a>. Tantek Çelik. http://microformats.org. Living Specification. URL: <a href="http://microformats.org/wiki/h-card" property="dc:references">http://microformats.org/wiki/h-card</a>
+        </dd><dt id="bib-h-entry">[h-entry]</dt>
+        <dd><a href="http://microformats.org/wiki/h-entry" property="dc:references"><cite>h-entry</cite></a>. Tantek Çelik. http://microformats.org. Living Specification. URL: <a href="http://microformats.org/wiki/h-entry" property="dc:references">http://microformats.org/wiki/h-entry</a>
+        </dd><dt id="bib-h-feed">[h-feed]</dt>
+        <dd><a href="http://microformats.org/wiki/h-feed" property="dc:references"><cite>h-feed</cite></a>. Tantek Çelik. http://microformats.org. Living Specification. URL: <a href="http://microformats.org/wiki/h-feed" property="dc:references">http://microformats.org/wiki/h-feed</a>
+        </dd><dt id="bib-jsonfeed-v1">[jsonfeed-v1]</dt>
+        <dd><a href="http://jsonfeed.org/version/1" property="dc:references"><cite>JSON Feed Version 1</cite></a>. Brent Simmons; Manton Reece. http://jsonfeed.org. Draft. URL: <a href="http://jsonfeed.org/version/1" property="dc:references">http://jsonfeed.org/version/1</a>
+        </dd><dt id="bib-microformats2">[microformats2]</dt>
+        <dd><a href="http://microformats.org/wiki/microformats2" property="dc:references"><cite>Microformats2</cite></a>. Tantek Çelik. http://microformats.org. Living Specification. URL: <a href="http://microformats.org/wiki/microformats2" property="dc:references">http://microformats.org/wiki/microformats2</a>
+        </dd><dt id="bib-microformats2-parsing">[microformats2-parsing]</dt>
+        <dd><a href="http://microformats.org/wiki/microformats2-parsing" property="dc:references"><cite>Microformats2 Parsing</cite></a>. Tantek Çelik. http://microformats.org. Living Specification. URL: <a href="http://microformats.org/wiki/microformats2-parsing" property="dc:references">http://microformats.org/wiki/microformats2-parsing</a>
+        </dd>
+      </dl>
+    </section>
+  </section>
+  <p role="navigation" id="back-to-top"><a href="#toc"><abbr title="Back to Top">↑</abbr></a></p>
+  <script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script>
+</body>
+</html>
