@@ -364,7 +364,7 @@
           If a children value is set, it MUST be serialized as an array even if only a
           single item is present.</li>
           <li><dfn>references</dfn> is an associative array, serialized as a JSON object, of all sub-objects
-          inside an object which have <a>id</a> defined as an external URL. 
+          inside an object which have "id" defined as an external URL.
           Any objects in this array are not authoritative.
           If the references property is defined, it MUST be serialized as an associative array and MUST be
           present at the top level entry only.
@@ -412,7 +412,7 @@
             The list of valid post properties is defined by the vocabularies. This allows new vocabularies to be developed outside the development of the syntax.
           </p>
           <p>
-            Most values will be strings. If a property (such as <a>author</a> for example) references another
+            Most values will be strings. If a property (such as "author" for example) references another
             object, it may be serialized in two ways: as an object serialized as the property value or as
             the unique identifier or URL where the object can be found.  See <a href="#using-references">Using References</a>.
           </p>
