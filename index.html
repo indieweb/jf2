@@ -412,7 +412,7 @@
             The list of valid post properties is defined by the vocabularies. This allows new vocabularies to be developed outside the development of the syntax.
           </p>
           <p>
-            Most values will be strings. If a property (such as `author` for example) references another
+            Most values will be strings. If a property (such as <a>author</a> for example) references another
             object, it may be serialized in two ways: as an object serialized as the property value or as
             the unique identifier or URL where the object can be found.  See <a href="#using-references">Using References</a>
           </p>
@@ -541,7 +541,7 @@
     <section id="using-references">
       <h2>Using References</h2>
       <p>
-        The purpose of the `references` property is to exclude any non-authoritative
+        The purpose of the <a>references</a> property is to exclude any non-authoritative
         data from the defined object.  To do this, non-authoritative data is moved so
         that implementations looking to process only authoritative data may simply ignore 
         the references property and fetch any data that would be contained there from its
@@ -549,7 +549,7 @@
       </p>
       <p>
         If a property is a reference to an object that is defined authoritatively in
-        some other location, the `references` property SHOULD be used.  The property
+        some other location, the <a>references</a> property SHOULD be used.  The property
         SHOULD contain only the unique identifier or URL where the authoritative data
         may be found.  In the references object, the URL or unique identifier MAY
         be entered as the key field and a serialization of the referenced object MAY
