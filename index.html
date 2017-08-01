@@ -141,9 +141,9 @@
       </p>
       <p>
         The name JF2 comes from its origins in being a direct parsed format of
-        Microformats-2 (MF2) data from html.  Rather than defining a new vocabulary,
-        JF2 uses the vocabulary defined by [[microformats2]]
-        however any other suitable vocabulary could be used.  JF2 is vocabulary
+        Microformats-2 (MF2) data from HTML.  Rather than defining a new vocabulary
+        JF2 uses the vocabulary defined by [[microformats2]];
+        however, any other suitable vocabulary could be used.  JF2 is vocabulary
         independent except for its profiles which are fully vocabulary aware.
       </p>
     </section>
@@ -152,15 +152,15 @@
       <h2>Use Cases</h2>
       <p>
         JF2 has evolved as a result of a variety of use-cases for different implementations
-        exploring ways to simplify their existing use of canonical parsed microformats2 JSON 
+        exploring ways to simplify their existing use of canonical parsed Microformats-2 JSON
         output.  All of these use cases in particular are simply to have a single format for
         the storage and use of social web objects.
       </p>
       <p>
-      <a href="#webmention.io">Webmention.io</a> is a service that provides webmention
+      <a href="#webmention.io">Webmention.io</a> is a service that provides Webmention
       processing and verification on behalf of other sites.  It uses a simple JSON object to
-      transfer a processed webmention back to the client site's javascript for display.  The 
-      attributes are intended to be processed only by the client site's javascript code, not
+      transfer a processed Webmention back to the client site's JavaScript for display.  The
+      attributes are intended to be processed only by the client site's JavaScript code, not
       by anything else.
       </p>
       <p>
@@ -183,15 +183,15 @@
         <p>
           Conforming documents are those that comply with all the conformance
           criteria for JF2 documents. For readability, some of these conformance
-          requirements are phrased as conformance requirements on publishers;
-          such requirements are implicitly requirements on documents: by
+          requirements are phrased as conformance requirements on publishers.
+          Such requirements are implicitly requirements on documents: by
           definition, all documents are assumed to have a publisher.
         </p>
 
         <p>
           Conforming documents must not use features of JSON-LD or other
           serialization features disallowed in this specification. Conforming
-          documents that include types or properties beyond those defined in the
+          documents that include types or properties beyond those defined in
           [[microformats2]] must use its prefixing methods to indicate non-standard
           properties.
         </p>
@@ -202,7 +202,7 @@
         </p>
         <ul>
           <li>
-            A document representing a author
+            A document representing an author
           </li>
           <li>
             A document representing an event
@@ -323,14 +323,14 @@
 
         <p>
           A validator for conforming documents is available at
-          <a href="https://jf2.rocks/">http://f2.rocks/</a>.
+          <a href="https://jf2.rocks/">https://jf2.rocks/</a>.
           This also offers example conforming and non-conforming
           documents for testing purposes.
         </p>
 
         <p>
           Please submit your implementation reports at 
-          <a href="https://jf2.rocks/">http://f2.rocks/</a>.
+          <a href="https://jf2.rocks/">https://jf2.rocks/</a>.
           Instructions are provided at the URL.
         </p>
 
@@ -357,14 +357,14 @@
         </p>
         <ul>
           <li><dfn>type</dfn> defines the object classification.  In microformats, this is presumed
-          to be the h-* class from the Microformats vocabulary.
+          to be an h-* class from the Microformats-2 vocabulary.
           Type MUST be a single string value and may not be an object or an array.  </li>
           <li><dfn>children</dfn> is a container for all unnamed sub-objects inside
           an entry.  That is, any sub-object that is not associated to a specific property of the object.
           If a children value is set, it MUST be serialized as an array even if only a
           single item is present.</li>
           <li><dfn>references</dfn> is an associative array, serialized as a JSON object, of all sub-objects
-          inside an object which have ID defined as and external URL. 
+          inside an object which have "id" defined as an external URL.
           Any objects in this array are not authoritative.
           If the references property is defined, it MUST be serialized as an associative array and MUST be
           present at the top level entry only.
@@ -385,7 +385,7 @@
             This value MUST be a single string value and MUST be a [[!RFC5646]] language tag.</li>
           <li><dfn>@context</dfn> is the context of the vocabulary as defined in [[JSON-LD]].
             This attribute MAY be omitted and has an inferred value if not present.  If it is present it MUST be
-            present at the top level entry only.  See the <a href="#JSON-LD">JSON-LD Consideration</a>
+            present at the top level entry only.  See the <a href="#JSON-LD">JSON-LD Consideration</a> section.
           </li>
         </ul>
       </section>
@@ -399,7 +399,7 @@
             A post is composed of a "type" property, and one or more additional properties that describe the post.
           </p>
           <p>
-          The "type" property has a value that describes the vocabulary of this post. Common values include "entry", "card", etc. See <a href="http://microformats.org/wiki/microformats-2#v2_vocabularies">Microformats 2 vocabularies</a> for the full list when using a microformats based vocabulary.
+          The "type" property has a value that describes the vocabulary of this post. Common values include "entry", "card", etc. See <a href="http://microformats.org/wiki/microformats-2#v2_vocabularies">Microformats-2 vocabularies</a> for the full list when using a microformats based vocabulary.
           </p>
           <p>
             Any additional properties in the post object are considered part of the post's vocabulary.
@@ -412,9 +412,9 @@
             The list of valid post properties is defined by the vocabularies. This allows new vocabularies to be developed outside the development of the syntax.
           </p>
           <p>
-            Most values will be strings. If a property (such as `author` for example) references another
+            Most values will be strings. If a property (such as "author" for example) references another
             object, it may be serialized in two ways: as an object serialized as the property value or as
-            the unique identifier or URL where the object can be found.  See <a href="#using-references">Using References</a>
+            the unique identifier or URL where the object can be found.  See <a href="#using-references">Using References</a>.
           </p>
           <p>
             Values may also be arrays if the vocabulary allows for multiple values of the property.
@@ -462,7 +462,7 @@
       <section id="author">
         <h3>Author</h3>
         <p>
-          An author is represented by the h-card vocabulary, and consists of a name, photo URL, URL to the author profile, and [others](http://microformats.org/wiki/h-card). This is represented by the following JSON.
+          An author is represented by the h-card vocabulary, and consists of a name, photo URL, URL to the author profile, and <a href="http://microformats.org/wiki/h-card">others</a>. This is represented by the following JSON.
         </p>
 
         <pre class="example">
@@ -541,7 +541,7 @@
     <section id="using-references">
       <h2>Using References</h2>
       <p>
-        The purpose of the `references` property is to exclude any non-authoritative
+        The purpose of the <a>references</a> property is to exclude any non-authoritative
         data from the defined object.  To do this, non-authoritative data is moved so
         that implementations looking to process only authoritative data may simply ignore 
         the references property and fetch any data that would be contained there from its
@@ -549,7 +549,7 @@
       </p>
       <p>
         If a property is a reference to an object that is defined authoritatively in
-        some other location, the `references` property SHOULD be used.  The property
+        some other location, the <a>references</a> property SHOULD be used.  The property
         SHOULD contain only the unique identifier or URL where the authoritative data
         may be found.  In the references object, the URL or unique identifier MAY
         be entered as the key field and a serialization of the referenced object MAY
@@ -640,18 +640,18 @@
           },
           "children": [
             { 
-			  "type": "entry",
-			  "content": {
-				"html": "<p>Hello World</p>",
-				"text": "Hello World"
-			  }
-			},
-			{
-			  "type": "entry",
-			  "content": {
-				"html": "<p>A Second Post</p>",
-				"text": "A Second Post"
-			  }
+              "type": "entry",
+              "content": {
+                "html": "<p>Hello World</p>",
+                "text": "Hello World"
+              }
+            },
+            {
+              "type": "entry",
+              "content": {
+                "html": "<p>A Second Post</p>",
+                "text": "A Second Post"
+              }
             }
           ]
         }
@@ -666,20 +666,20 @@
         <pre class="example">
           {
             "children": [
-			  { 
-				"type": "entry",
-				"content": {
-				  "html": "<p>Hello World</p>",
-				  "text": "Hello World"
-				}
-			  },
-			  {
-				"type": "entry",
-				"content": {
-				  "html": "<p>A Second Post</p>",
-				  "text": "A Second Post"
-				}
-			  }
+              { 
+                "type": "entry",
+                "content": {
+                  "html": "<p>Hello World</p>",
+                  "text": "Hello World"
+                }
+              },
+              {
+                "type": "entry",
+                "content": {
+                  "html": "<p>A Second Post</p>",
+                  "text": "A Second Post"
+                }
+              }
             ]
           }
         </pre>
@@ -729,7 +729,7 @@
                         "A. Developer"
                       ],
                       "url": [
-                        "http:\/\/example.com\/"
+                        "http://example.com/"
                       ]
                     },
                     "value": "A. Developer"
@@ -742,7 +742,7 @@
                   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet ultrices pulvinar."
                 ],
                 "url": [
-                  "http:\/\/example.com\/2015\/10\/21"
+                  "http://example.com/2015/10/21"
                 ],
                 "published": [
                   "2015-10-21T12:00:00-0700"
@@ -800,7 +800,7 @@
         <p>
           JF2 on its own is intentionally vocabulary independent, that is, any value may contain a single value, a
           set of values, or a structure and there are no requirements that fields be present.  While this keeps
-          the fidelity of the original [[microformats2]] encoded html, some consuming code can be simplified by
+          the fidelity of the original [[microformats2]] encoded HTML, some consuming code can be simplified by
           adding vocabulary requirements.  This creates the need for vocabulary aware profiles of JF2, where
           the profile adds additional constraints on the fields present.
         </p>
@@ -872,15 +872,15 @@
             </li>
             <li><strong>content</strong> MAY be present on any entry object which is a direct
               child of the top level feed object.  If present, this property MUST be an object as
-              described in the <a href="#html-content">html content</a> regardless if only a text/plain
+              described in the <a href="#html-content">HTML content</a> regardless if only a text/plain
               version is available.
             </li>
             <li><strong>summary</strong> MAY be present on any second level entry object. If present,
               it MUST be a single string.
             </li>
             <li><strong>video or audio</strong> MAY be present on any second level entry object. If present,
-              it MUST be an object as described in <a href="#multiple-urls">multiple urls</a> section with at least
-              a 'url' property which MUST be a single string and a valid [[URL]].
+              it MUST be an object as described in the <a href="#multiple-urls">multiple URLs</a> section with
+              at least a 'url' property which MUST be a single string and a valid [[URL]].
             </li>
 
           </ul>
@@ -944,7 +944,7 @@
           </p>
 
           <p>
-            <strong>Conversion of the top level sturcture</strong>
+            <strong>Conversion of the top level structure</strong>
           </p>
           <ul>
             <li>Drop or ignore the "version" property</li>
@@ -962,11 +962,11 @@
           </ul>
 
           <p>
-            <strong>Conversion each entry in items</strong>
+            <strong>Conversion of each entry in items</strong>
           </p>
           <ul>
             <li>Rename the 'id' property to 'uid'</li>
-            <li>Convert content_html and content_text in to a single object under the property "content" with properties "html" and "text", leaving out either if not present, or the entire property if neither are present.  </li>
+            <li>Convert content_html and content_text into a single object under the property "content" with properties "html" and "text", leaving out either if not present, or the entire property if neither are present.  </li>
             <li>Rename the properties
               "title" to "name",
               "image" to "photo",
@@ -1010,9 +1010,9 @@
     <section id="internationalization" class="informative">
       <h2>Language And Internationalization</h2>
       <p>
-        In order to allow any language to be serialized in JF2, the 'lang' value can be set on any object to inform
-        annotate the natural language of the text.  Many often ask for control structures like directionality of text
-        and multiple language serializations.  Directionality of text can be accomplished with UTF-8 control characters
+        In order to allow any language to be serialized in JF2, the 'lang' value can be set on any object to annotate
+        the natural language of the text.  Many often ask for control structures like directionality of text and
+        multiple language serializations.  Directionality of text can be accomplished with UTF-8 control characters
         which can be added to any of the values in the document.  In addition, any content inside of 'html' properties
         can have any markup as defined by [[HTML5]].
       </p>
@@ -1027,13 +1027,13 @@
     <section id="implementations" class="informative">
       <h2>Implementations</h2>
       <p>
-        The following is a list of currently known implementations of JF2-like formats and their current differences to this document 
+        The following is a list of currently known implementations of JF2-like formats and their current differences to this document .
       </p>
 
       <section id="webmention.io">
         <h3>Webmention.io</h3>
         <p>
-        <a href="https://webmention.io">Webmention.io</a> is a hosted service for handling webmentions.
+        <a href="https://webmention.io">Webmention.io</a> is a hosted service for handling Webmentions.
           Webmentions are accessed from an API that that returns a set of objects in JSON format similar to JF2.
           The key difference is the inclusion of some additional data wrapping the objects
           (source, verified, verified_data, etc) and all wrapped in a "links" array.
@@ -1069,7 +1069,7 @@
       <section id="mf2util">
         <h3>mf2util</h3>
         <p>
-          Mf2util is a utility library for interpreting microformats2.
+          Mf2util is a utility library for interpreting Microformats-2.
           Code available at <a href="https://github.com/kylewm/mf2util">https://github.com/kylewm/mf2util</a>
         </p>
       </section>
@@ -1093,7 +1093,7 @@
       <p>
         JF2 is not intended to contain executable code however, as JF2 allows arbitrary text it may be possible for publishers
         to craft text in an executable fashion.  As such, JF2 documents should not be passed through any executable mechanism
-        such as javascripts eval() function to be parsed.  Processing of field contents should not execute any encountered code 
+        such as JavaScript's eval() function to be parsed.  Processing of field contents should not execute any encountered code
         and it is recommended that any HTML formatted content be filtered to remove any executable code such as script and style tags.
       </p>
 
@@ -1199,7 +1199,7 @@
           <p>This section lists changes from the <a href="https://www.w3.org/TR/2016/WD-jf2-20160728/">28 July 2016 FPWD</a> to <a href="https://www.w3.org/TR/2017/WD-jf2-20170612/">12 June 2017 WD</a></p>
 
           <ul>
-            <li>Changed format of html content items</li>
+            <li>Changed format of HTML content items</li>
             <li>Added Profiles section to allow for JF2 Feed</li>
             <li>Added Extension Section</li>
             <li>Added Privacy section</li>
@@ -1217,7 +1217,7 @@
     <section class="appendix">
       <h2>Acknowledgements</h2>
         <p>
-          The authors wish to thank the Microformats, IndieWebCamp, Pump.io, and Activity Streams communities for their continued work
+          The authors wish to thank the Microformats, IndieWeb, Pump.io, and Activity Streams communities for their continued work
           in building the social web and helping define standards such as this one.  This includes, but is certainly not limited to, 
           <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="https://aaronparecki.com/">Aaron Parecki</a></span>,
           <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="http://bengo.is/">Benjamin Goering</a></span>,
