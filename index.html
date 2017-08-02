@@ -84,14 +84,14 @@
               publisher: "http://microformats.org"
             },
             "microformats2": {
-              title: "Microformats2",
+              title: "microformats2",
               href: "http://microformats.org/wiki/microformats2",
               authors: [ "Tantek Çelik"],
               status: "Living Specification",
               publisher: "http://microformats.org"
             },
             "microformats2-parsing": {
-              title: "Microformats2 Parsing",
+              title: "microformats2 Parsing",
               href: "http://microformats.org/wiki/microformats2-parsing",
               authors: [ "Tantek Çelik"],
               status: "Living Specification",
@@ -126,7 +126,7 @@
       <h2>Author's Note</h2>
       <p>
         This document is an attempt to unify various simplified versions of the
-        Microformats-2 representative JSON format.  As such, much of this document
+        microformats2 representative JSON format.  As such, much of this document
         is likely to change as various implementations contribute input.
       </p>
     </section>
@@ -141,7 +141,7 @@
       </p>
       <p>
         The name JF2 comes from its origins in being a direct parsed format of
-        Microformats-2 (MF2) data from HTML.  Rather than defining a new vocabulary
+        microformats2 (MF2) data from HTML.  Rather than defining a new vocabulary
         JF2 uses the vocabulary defined by [[microformats2]];
         however, any other suitable vocabulary could be used.  JF2 is vocabulary
         independent except for its profiles which are fully vocabulary aware.
@@ -152,7 +152,7 @@
       <h2>Use Cases</h2>
       <p>
         JF2 has evolved as a result of a variety of use-cases for different implementations
-        exploring ways to simplify their existing use of canonical parsed Microformats-2 JSON
+        exploring ways to simplify their existing use of canonical parsed microformats2 JSON
         output.  All of these use cases in particular are simply to have a single format for
         the storage and use of social web objects.
       </p>
@@ -357,7 +357,7 @@
         </p>
         <ul>
           <li><dfn>type</dfn> defines the object classification.  In microformats, this is presumed
-          to be an h-* class from the Microformats-2 vocabulary.
+          to be an h-* class from the microformats2 vocabulary.
           Type MUST be a single string value and may not be an object or an array.  </li>
           <li><dfn>children</dfn> is a container for all unnamed sub-objects inside
           an entry.  That is, any sub-object that is not associated to a specific property of the object.
@@ -399,7 +399,7 @@
             A post is composed of a "type" property, and one or more additional properties that describe the post.
           </p>
           <p>
-          The "type" property has a value that describes the vocabulary of this post. Common values include "entry", "card", etc. See <a href="http://microformats.org/wiki/microformats-2#v2_vocabularies">Microformats-2 vocabularies</a> for the full list when using a microformats based vocabulary.
+          The "type" property has a value that describes the vocabulary of this post. Common values include "entry", "card", etc. See <a href="http://microformats.org/wiki/microformats-2#v2_vocabularies">microformats2 vocabularies</a> for the full list when using a microformats based vocabulary.
           </p>
           <p>
             Any additional properties in the post object are considered part of the post's vocabulary.
@@ -690,7 +690,7 @@
     <section id="deriving">
       <h2>Deriving the Syntax</h2>
       <p>
-        This syntax is derived from HTML with Microformats-2, converted to JSON [[microformats2-parsing]] converted to a simplified JSON. The examples below illustrate the process.
+        This syntax is derived from HTML with microformats2, converted to JSON [[microformats2-parsing]] converted to a simplified JSON. The examples below illustrate the process.
       </p>
 
       <section id="deriving-note">
@@ -1069,7 +1069,7 @@
       <section id="mf2util">
         <h3>mf2util</h3>
         <p>
-          Mf2util is a utility library for interpreting Microformats-2.
+          Mf2util is a utility library for interpreting microformats2.
           Code available at <a href="https://github.com/kylewm/mf2util">https://github.com/kylewm/mf2util</a>
         </p>
       </section>
