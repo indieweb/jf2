@@ -357,14 +357,14 @@
         </p>
         <ul>
           <li><dfn>type</dfn> defines the object classification.  In microformats, this is presumed
-          to be an h-* class from the [[microformats2]] vocabulary.
+          to be an h-* class from the [[!microformats2]] vocabulary.
           Type MUST be a single string value and may not be an object or an array.  </li>
           <li><dfn>children</dfn> is a container for all unnamed sub-objects inside
           an entry.  That is, any sub-object that is not associated to a specific property of the object.
           If a children value is set, it MUST be serialized as an array even if only a
           single item is present.</li>
           <li><dfn>references</dfn> is an associative array, serialized as a JSON object, of all sub-objects
-          inside an object which have "id" defined as an external [[URL]].
+          inside an object which have "id" defined as an external [[!URL]].
           Any objects in this array are not authoritative.
           If the references property is defined, it MUST be serialized as an associative array and MUST be
           present at the top level entry only.
@@ -414,7 +414,7 @@
           <p>
             Most values will be strings. If a property (such as "author" for example) references another
             object, it may be serialized in two ways: as an object serialized as the property value or as
-            the unique identifier or [[URL]] where the object can be found.  See <a href="#using-references">Using References</a>.
+            the unique identifier or [[!URL]] where the object can be found.  See <a href="#using-references">Using References</a>.
           </p>
           <p>
             Values may also be arrays if the vocabulary allows for multiple values of the property.
@@ -462,7 +462,7 @@
       <section id="author">
         <h3>Author</h3>
         <p>
-          An author is represented by the [[h-card]] vocabulary, and consists of a name, photo [[URL]], [[URL]] to the author profile, and <a href="http://microformats.org/wiki/h-card">others</a>. This is represented by the following JSON.
+          An author is represented by the [[!h-card]] vocabulary, and consists of a name, photo [[!URL]], [[!URL]] to the author profile, and <a href="http://microformats.org/wiki/h-card">others</a>. This is represented by the following JSON.
         </p>
 
         <pre class="example">
@@ -550,7 +550,7 @@
       <p>
         If a property is a reference to an object that is defined authoritatively in
         some other location, the <a>references</a> property SHOULD be used.  The property
-        SHOULD contain only the unique identifier or [[URL]] where the authoritative data
+        SHOULD contain only the unique identifier or [[!URL]] where the authoritative data
         may be found.  In the references object, the URL or unique identifier MAY
         be entered as the key field and a serialization of the referenced object MAY
         be provided.  This serialization of the referenced object MAY be incomplete
@@ -690,7 +690,7 @@
     <section id="deriving">
       <h2>Deriving the Syntax</h2>
       <p>
-        This syntax is derived from HTML with microformats2, converted to JSON [[microformats2-parsing]] converted to a simplified JSON. The examples below illustrate the process.
+        This syntax is derived from HTML with microformats2, converted to JSON [[!microformats2-parsing]] converted to a simplified JSON. The examples below illustrate the process.
       </p>
 
       <section id="deriving-note">
@@ -822,7 +822,7 @@
             Fields described below have additional requirements to be considered a valid JF2 Feed, however they may contain
             any number of additional fields from [[h-feed]], [[h-entry]], and [[h-card]].  The entries below are codified as
             they are likely the most useful for feed readers and additional data is expected to be fetchable at the entry URL,
-            preferrably though valid [[microformats2]] markup.
+            preferrably though valid [[!microformats2]] markup.
           </p>
         </section>
 
@@ -843,12 +843,12 @@
               property and if present MUST be a single string value.
             </li>
             <li><strong>url</strong> SHOULD be defined on the top level "feed" object.  This value MUST
-              be a single string value and is expected to contain the [[URL]] of the data which this
+              be a single string value and is expected to contain the [[!URL]] of the data which this
               JF2 Feed describes. Additionally, if present in the author property object, or any direct
-              child entry object, it MUST contain a single string value only and that value must be a [[URL]].
+              child entry object, it MUST contain a single string value only and that value must be a [[!URL]].
             </li>
             <li><strong>photo</strong> MUST be a single string value if present on the top level feed
-              object, its author property object, or any direct child entry object and MUST be a valid [[URL]].
+              object, its author property object, or any direct child entry object and MUST be a valid [[!URL]].
             </li>
             <li><strong>uid</strong> MUST be present on any entry object which is a direct child of the
               top level feed object.  This property MUST be a single string value and MUST uniquely
@@ -856,11 +856,11 @@
             </li>
             <li><strong>published</strong> SHOULD be present on any entry object which is a direct
               child of the top level feed object.  If present, this property MUST be a single string
-              value and MUST be formatted as specified by [[ISO8601]].
+              value and MUST be formatted as specified by [[!ISO8601]].
             </li>
             <li><strong>updated</strong> MAY be present on any entry object which is a direct
               child of the top level feed object.  If present, this property MUST be a single string
-              value and MUST be formatted as specified by [[ISO8601]].
+              value and MUST be formatted as specified by [[!ISO8601]].
             </li>
             <li><strong>category</strong> MAY be present on any entry object which is a direct
               child of the top level feed object.  If present, this property MUST be an array of
@@ -880,7 +880,7 @@
             </li>
             <li><strong>video or audio</strong> MAY be present on any second level entry object. If present,
               it MUST be an object as described in the <a href="#multiple-urls">multiple URLs</a> section with
-              at least a 'url' property which MUST be a single string and a valid [[URL]].
+              at least a 'url' property which MUST be a single string and a valid [[!URL]].
             </li>
 
           </ul>
@@ -893,7 +893,7 @@
         <section id="jf2feed_discovery">
           <h4>Discovery</h4>
           <p>
-          The JF2 Feed for a page may be published as HTTP Link header [[RFC5988]], or as an HTML
+          The JF2 Feed for a page may be published as HTTP Link header [[!RFC5988]], or as an HTML
           &lt;link&gt; or &lt;a&gt; tag element with the following attributes.
             <pre>rel="alternate" type="application/jf2feed+json" href="http://www.example.com/jf2feed.json" </pre>
           </p>
@@ -1001,7 +1001,7 @@
     <section id="extensions">
       <h2>Extension</h2>
       <p>
-        JF2 MAY be extended by the [[microformats2]] extension mechanism.  The 'x-*' properties created in this
+        JF2 MAY be extended by the [[!microformats2]] extension mechanism.  The 'x-*' properties created in this
         way MAY be present in any serialization of JF2.  Parsers MUST NOT halt on any unknown properties they
         encounter.
       </p>
@@ -1014,7 +1014,7 @@
         the natural language of the text.  Many often ask for control structures like directionality of text and
         multiple language serializations.  Directionality of text can be accomplished with UTF-8 control characters
         which can be added to any of the values in the document.  In addition, any content inside of 'html' properties
-        can have any markup as defined by [[HTML5]].
+        can have any markup as defined by [[!HTML5]].
       </p>
       <p>
         Multiple serializations of the same text has not been seen to be needed in practice. 
@@ -1148,7 +1148,7 @@
         <tr>
           <td>Encoding considerations: </td>
           <td>
-            Binary, as per [[RFC6839]], section 3.1; the charset parameter is not used and byte-order marks are not permitted, as per [[RFC7159]], sections 11 and 8.1
+            Binary, as per [[!RFC6839]], section 3.1; the charset parameter is not used and byte-order marks are not permitted, as per [[!RFC7159]], sections 11 and 8.1
           </td>
         </tr>
         <tr>
