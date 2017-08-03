@@ -364,7 +364,7 @@
           If a children value is set, it MUST be serialized as an array even if only a
           single item is present.</li>
           <li><dfn>references</dfn> is an associative array, serialized as a JSON object, of all sub-objects
-          inside an object which have "id" defined as an external URL.
+          inside an object which have "id" defined as an external [[URL]].
           Any objects in this array are not authoritative.
           If the references property is defined, it MUST be serialized as an associative array and MUST be
           present at the top level entry only.
@@ -414,7 +414,7 @@
           <p>
             Most values will be strings. If a property (such as "author" for example) references another
             object, it may be serialized in two ways: as an object serialized as the property value or as
-            the unique identifier or URL where the object can be found.  See <a href="#using-references">Using References</a>.
+            the unique identifier or [[URL]] where the object can be found.  See <a href="#using-references">Using References</a>.
           </p>
           <p>
             Values may also be arrays if the vocabulary allows for multiple values of the property.
@@ -462,7 +462,7 @@
       <section id="author">
         <h3>Author</h3>
         <p>
-          An author is represented by the h-card vocabulary, and consists of a name, photo URL, URL to the author profile, and <a href="http://microformats.org/wiki/h-card">others</a>. This is represented by the following JSON.
+          An author is represented by the h-card vocabulary, and consists of a name, photo [[URL]], [[URL]] to the author profile, and <a href="http://microformats.org/wiki/h-card">others</a>. This is represented by the following JSON.
         </p>
 
         <pre class="example">
@@ -550,7 +550,7 @@
       <p>
         If a property is a reference to an object that is defined authoritatively in
         some other location, the <a>references</a> property SHOULD be used.  The property
-        SHOULD contain only the unique identifier or URL where the authoritative data
+        SHOULD contain only the unique identifier or [[URL]] where the authoritative data
         may be found.  In the references object, the URL or unique identifier MAY
         be entered as the key field and a serialization of the referenced object MAY
         be provided.  This serialization of the referenced object MAY be incomplete
@@ -843,7 +843,7 @@
               property and if present MUST be a single string value.
             </li>
             <li><strong>url</strong> SHOULD be defined on the top level "feed" object.  This value MUST
-              be a single string value and is expected to contain the URL of the data which this
+              be a single string value and is expected to contain the [[URL]] of the data which this
               JF2 Feed describes. Additionally, if present in the author property object, or any direct
               child entry object, it MUST contain a single string value only and that value must be a [[URL]].
             </li>
