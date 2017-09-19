@@ -141,8 +141,8 @@
       off any unnecessary information leaving the library user only the most essential information.
       </p>
       <p>
-      Various services (<a href="#xray">xray</a>, <a href="#unmung">unmung</a>, <a href="#socialstreams">socialstreams</a>)
-      provide conversion from microformats pages in to JF2 for quick inspection to 
+      Various services (<a href="#xray">XRay</a>, <a href="#unmung">Unmung</a>, <a href="#socialstreams">SocialStreams</a>)
+      provide conversion from microformats pages into JF2 for quick inspection to
       validate proper semantics.
       </p>
     </section>
@@ -164,8 +164,8 @@
           Conforming documents must not use features of JSON-LD or other
           serialization features disallowed in this specification. Conforming
           documents that include types or properties beyond those defined in
-          [[microformats2]] must use its prefixing methods to indicate non-standard
-          properties.
+          [[microformats2]] must use [[microformats2]]'s prefixing methods to indicate
+          non-standard properties.
         </p>
 
         <p>
@@ -187,6 +187,9 @@
           </li>
           <li>
             A document representing a collection of people
+          </li>
+          <li>
+            A document representing a like
           </li>
 
         </ul>
@@ -237,8 +240,8 @@
               A bridge from a non-conforming social network
             </li>
             <li>
-              A document converter from similar document types such as RSS or
-              Atom
+              A document converter from similar document types such as RSS, Atom,
+              or JSON Feed
             </li>
           </ul>
 
@@ -329,8 +332,8 @@
         </p>
         <ul>
           <li><dfn>type</dfn> defines the object classification.  In microformats, this is presumed
-          to be an h-* class from the [[!microformats2]] vocabulary.
-          Type MUST be a single string value and may not be an object or an array.  </li>
+          to be an h-* class from the microformats2 vocabulary.
+          Type MUST be a single string value only.</li>
           <li><dfn>children</dfn> is a container for all unnamed sub-objects inside
           an entry.  That is, any sub-object that is not associated to a specific property of the object.
           If a children value is set, it MUST be serialized as an array even if only a
@@ -344,9 +347,9 @@
           <li><dfn>content-type</dfn> is the MIME media type of the containing object.
           Content-type MUST be a single string value only.</li>
           <li><dfn>html</dfn> is the text/html version of the containing object.
-          Content-type MUST be a single string value only.</li>
+          html MUST be a single string value only.</li>
           <li><dfn>text</dfn> is the text/plain version of the containing object.
-          Content-type MUST be a single string value only.</li>
+          text MUST be a single string value only.</li>
           <li><dfn>value</dfn> is a textual representation of the object.  By default this is presumed to be
           of content-type "text/plain".
           Value MUST be a single string value only.
@@ -389,7 +392,7 @@
             the unique identifier or [[!URL]] where the object can be found.  See <a href="#using-references">Using References</a>.
           </p>
           <p>
-            Values may also be arrays if the vocabulary allows for multiple values of the property.
+            Values MAY also be arrays if the vocabulary allows for multiple values of the property.
           </p>
            
         </section>
@@ -474,6 +477,11 @@
           <h4>Multiple URLs for video/audio/picture</h4>
           <p>
             Since HTML video/audio/picture tags may have multiple URLs, we need a way to convey this information in the JSON representation.
+            In such situations, vocabulary properties MAY be arrays.
+          </p>
+
+          <p>
+            For example, this HTML (marked up with microformats2):
           </p>
 
           <pre class="example">
@@ -485,6 +493,10 @@
               &lt;/video&gt;
             &lt;/div&gt;
           </pre>
+
+          <p>
+            could be represented with this JSON:
+          </p>
 
           <pre class="example">
             {
@@ -791,10 +803,10 @@
           </p>
 
           <p>
-            Fields described below have additional requirements to be considered a valid JF2 Feed, however they may contain
-            any number of additional fields from [[h-feed]], [[h-entry]], and [[h-card]].  The entries below are codified as
-            they are likely the most useful for feed readers and additional data is expected to be fetchable at the entry URL,
-            preferrably though valid [[!microformats2]] markup.
+            Fields described below have additional requirements for the document to be considered a valid JF2 Feed, however
+            they may contain any number of additional fields from [[h-feed]], [[h-entry]], and [[h-card]].  The entries below
+            are codified as they are likely the most useful for feed readers and additional data is expected to be fetchable
+            at the entry URL, preferrably though valid [[microformats2]] markup.
           </p>
         </section>
 
@@ -938,7 +950,7 @@
           </p>
           <ul>
             <li>Rename the 'id' property to 'uid'</li>
-            <li>Convert content_html and content_text into a single object under the property "content" with properties "html" and "text", leaving out either if not present, or the entire property if neither are present.  </li>
+            <li>Convert content_html and content_text into a single object under the property "content" with properties "html" and "text", leaving out either if not present or the entire property if neither are present</li>
             <li>Rename the properties
               "title" to "name",
               "image" to "photo",
