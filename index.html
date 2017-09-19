@@ -553,9 +553,9 @@
         some other location, the <a>references</a> property SHOULD be used.  The property
         SHOULD contain only the unique identifier or URL where the authoritative data
         may be found.  In the references object, the URL or unique identifier MAY
-        be entered as the key field and a serialization of the referenced object MAY
-        be provided.  This serialization of the referenced object MAY be incomplete
-        so as to provide only necessary data.
+        be used as the property key and a serialization of the referenced object MAY
+        be provided as the property value.  This serialization of the referenced object MAY
+        be incomplete so as to provide only necessary data.
       </p>
       <p>
         Parsing implementations SHOULD fetch data from the authoritative source instead of using
