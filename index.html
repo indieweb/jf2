@@ -366,7 +366,7 @@
           single item is present.</li>
           <li><dfn>references</dfn> is an associative array, serialized as a JSON object, of all sub-objects
           inside an object which have "id" defined as an external URL.
-          Any objects in this array are not authoritative.
+          The authoritative source for all objects in this array is always at the URL, not in this object.
           If the references property is defined, it MUST be serialized as an associative array and MUST be
           present at the top level entry only.
           </li>
