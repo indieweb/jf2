@@ -502,6 +502,11 @@
           <h4>Multiple URLs for video/audio/picture</h4>
           <p>
             Since HTML video/audio/picture tags may have multiple URLs, we need a way to convey this information in the JSON representation.
+            In such situations, vocabulary properties MAY be arrays.
+          </p>
+
+          <p>
+            For example, this HTML (marked up with microformats2):
           </p>
 
           <pre class="example">
@@ -513,6 +518,10 @@
               &lt;/video&gt;
             &lt;/div&gt;
           </pre>
+
+          <p>
+            could be represented with this JSON:
+          </p>
 
           <pre class="example">
             {
