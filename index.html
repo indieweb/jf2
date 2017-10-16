@@ -350,10 +350,6 @@
           html MUST be a single string value only.</li>
           <li><dfn>text</dfn> is the text/plain version of the containing object.
           text MUST be a single string value only.</li>
-          <li><dfn>value</dfn> is a textual representation of the object.  By default this is presumed to be
-          of content-type "text/plain".
-          Value MUST be a single string value only.
-          </li>
           <li><dfn>lang</dfn> is the localization language of the containing object and all
             sub-objects, unless overridden by another lang definition. 
             Setting lang at a lower level overrides any lang value set at higher levels.
@@ -758,7 +754,7 @@
           "name": "Hello World",
           "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet ultrices pulvinar.",
           "content": {
-            "value": "&lt;p&gt;Donec dapibus enim lacus, &lt;i&gt;a vehicula magna bibendum non&lt;/i&gt;. Phasellus id lacinia felis, vitae pellentesque enim. Sed at quam dui. Suspendisse accumsan, est id pulvinar consequat, urna ex tincidunt enim, nec sodales lectus nulla et augue. Cras venenatis vehicula molestie. Donec sagittis elit orci, sit amet egestas ex pharetra in.&lt;/p&gt;",
+            "html": "&lt;p&gt;Donec dapibus enim lacus, &lt;i&gt;a vehicula magna bibendum non&lt;/i&gt;. Phasellus id lacinia felis, vitae pellentesque enim. Sed at quam dui. Suspendisse accumsan, est id pulvinar consequat, urna ex tincidunt enim, nec sodales lectus nulla et augue. Cras venenatis vehicula molestie. Donec sagittis elit orci, sit amet egestas ex pharetra in.&lt;/p&gt;",
             "text": "Donec dapibus enim lacus, a vehicula magna bibendum non. Phasellus id lacinia felis, vitae pellentesque enim. Sed at quam dui. Suspendisse accumsan, est id pulvinar consequat, urna ex tincidunt enim, nec sodales lectus nulla et augue. Cras venenatis vehicula molestie. Donec sagittis elit orci, sit amet egestas ex pharetra in."
           }
         }
