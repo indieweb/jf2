@@ -144,7 +144,7 @@
       <p>
       Various services (<a href="#xray">XRay</a>, <a href="#unmung">Unmung</a>, <a href="#socialstreams">SocialStreams</a>)
       provide conversion from microformats pages into JF2 for quick inspection to
-      validate proper semantics.
+      validate proper semantics.  These tools have been used in practice to allow for embedded social activity in a page.
       </p>
     </section>
 
@@ -1005,57 +1005,6 @@
       </p>
     </section>
 
-    <section id="implementations" class="informative">
-      <h2>Implementations</h2>
-      <p>
-        The following is a list of currently known implementations of JF2-like formats and their current differences to this document.
-      </p>
-
-      <section id="webmention.io">
-        <h3>Webmention.io</h3>
-        <p>
-        <a href="https://webmention.io">Webmention.io</a> is a hosted service for handling Webmentions.
-          Webmentions are accessed from an API that that returns a set of objects in JSON format similar to JF2.
-          The key difference is the inclusion of some additional data wrapping the objects
-          (source, verified, verified_data, etc) and all wrapped in a "links" array.
-          Code available at <a href="https://github.com/aaronpk/webmention.io">https://github.com/aaronpk/webmention.io</a>
-        </p>
-      </section>
-
-      <section id="xray">
-        <h3>XRay</h3>
-        <p>
-        <a href="https://xray.p3k.io">X-Ray</a> is a tool to return structured data from any URL.
-          Code available at <a href="https://github.com/aaronpk/XRay">https://github.com/aaronpk/XRay</a>
-        </p>
-      </section>
-
-      <section id="unmung">
-        <h3>Unmung</h3>
-        <p>
-        <a href="http://www.unmung.com">Unmung</a> is a tool for converting various formats.
-          Code available at <a href="https://github.com/kevinmarks/unmung">https://github.com/kevinmarks/unmung</a>
-        </p>
-      </section>
-
-
-      <section id="socialstreams">
-        <h3>SocialStreams</h3>
-        <p>
-        <a href="http://stream.thatmustbe.us">SocialStreams</a> is a translation service for converting social formats.
-          Code available at <a href="https://github.com/dissolve/socialstream">https://github.com/dissolve/socialstream</a>
-        </p>
-      </section>
-
-      <section id="mf2util">
-        <h3>mf2util</h3>
-        <p>
-          Mf2util is a utility library for interpreting microformats2.
-          Code available at <a href="https://github.com/kylewm/mf2util">https://github.com/kylewm/mf2util</a>
-        </p>
-      </section>
-    </section>
-
     <section id="privacy">
       <h2>Privacy Considerations</h2>
 
@@ -1158,6 +1107,7 @@
 
           <ul>
             <li>Relabel Reserved "Keywords" as Reseverd "Properties".</li>
+            <li>Remove Implementations section.</li>
             <li>Minor typos and editorial fixes.</li>
           </ul>
 
