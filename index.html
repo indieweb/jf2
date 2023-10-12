@@ -10,7 +10,7 @@
           license: "w3c-software-doc",
           specStatus: "ED",
           shortName:  "jf2",
-          edDraftURI: "http://jf2.spec.indieweb.org/",
+          edDraftURI: "https://jf2.spec.indieweb.org/",
           editors: [
                 {   name:       "Kevin Marks",
                     url:        "https://www.kevinmarks.com/",
@@ -47,15 +47,15 @@
               data: [
                 {
                   value: "Validator",
-                  href: "http://jf2.rocks/"
+                  href: "https://jf2.rocks/"
                 },
                 {
                   value: "Sample Set",
-                  href: "http://jf2.rocks/"
+                  href: "https://jf2.rocks/"
                 },
                 {
                   value: "Implementation Reports",
-                  href: "http://jf2.rocks/"
+                  href: "https://jf2.rocks/"
                 }
               ]
             }
@@ -64,17 +64,17 @@
           localBiblio:  {
             "microformats2": {
               title: "microformats2",
-              href: "http://microformats.org/wiki/microformats2",
+              href: "https://microformats.org/wiki/microformats2",
               authors: [ "Tantek Çelik"],
               status: "Living Specification",
               publisher: "microformats.org"
             },
             "jsonfeed-v1": {
               title: "JSON Feed Version 1",
-              href: "http://jsonfeed.org/version/1",
+              href: "https://jsonfeed.org/version/1",
               authors: [ "Brent Simmons", "Manton Reece"],
               status: "Draft",
-              publisher: "http://jsonfeed.org"
+              publisher: "https://jsonfeed.org"
             },
           }
       };
@@ -142,9 +142,11 @@
       off any unnecessary information leaving the library user only the most essential information.
       </p>
       <p>
-      Various services (<a href="https://xray.p3k.io">XRay</a>, <a href="http://www.unmung.com">Unmung</a>, <a href="http://stream.thatmustbe.us">SocialStreams</a>)
+      Various services (<a href="https://xray.p3k.io">XRay</a>, 
+        <a href="https://unmung2.appspot.com/">Unmung</a>, 
+        <a href="https://stream.thatmustbe.us/">SocialStreams</a>)
       provide conversion from microformats pages into JF2 for quick inspection to
-      validate proper semantics.  These tools have been used in practice to allow for embedded social activity in a page.
+      validate proper semantics. These tools have been used in practice to allow for embedded social activity in a page.
       </p>
     </section>
 
@@ -371,7 +373,9 @@
             A post is composed of a "type" property, and one or more additional properties that describe the post.
           </p>
           <p>
-          The "type" property has a value that describes the vocabulary of the post. Common values include "entry", "card", etc. See <a href="http://microformats.org/wiki/microformats-2#v2_vocabularies">microformats2 vocabularies</a> for the full list when using a microformats based vocabulary.
+          The "type" property has a value that describes the vocabulary of the post. Common values include "entry", "card", etc. 
+          See <a href="https://microformats.org/wiki/microformats-2#v2_vocabularies">microformats2 vocabularies</a> 
+          for the full list when using a microformats based vocabulary.
           </p>
           <p>
             Any additional properties in the post object are considered part of the post's vocabulary.
@@ -400,12 +404,12 @@
             {
               "type": "entry",
               "published": "2015-10-20T15:49:00-0700",
-              "url": "http://example.com/post/fsjeuu8372",
+              "url": "https://example.com/post/fsjeuu8372",
               "author": {
                 "type": "card",
                 "name": "Alice",
-                "url": "http://alice.example.com",
-                "photo": "http://alice.example.com/photo.jpg"
+                "url": "https://alice.example.com",
+                "photo": "https://alice.example.com/photo.jpg"
               },
               "name": "Hello World",
               "content": "This is a blog post",
@@ -417,14 +421,14 @@
             {
               "type": "entry",
               "published": "2015-10-20T15:49:00-0700",
-              "url": "http://example.com/like/r23eugi02c",
+              "url": "https://example.com/like/r23eugi02c",
               "author": {
                 "type": "card",
                 "name": "Alice",
-                "url": "http://alice.example.com",
-                "photo": "http://alice.example.com/photo.jpg"
+                "url": "https://alice.example.com",
+                "photo": "https://alice.example.com/photo.jpg"
               },
-              "like-of": "http://bob.example.com/post/100",
+              "like-of": "https://bob.example.com/post/100",
               "category": ["Likes", "Posts"]
             }
           </pre>
@@ -434,15 +438,16 @@
       <section id="author">
         <h3>Author</h3>
         <p>
-          An author is represented by the [[!h-card]] vocabulary, and consists of a name, photo [[!URL]], [[!URL]] to the author profile, and <a href="http://microformats.org/wiki/h-card">others</a>. This is represented by the following JSON.
+          An author is represented by the [[!h-card]] vocabulary, and consists of a name, photo [[!URL]], [[!URL]] to the author profile, 
+          and <a href="https://microformats.org/wiki/h-card">others</a>. This is represented by the following JSON.
         </p>
 
         <pre class="example">
           {
             "type": "card",
             "name": "Aaron Parecki",
-            "photo": "http://aaronparecki.com/photo.jpg",
-            "url": "http://aaronparecki.com/"
+            "photo": "https://aaronparecki.com/photo.jpg",
+            "url": "https://aaronparecki.com/"
           }
         </pre>
       </section>
@@ -547,17 +552,17 @@
             {
               "type": "entry",
               "published": "2015-10-20T15:49:00-0700",
-              "url": "http://example.com/post/fsjeuu8372",
-              "author": "http://alice.example.com",
+              "url": "https://example.com/post/fsjeuu8372",
+              "author": "https://alice.example.com",
               "name": "Hello World",
               "content": "This is a blog post",
               "category": "Posts",
               "references": {
-                "http://alice.example.com": {
+                "https://alice.example.com": {
                   "type": "card",
                   "name": "Alice",
-                  "url": "http://alice.example.com",
-                  "photo": "http://alice.example.com/photo.jpg"
+                  "url": "https://alice.example.com",
+                  "photo": "https://alice.example.com/photo.jpg"
                 }
               }
             }
@@ -567,29 +572,29 @@
             {
               "type": "entry",
               "published": "2015-10-20T15:49:00-0700",
-              "url": "http://example.com/like/r23eugi02c",
+              "url": "https://example.com/like/r23eugi02c",
               "author": {
                 "type": "card",
                 "name": "Alice",
-                "url": "http://alice.example.com",
-                "photo": "http://alice.example.com/photo.jpg"
+                "url": "https://alice.example.com",
+                "photo": "https://alice.example.com/photo.jpg"
               },
-              "like-of": "http://bob.example.com/post/100",
+              "like-of": "https://bob.example.com/post/100",
               "category": ["Likes", "Posts"],
               "references": {
-                "http://bob.example.com/post/100": {
+                "https://bob.example.com/post/100": {
                   "type": "entry",
                   "published": "2015-10-18T12:33:00-0700",
-                  "url": "http://bob.example.com/post/100",
-                  "author": "http://bob.example.com",
+                  "url": "https://bob.example.com/post/100",
+                  "author": "https://bob.example.com",
                   "name": "My First Post",
                   "content": "This is my first post on my new blog, I hope you like it"
                 },
-                "http://bob.example.com": {
+                "https://bob.example.com": {
                   "type": "card",
                   "name": "Bob",
-                  "url": "http://bob.example.com",
-                  "photo": "http://bob.example.com/mypicture.jpg"
+                  "url": "https://bob.example.com",
+                  "photo": "https://bob.example.com/mypicture.jpg"
                 }
               }
             }
@@ -611,13 +616,13 @@
       <pre class="example">
         {
           "type": "feed",
-          "url": "http://alice.example.com/collectionurl",
+          "url": "https://alice.example.com/collectionurl",
           "name": "Alice's Home Page",
           "author": {
             "type": "card",
             "name": "Alice",
-            "url": "http://alice.example.com",
-            "photo": "http://alice.example.com/photo"
+            "url": "https://alice.example.com",
+            "photo": "https://alice.example.com/photo"
           },
           "children": [
             { 
@@ -681,8 +686,8 @@
         <pre class="example">
           &lt;article class="h-entry"&gt;
             &lt;h1 class="p-name"&gt;Hello World&lt;/h1&gt;
-            &lt;p&gt;Published by &lt;a class="p-author h-card" href="http://example.com/"&gt;A. Developer&lt;/a&gt;
-               on &lt;a href="http://example.com/2015/10/21" class="u-url"&gt;&lt;time class="dt-published" datetime="2015-10-21T12:00:00-0700"&gt;October 21&lt;sup&gt;st&lt;/sup&gt;, 2015&lt;/time&gt;&lt;/a&gt;
+            &lt;p&gt;Published by &lt;a class="p-author h-card" href="https://example.com/"&gt;A. Developer&lt;/a&gt;
+               on &lt;a href="https://example.com/2015/10/21" class="u-url"&gt;&lt;time class="dt-published" datetime="2015-10-21T12:00:00-0700"&gt;October 21&lt;sup&gt;st&lt;/sup&gt;, 2015&lt;/time&gt;&lt;/a&gt;
            
             &lt;p class="p-summary"&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet ultrices pulvinar.&lt;/p&gt;
            
@@ -710,7 +715,7 @@
                         "A. Developer"
                       ],
                       "url": [
-                        "http://example.com/"
+                        "https://example.com/"
                       ]
                     },
                     "value": "A. Developer"
@@ -723,7 +728,7 @@
                   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet ultrices pulvinar."
                 ],
                 "url": [
-                  "http://example.com/2015/10/21"
+                  "https://example.com/2015/10/21"
                 ],
                 "published": [
                   "2015-10-21T12:00:00-0700"
@@ -747,10 +752,10 @@
           "type": "entry",
           "author": {
             "type": "card",
-            "url": "http://example.com",
+            "url": "https://example.com",
             "name": "A. Developer"
           },
-          "url": "http://example.com/2015/10/21",
+          "url": "https://example.com/2015/10/21",
           "published": "2015-10-21T12:00:00-0700",
           "name": "Hello World",
           "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet ultrices pulvinar.",
@@ -767,7 +772,7 @@
         <h2>JSON-LD Consideration</h2>
         <p>
           JF2 documents all have an implicit @context field which is optional.  This @context can be found at 
-          <a href="http://www.w3.org/ns/jf2">http://www.w3.org/ns/jf2</a>
+          <a href="https://www.w3.org/ns/jf2">https://www.w3.org/ns/jf2</a>
           and is provided only to make conversion to [[JSON-LD]] format possible.  Most JF2 will process
           fine in JSON-LD systems, however, this support is not guaranteed and those wishing to
           use JF2 in JSON-LD may need to modify serialization slightly.
@@ -876,7 +881,7 @@
           <p>
           The JF2 Feed for a page may be published as HTTP Link header [[!RFC5988]], or as an HTML
           &lt;link&gt; or &lt;a&gt; tag element with the following attributes.
-            <pre>rel="alternate" type="application/jf2feed+json" href="http://www.example.com/jf2feed.json" </pre>
+            <pre>rel="alternate" type="application/jf2feed+json" href="https://example.com/jf2feed.json" </pre>
           </p>
         </section>
         <section id="jf2feed_example">
@@ -890,7 +895,7 @@
                 "author": {
                     "type": "card",
                     "name": "Brent Simmons",
-                    "url": "http://example.org/",
+                    "url": "https://example.org/",
                     "photo": "https://example.org/avatar.png"
                 },
                 "children": [
@@ -1176,16 +1181,16 @@
           <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="https://aaronparecki.com/">Aaron Parecki</a></span>,
           <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="https://strugee.net/">AJ Jordan</a></span>,
           <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="https://bengo.is/">Benjamin Goering</a></span>,
-          <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="http://inessential.com/">Brent Simmons</a></span>,
-          <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="http://dustycloud.org/">Christopher Webber</a></span>,
-          <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="http://wilkie.io/">Dave Wilkinson II</a></span>,
-          <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="http://www.chmod777self.com/">James Snell</a></span>,
+          <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="https://inessential.com/">Brent Simmons</a></span>,
+          <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="https://dustycloud.org/">Christine Webber</a></span>,
+          <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="https://wilkie.io/">Dave Wilkinson II</a></span>,
+          <span class="h-card vcard" typeof="foaf:Person"><a class="p-name fn">James Snell</a></span>,
           <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="https://cleverdevil.io/">Jonathan LaCour</a></span>,
-          <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="https://kylewm.com/">Kyle Mahan</a></span>,
-          <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="http://manton.org/">Manton Reece</a></span>,
-          <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="http://kodfabrik.se/">Pelle Wessman</a></span>,
+          <span class="h-card vcard" typeof="foaf:Person"><a class="p-name fn">Kyle Mahan</a></span>,
+          <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="https://manton.org/">Manton Reece</a></span>,
+          <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="https://kodfabrik.se/">Pelle Wessman</a></span>,
           and 
-          <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="http://tantek.com/">Tantek Çelik</a></span>.
+          <span class="h-card vcard" typeof="foaf:Person"><a class="u-url url p-name fn" property="foaf:homepage" href="https://tantek.com/">Tantek Çelik</a></span>.
         </p>
     </section>
   </body>
